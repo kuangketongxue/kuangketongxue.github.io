@@ -307,41 +307,69 @@
     <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/GF5JVK"></audio>
     
     <script>
-        // 定义计时器相关变量
-        let timer; // 用于存储计时器ID
-        let seconds = 0; // 秒数
-        let minutes = 0; // 分钟数
-        let hours = 0; // 小时数
-        // 设定计时时长（这里设定为20分钟，可根据需求修改）
-        const targetSeconds = 20 * 60;
+        // 使用localStorage来存储计时器数据
+        function loadTimerData() {
+            const savedTime = localStorage.getItem('timerData');
+            if (savedTime) {
+                const data = JSON.parse(savedTime);
+                const now = new Date().getTime();
+                const elapsed = Math.floor((now - data.timestamp) / 1000);
+                return data.totalSeconds + elapsed;
+            }
+            return 0;
+        }
+        
+        function saveTimerData(totalSeconds) {
+            const data = {
+                totalSeconds: totalSeconds,
+                timestamp: new Date().getTime()
+            };
+            localStorage.setItem('timerData', JSON.stringify(data));
+        }
+        
+        // 初始化计时器
+        let totalSeconds = loadTimerData();
+        updateTimerDisplay();
         
         // 更新计时器显示
-        function updateTimer() {
-            seconds++;
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
-                if (minutes >= 60) {
-                    minutes = 0;
-                    hours++;
-                }
-            }
+        function updateTimerDisplay() {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            
             // 格式化时间显示
             const displayHours = hours < 10 ? `0${hours}` : hours;
             const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
             const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
             document.getElementById('timer').innerHTML = `${displayHours}:${displayMinutes}:${displaySeconds}`;
-            
-            // 当达到设定时间，播放眼保健操音乐
-            if (hours * 3600 + minutes * 60 + seconds >= targetSeconds) {
-                clearInterval(timer); // 停止计时器
-                const audio = document.getElementById('eyeExerciseMusic');
-                audio.play(); // 播放音乐
-            }
         }
         
         // 启动计时器
-        timer = setInterval(updateTimer, 1000);
+        const timer = setInterval(() => {
+            totalSeconds++;
+            updateTimerDisplay();
+            saveTimerData(totalSeconds);
+            
+            // 当达到设定时间（5分钟），播放眼保健操音乐
+            if (totalSeconds >= 5 * 60) {
+                const audio = document.getElementById('eyeExerciseMusic');
+                audio.play();
+            }
+        }, 1000);
+        
+        // 页面可见性变化时处理
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                // 页面重新可见时，重新加载计时器数据
+                totalSeconds = loadTimerData();
+                updateTimerDisplay();
+            }
+        });
+        
+        // 页面卸载前保存计时器数据
+        window.addEventListener('beforeunload', () => {
+            saveTimerData(totalSeconds);
+        });
     </script>
     
     <footer>
@@ -357,4 +385,3 @@
     </footer>
 </body>
 </html>
-修改后的网页代码.html
