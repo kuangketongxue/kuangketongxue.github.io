@@ -206,6 +206,8 @@
             <h1 class="site-title">AIFLOW</h1>
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
+            <!-- 添加计时器显示区域 -->
+            <div id="timer">00:00:00</div>
         </div>
     </header>
     
@@ -263,4 +265,94 @@
             <h2 class="section-title">最新思考</h2>
             <div class="articles">
                 <div class="article-card">
-                    <div class="article-content
+                    <div class="article-content">
+                        <h3 class="article-title">AI发展的未来方向</h3>
+                        <p class="article-excerpt">探讨人工智能的发展趋势，以及未来可能对社会产生的深远影响...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-15</span>
+                            <span>分类: AI研究</span>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title">大模型如何改变工作流程</h3>
+                        <p class="article-excerpt">大型语言模型如何重塑我们的日常工作方式，提高效率与创造力...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-22</span>
+                            <span>分类: 工作效率</span>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title">AI伦理思考</h3>
+                        <p class="article-excerpt">随着AI技术的快速发展，我们需要思考哪些伦理问题以及如何建立健康的监管框架...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-10</span>
+                            <span>分类: 技术伦理</span>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 添加音频标签 -->
+    <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/pMhzaH"></audio>
+    
+    <script>
+        // 定义计时器相关变量
+        let timer; // 用于存储计时器ID
+        let seconds = 0; // 秒数
+        let minutes = 0; // 分钟数
+        let hours = 0; // 小时数
+        // 设定计时时长（这里设定为20分钟，可根据需求修改）
+        const targetSeconds = 20 * 60;
+        
+        // 更新计时器显示
+        function updateTimer() {
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            // 格式化时间显示
+            const displayHours = hours < 10 ? `0${hours}` : hours;
+            const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+            const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+            document.getElementById('timer').innerHTML = `${displayHours}:${displayMinutes}:${displaySeconds}`;
+            
+            // 当达到设定时间，播放眼保健操音乐
+            if (hours * 3600 + minutes * 60 + seconds >= targetSeconds) {
+                clearInterval(timer); // 停止计时器
+                const audio = document.getElementById('eyeExerciseMusic');
+                audio.play(); // 播放音乐
+            }
+        }
+        
+        // 启动计时器
+        timer = setInterval(updateTimer, 1000);
+    </script>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AIFLOW. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
