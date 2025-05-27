@@ -1,0 +1,92 @@
+import { useState, useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
+import type { Timeout } from 'node';
+
+
+export default function TimerPage() {
+  const [isRunning, setIsRunning] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes in seconds
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const initialTime = 1200;
+  const musicDuration = 30;
+
+  // Format time as MM:SS
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Timer logic
+  useEffect(() => {
+    let timer: Timeout;
+    
+
+    if (isRunning && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft(prev => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && !isPlaying) {
+      setIsRunning(false);
+      setIsPlaying(true);
+      toast.success('Time for eye exercise!');
+      // In a real app, we would play actual music here
+      // For demo, we'll just simulate with a timeout
+      setTimeout(() => {
+        setIsPlaying(false);
+        setTimeLeft(initialTime);
+      }, musicDuration * 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [isRunning, timeLeft, isPlaying]);
+
+  const toggleTimer = () => {
+    setIsRunning(!isRunning);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-[#FAFAFA] p-4">
+      {/* Timer Display */}
+      <div className="flex-1 flex items-center justify-center">
+        <span className="text-6xl font-roboto text-gray-800 transition-all duration-300">
+          {formatTime(timeLeft)}
+        </span>
+      </div>
+
+      {/* Control Button */}
+      <button
+        onClick={toggleTimer}
+        aria-label={isRunning ? 'Pause timer' : 'Start timer'}
+        className={cn(
+          'w-16 h-16 rounded-full bg-[#E1F5FE] border-2 border-[#B3E5FC]',
+          'flex items-center justify-center shadow-md hover:shadow-lg',
+          'active:scale-95 transition-transform duration-200',
+          'focus:outline-none focus:ring-2 focus:ring-[#B3E5FC]'
+        )}
+      >
+        {isRunning ? (
+          <i className="fa-solid fa-pause text-gray-800 text-xl"></i>
+        ) : (
+          <i className="fa-solid fa-play text-gray-800 text-xl"></i>
+        )}
+      </button>
+
+      {/* Music visual indicator */}
+      {isPlaying && (
+        <div className="mt-8 flex space-x-2">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div
+              key={i}
+              className="w-2 h-8 bg-[#E1F5FE] rounded-full animate-bounce"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
