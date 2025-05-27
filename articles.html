@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. 修改页面标题，指明这是文章列表页 -->
+    <title>所有文章 - AIFLOW</title>
+    <!-- 2. 链接到你的 style.css 文件 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Font Awesome 图标库 (如果页脚等地方用到) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- 3. 这里的头部可以简化，或者保持和首页一致，但标题应表明当前页面 -->
+            <h1 class="site-title">AIFLOW - 所有文章</h1>
+            <!-- 你可以根据需要添加副标题，例如 -->
+            <!-- <p class="site-subtitle">探索AI的无限可能，分享深度见解。</p> -->
+        </div>
+    </header>
+
+    <nav>
+        <!-- 4. 确保导航链接正确，当前页面链接可以不加特殊高亮，或者用CSS处理 -->
+        <a href="index.html#home">首页</a>
+        <a href="articles.html">文章</a>   <!-- 当前页 -->
+        <a href="thoughts.html">思考</a>
+        <a href="self-study.html">自学专栏</a>
+        <a href="make-money.html">搞钱专栏</a>
+        <a href="index.html#about">关于我</a>
+        <a href="index.html#contact">联系方式</a>
+    </nav>
+
+    <main class="container">
+        <section id="all-articles-content">
+            <!-- 5. 页面主要内容的标题 -->
+            <h2 class="section-title">全部文章列表</h2>
+            <div class="articles">
+                <!-- 6. 在这里开始添加你的文章卡片 -->
+                <!-- 你可以复制下面的 ".article-card" 结构来添加更多文章 -->
+
+                <!-- 文章卡片 示例 1 (你需要替换成你的真实文章内容) -->
+                <div class="article-card" id="article-example-1"> <!-- 为文章卡片添加一个唯一的id，方便锚点跳转 -->
+                    <div class="article-content">
+                        <h3 class="article-title">AI发展的未来方向 (完整版)</h3>
+                        <p class="article-excerpt">这里是关于AI发展未来方向的详细探讨。我们将深入分析当前的技术瓶颈、潜在的突破口，以及通用人工智能（AGI）的实现路径。同时，也会讨论AI在医疗、教育、交通等各个领域的颠覆性应用前景...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-15</span>
+                            <span>分类: AI研究</span>
+                        </div>
+                        <!-- 在文章列表页，如果卡片本身就是摘要，可以保留 "阅读全文" -->
+                        <!-- 如果每个卡片点进去还有更详细的单篇文章页面 (更复杂的结构)，则这里链接到那个页面 -->
+                        <!-- 如果这个页面展示的就是完整内容或较长摘要，可以不显示 "阅读全文" -->
+                        <!-- <a href="single-article-example-1.html" class="read-more">阅读全文 →</a> -->
+                    </div>
+                </div>
+
+                <!-- 文章卡片 示例 2 (你需要替换成你的真实文章内容) -->
+                <div class="article-card" id="article-example-2">
+                    <div class="article-content">
+                        <h3 class="article-title">大模型如何彻底改变我们的工作流程</h3>
+                        <p class="article-excerpt">大型语言模型不仅仅是聊天机器人，它们正在成为强大的生产力工具。本篇文章将详细介绍LLMs在内容创作、编程辅助、数据分析、客户服务等方面的实际应用案例，并提供如何将其集成到现有工作流中的建议...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-22</span>
+                            <span>分类: 工作效率</span>
+                        </div>
+                        <!-- <a href="#" class="read-more">阅读全文 →</a> -->
+                    </div>
+                </div>
+
+                <!-- 文章卡片 示例 3 (你需要替换成你的真实文章内容) -->
+                <div class="article-card" id="article-example-3">
+                    <div class="article-content">
+                        <h3 class="article-title">AI伦理的核心议题与前瞻思考</h3>
+                        <p class="article-excerpt">随着AI技术的飞速发展，其带来的伦理挑战不容忽视。本文将聚焦数据偏见、算法透明度、隐私保护、就业冲击以及自主武器等关键伦理议题，探讨可能的解决方案和未来的监管框架...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-05-10</span>
+                            <span>分类: 技术伦理</span>
+                        </div>
+                        <!-- <a href="#" class="read-more">阅读全文 →</a> -->
+                    </div>
+                </div>
+
+                <!-- =============================================================== -->
+                <!-- ↓↓↓ 在这里继续添加更多文章卡片 ↓↓↓ -->
+                <!-- 复制上面的 <div class="article-card">...</div> 结构并修改内容 -->
+                <!--
+                <div class="article-card" id="your-new-article-id">
+                    <div class="article-content">
+                        <h3 class="article-title">你的新文章标题</h3>
+                        <p class="article-excerpt">你的新文章摘要或主要内容...</p>
+                        <div class="article-meta">
+                            <span>发布于: YYYY-MM-DD</span>
+                            <span>分类: 你的分类</span>
+                        </div>
+                        <a href="#" class="read-more">阅读全文 →</a>
+                    </div>
+                </div>
+                -->
+                <!-- ↑↑↑ 在这里继续添加更多文章卡片 ↑↑↑ -->
+                <!-- =============================================================== -->
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AIFLOW. All rights reserved.</p>
+            <div class="social-links">
+                <!-- 保持和首页一致的社交链接 -->
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 这个页面通常不需要首页的计时器和眼保健操音乐脚本 -->
+    <!--
+    <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/GF5JVK"></audio>
+    <script>
+        // ... 计时器脚本 ...
+    </script>
+    -->
+</body>
+</html>
