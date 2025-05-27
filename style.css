@@ -160,3 +160,53 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- 在 style.css 文件末尾添加 --- */
+
+/* 用于表示整个板块内容待填充 */
+.content-placeholder-section .articles { /* 目标是板块内的文章列表区域 */
+    background-color: #080808; /* 比 var(--darker-bg) 更暗一点的背景 */
+    border: 2px dashed rgba(255, 255, 255, 0.2); /* 暗色虚线边框 */
+    padding: 40px; /* 给一些内边距，让提示更明显 */
+    min-height: 200px; /* 给一个最小高度，即使没有卡片也撑开空间 */
+    display: flex; /* 使用flex布局方便居中提示文字 */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px; /* 和卡片一样的圆角 */
+}
+
+.content-placeholder-section .articles::before { /* 使用伪元素添加提示文字 */
+    content: "内容正在准备中，敬请期待...";
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* 用于表示单个文章卡片是占位符 */
+.article-card.placeholder {
+    background-color: #0c0c0c; /* 比 var(--darker-bg) 略暗或不同色调 */
+    border: 1px dashed rgba(0, 243, 255, 0.3); /* 用主题色虚线 */
+    opacity: 0.6; /* 让它看起来不那么突出 */
+}
+
+.article-card.placeholder .article-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px; /* 给占位卡片一个最小高度 */
+}
+
+.article-card.placeholder .article-title::before {
+    content: "即将发布: ";
+    color: rgba(0, 243, 255, 0.6);
+    font-size: 0.9em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.article-card.placeholder .article-excerpt {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
