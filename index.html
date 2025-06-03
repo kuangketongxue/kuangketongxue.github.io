@@ -16,22 +16,25 @@
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
             <!-- 添加计时器显示区域 -->
             <div id="timer">00:00:00</div>
+            <!-- 添加眼保健操提醒 -->
+            <div id="eye-exercise-reminder" style="display: none; color: #ff6b6b; font-size: 1.2rem; font-weight: bold; margin-top: 10px; animation: blink 1s infinite;">
+                做眼保健操啦！
+            </div>
         </div>
     </header>
   <nav>
-    <a href="index.html#home">首页</a> <!-- 或者直接用 #home -->
-    <a href="articles.html">封建脉络百战</a>   <!-- 指向新文件 -->
-    <a href="thoughts.html">PrimePulse</a>   <!-- 指向新文件 -->
-    <a href="self-study.html">如何自学</a> <!-- 新增，指向新文件 -->
-    <a href="make-money.html">搞钱专栏</a> <!-- 新增，指向新文件 -->
-    <a href="index.html#about">运动</a> <!-- 假设"关于我"还在首页 -->
-    <a href="index.html#contact">关于我</a> <!-- 假设"联系方式"还在首页 -->
+    <a href="index.html#home">首页</a>
+    <a href="articles.html">封建脉络百战</a>
+    <a href="thoughts.html">PrimePulse</a>
+    <a href="self-study.html">如何自学</a>
+    <a href="make-money.html">搞钱专栏</a>
+    <a href="#sports">运动</a>
+    <a href="#about">关于我</a>
 </nav>
     <main class="container">
                <section id="featured">
             <h2 class="section-title">封建脉络百战</h2>
             <div class="articles">
-                <!-- 只保留一篇或两篇作为精选引流 -->
                 <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title" style="color: #555555;">楚汉双雄</h3>
@@ -40,27 +43,10 @@
                             <span>发布于: 2025-06-</span>
                             <span>分类: AI研究</span>
                         </div>
-                        <!-- 修改这里的链接，指向 articles.html 中对应的文章锚点 -->
                         <a href="articles.html#ai-future-full" class="read-more">阅读全文 →</a>
                     </div>
                 </div>
-                <!-- 如果想保留第二篇精选，可以像下面这样修改并保留 -->
-                <!--
-                <div class="article-card">
-                    <div class="article-content">
-                        <h3 class="article-title">大模型如何改变工作流程</h3>
-                        <p class="article-excerpt">大型语言模型如何重塑我们的日常工作方式，提高效率与创造力...</p>
-                        <div class="article-meta">
-                            <span>发布于: 2025-05-22</span>
-                            <span>分类: 工作效率</span>
-                        </div>
-                        <a href="articles.html#llm-workflow-full" class="read-more">阅读全文 →</a>
-                    </div>
-                </div>
-                -->
-                <!-- 原来的第三篇文章卡片可以删除，或者移到 articles.html 中 -->
-            </div> <!-- .articles 结束 -->
-            <!-- 添加 "查看所有文章" 的按钮 -->
+            </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="articles.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px; box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);">
                     查看所有文章 →
@@ -68,48 +54,27 @@
             </div>
         </section>
                <section id="latest-thoughts" style="margin-top: 60px;">
-            <h2 class="section-title">最新PrimePulse精选</h2> <!-- 可以稍微修改标题，表明是精选 -->
+            <h2 class="section-title">最新PrimePulse精选</h2>
             <div class="articles">
-                <!-- 只保留1-2个思考卡片作为引流 -->
-                <!-- 示例：保留第一个思考卡片 -->
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">我不过生日的九个理由</h3> <!-- 区分内容或添加标记 -->
+                        <h3 class="article-title" style="color: #555555;">我不过生日的九个理由</h3>
                         <p class="article-excerpt">...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-</span>
                             <span>分类: 思考</span>
                         </div>
-                        <!-- 这个链接应该指向 thoughts.html 页面中对应的完整思考内容 -->
                         <a href="thoughts.html#ai-future-thought" class="read-more">阅读完整思考 →</a>
                     </div>
                 </div>
-                <!-- 示例：如果你想保留第二个思考卡片作为引流 -->
-                <!--
-                <div class="article-card">
-                    <div class="article-content">
-                        <h3 class="article-title">大模型如何改变工作流程 (思考精选)</h3>
-                        <p class="article-excerpt">大型语言模型如何重塑我们的日常工作方式，提高效率与创造力...</p>
-                        <div class="article-meta">
-                            <span>发布于: 2025-05-22</span>
-                            <span>分类: 工作效率</span>
-                        </div>
-                        <a href="thoughts.html#llm-workflow-thought" class="read-more">阅读完整思考 →</a>
-                    </div>
-                </div>
-                -->
-                <!-- 其他思考卡片在这里被移除了，它们会完整地展示在 thoughts.html 页面 -->
-            </div> <!-- 这是 .articles 的结束标签 -->
-            <!-- 添加"查看所有思考"的链接 -->
+            </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="thoughts.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看所有思考 →</a>
             </div>
         </section>
-                <!-- 自学专栏引流开始 -->
         <section id="self-study-preview" style="margin-top: 60px;">
             <h2 class="section-title">如何自学</h2>
             <div class="articles">
-                <!-- 第一个自学专栏精选文章卡片 -->
                 <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title" style="color: #555555;">认知心态（万物皆为我所用）</h3>
@@ -121,7 +86,6 @@
                         <a href="self-study.html#language-learning" class="read-more">阅读全文 →</a>
                     </div>
                 </div>
-                <!-- (可选) 第二个自学专栏精选文章卡片 -->
                 <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title" style="color: #555555;">落地方法（总字数小于1000）</h3>
@@ -138,12 +102,9 @@
                 <a href="self-study.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看自学专栏 →</a>
             </div>
         </section>
-        <!-- 自学专栏引流结束 -->
-        <!-- 搞钱专栏引流开始 -->
         <section id="make-money-preview" style="margin-top: 60px;">
             <h2 class="section-title">搞钱专栏精选</h2>
             <div class="articles">
-                <!-- 第一个搞钱专栏精选文章卡片 -->
                 <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title" style="color: #555555;">敬请期待</h3>
@@ -155,7 +116,6 @@
                         <a href="make-money.html#passive-income" class="read-more">阅读全文 →</a>
                     </div>
                 </div>
-                <!-- (可选) 第二个搞钱专栏精选文章卡片 -->
                 <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title" style="color: #555555;">敬请期待</h3>
@@ -172,46 +132,159 @@
                 <a href="make-money.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看搞钱专栏 →</a>
             </div>
         </section>
-        <!-- 搞钱专栏引流结束 -->
-    </main> <!-- 这是 main 的结束标签 -->
+
+        <!-- 运动板块开始 -->
+        <section id="sports" style="margin-top: 60px;">
+            <h2 class="section-title">运动健康</h2>
+            <div class="articles">
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #555555;">我的运动哲学</h3>
+                        <p class="article-excerpt">身体是革命的本钱，运动不仅强健体魄，更能提升认知能力和创造力。每天30分钟的运动，就是投资未来的自己...</p>
+                        <div class="article-meta">
+                            <span>运动类型: 综合训练</span>
+                            <span>频率: 每日必修</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #555555;">高效健身计划</h3>
+                        <p class="article-excerpt">力量训练 + 有氧运动 + 柔韧性练习的完美结合。周一三五力量训练，周二四六有氧运动，周日瑜伽拉伸...</p>
+                        <div class="article-meta">
+                            <span>训练强度: 中高强度</span>
+                            <span>适合人群: 初中级健身者</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #555555;">运动与学习的协同效应</h3>
+                        <p class="article-excerpt">科学研究表明，规律运动能够提高大脑的神经可塑性，增强记忆力和注意力。运动后学习效率提升40%...</p>
+                        <div class="article-meta">
+                            <span>科学依据: 神经科学研究</span>
+                            <span>实践效果: 显著提升学习效率</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 运动板块结束 -->
+
+        <!-- 关于我板块开始 -->
+        <section id="about" style="margin-top: 60px;">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
+                <div class="about-intro" style="background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 243, 255, 0.1)); padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">个人简介</h3>
+                    <p>你好，我是AIFLOW的创建者。我是一个热爱学习、追求自我优化的终身学习者。相信通过科学的方法和持续的努力，每个人都能实现个人进化。</p>
+                    <p>我专注于AI技术应用、个人成长方法论、历史文化研究以及高效学习策略的探索与实践。</p>
+                </div>
+                
+                <div class="about-philosophy" style="margin-bottom: 30px;">
+                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">我的理念</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-blue);">📚</span>
+                            <strong>终身学习：</strong>保持好奇心，持续探索未知领域
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-blue);">🔧</span>
+                            <strong>系统优化：</strong>用科学方法不断优化学习和工作流程
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-blue);">🚀</span>
+                            <strong>AI赋能：</strong>拥抱AI技术，让科技成为成长的助推器
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--neon-blue);">💪</span>
+                            <strong>身心统一：</strong>保持身体健康与心智成长的平衡发展
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-info" style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 10px;">
+                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">联系方式</h3>
+                    <p><strong>邮箱：</strong> aiflow@example.com</p>
+                    <p><strong>微信：</strong> AIFLOW2025</p>
+                    <p><strong>个人理念：</strong> "赋能个体进化，探索学习、自我优化与成长的未来"</p>
+                    <p style="margin-top: 20px; font-style: italic; color: #888;">
+                        欢迎与我交流学习心得、AI应用经验或任何关于个人成长的话题。让我们一起在这个快速变化的时代中，找到属于自己的成长之路。
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- 关于我板块结束 -->
+        
+    </main>
+    
     <!-- 添加音频标签 -->
     <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/GF5JVK"></audio>
+    
     <script>
         let totalSeconds = 0;
+        let reminderShown = false;
         updateTimerDisplay();
+        
         // 更新计时器显示
         function updateTimerDisplay() {
             const hours = Math.floor(totalSeconds / 3600);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const seconds = totalSeconds % 60;
+            
             // 格式化时间显示
             const displayHours = hours < 10 ? `0${hours}` : hours;
             const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
             const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+            
             document.getElementById('timer').innerHTML = `${displayHours}:${displayMinutes}:${displaySeconds}`;
-            // 当达到设定时间（5分钟），播放眼保健操音乐
-            if (totalSeconds >= 5 * 60) {
-                const audio = document.getElementById('eyeExerciseMusic');
-                audio.play();
+            
+            // 每25分钟显示提醒
+            if (totalSeconds > 0 && totalSeconds % (25 * 60) === 0) {
+                showEyeExerciseReminder();
             }
         }
+        
+        // 显示眼保健操提醒
+        function showEyeExerciseReminder() {
+            const reminder = document.getElementById('eye-exercise-reminder');
+            reminder.style.display = 'block';
+            
+            // 播放音乐
+            const audio = document.getElementById('eyeExerciseMusic');
+            audio.play();
+            
+            // 5秒后隐藏提醒
+            setTimeout(() => {
+                reminder.style.display = 'none';
+            }, 5000);
+        }
+        
         // 启动计时器
         const timer = setInterval(() => {
             totalSeconds++;
             updateTimerDisplay();
         }, 1000);
     </script>
+    
+    <!-- 添加眨眼动画的CSS -->
+    <style>
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+    </style>
+    
     <footer>
-    <div class="container">
-        <p>&copy; 2025 AIFLOW. All rights reserved.</p>
-        <div class="social-links">
-            <!-- 替换图标 -->
-            <!-- 请将下面的 "YOUR_X_ICON_IMAGE_URL" 替换为您图片中X图标的实际URL -->
-           <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
-            <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
-            <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+        <div class="container">
+            <p>&copy; 2025 AIFLOW. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
+
