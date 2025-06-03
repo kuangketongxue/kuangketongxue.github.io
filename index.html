@@ -4,8 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIFLOW - ai赋能</title>
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 高级护眼背景 */
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: #e0e0e0;
+        }
+
+        /* 科幻计时器样式 */
+        #advanced-timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 20, 40, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            font-family: 'Courier New', monospace;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .timer-display {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .digit-section {
+            text-align: center;
+            min-width: 50px;
+        }
+
+        .digit {
+            background: linear-gradient(45deg, #001122, #003355);
+            color: #00f3ff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 1px solid #00f3ff;
+            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
+            text-shadow: 0 0 10px #00f3ff;
+        }
+
+        .digit-label {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .separator {
+            color: #00f3ff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00f3ff;
+        }
+
+        .timer-status {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #00f3ff;
+            border-top: 1px solid #333;
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+
+        /* 护眼提醒增强 */
+        #eye-exercise-reminder {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #ff6b6b, #ff8787);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 50px rgba(255, 107, 107, 0.5);
+            z-index: 2000;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* 内容区域优化 */
+        .container {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(83, 52, 131, 0.05));
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,30 +132,54 @@
             <h1 class="site-title">AIFLOW</h1>
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
-            <!-- 添加计时器显示区域 -->
-            <div id="timer">00:00:00</div>
-            <!-- 添加眼保健操提醒 -->
-            <div id="eye-exercise-reminder" style="display: none; color: #ff6b6b; font-size: 1.2rem; font-weight: bold; margin-top: 10px; animation: blink 1s infinite;">
-                做眼保健操啦！
+            
+            <!-- 高级科幻计时器 -->
+            <div id="advanced-timer">
+                <div class="timer-display">
+                    <div class="digit-section">
+                        <div class="digit" id="hours">00</div>
+                        <div class="digit-label">HOURS</div>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="digit-section">
+                        <div class="digit" id="minutes">00</div>
+                        <div class="digit-label">MINS</div>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="digit-section">
+                        <div class="digit" id="seconds">00</div>
+                        <div class="digit-label">SECS</div>
+                    </div>
+                </div>
+                <div class="timer-status">
+                    <i class="fas fa-clock"></i> FOCUS TIME ACTIVE
+                </div>
+            </div>
+            
+            <!-- 护眼提醒 -->
+            <div id="eye-exercise-reminder" style="display: none;">
+                <i class="fas fa-eye"></i> 做眼保健操啦！
             </div>
         </div>
     </header>
-  <nav>
-    <a href="index.html#home">首页</a>
-    <a href="articles.html">封建脉络百战</a>
-    <a href="thoughts.html">PrimePulse</a>
-    <a href="self-study.html">如何自学</a>
-    <a href="make-money.html">搞钱专栏</a>
-    <a href="#sports">运动</a>
-    <a href="#about">关于我</a>
-</nav>
+
+    <nav>
+        <a href="index.html#home">首页</a>
+        <a href="articles.html">封建脉络百战</a>
+        <a href="thoughts.html">PrimePulse</a>
+        <a href="self-study.html">如何自学</a>
+        <a href="make-money.html">搞钱专栏</a>
+        <a href="#sports">运动</a>
+        <a href="#about">关于我</a>
+    </nav>
+
     <main class="container">
-               <section id="featured">
+        <section id="featured">
             <h2 class="section-title">封建脉络百战</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">楚汉双雄</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">楚汉双雄</h3>
                         <p class="article-excerpt">从长平之战到决战垓下...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-</span>
@@ -53,12 +195,13 @@
                 </a>
             </div>
         </section>
-               <section id="latest-thoughts" style="margin-top: 60px;">
+
+        <section id="latest-thoughts" style="margin-top: 60px;">
             <h2 class="section-title">最新PrimePulse精选</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">我不过生日的九个理由</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">我不过生日的九个理由</h3>
                         <p class="article-excerpt">...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-</span>
@@ -72,12 +215,13 @@
                 <a href="thoughts.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看所有思考 →</a>
             </div>
         </section>
+
         <section id="self-study-preview" style="margin-top: 60px;">
             <h2 class="section-title">如何自学</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">认知心态（万物皆为我所用）</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">认知心态（万物皆为我所用）</h3>
                         <p class="article-excerpt">长期思维，系统思维，优化思维，成长思维...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-07-</span>
@@ -88,7 +232,7 @@
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">落地方法（总字数小于1000）</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">落地方法（总字数小于1000）</h3>
                         <p class="article-excerpt">如何每日10分钟复完盘，如何15分钟/天科学规划每一天...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-07-</span>
@@ -102,44 +246,98 @@
                 <a href="self-study.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看自学专栏 →</a>
             </div>
         </section>
+
+        <!-- 搞钱专栏完整版 -->
         <section id="make-money-preview" style="margin-top: 60px;">
-            <h2 class="section-title">搞钱专栏精选</h2>
+            <h2 class="section-title">💰 搞钱专栏精选</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">敬请期待</h3>
-                        <p class="article-excerpt">...</p>
+                        <h3 class="article-title" style="color: #00f3ff;">AI副业赚钱指南</h3>
+                        <p class="article-excerpt">利用ChatGPT、Midjourney等AI工具，打造个人副业收入流。从内容创作到自动化服务，月入过万不是梦。详细教程包含实战案例和工具推荐...</p>
                         <div class="article-meta">
-                            <span>发布于: 2025-07-</span>
-                            <span>分类: 副业探索</span>
+                            <span>发布于: 2025-06-15</span>
+                            <span>分类: AI副业</span>
+                            <span style="color: #ffeb3b;">🔥 热门</span>
                         </div>
-                        <a href="make-money.html#passive-income" class="read-more">阅读全文 →</a>
+                        <a href="make-money.html#ai-side-hustle" class="read-more">立即学习 →</a>
                     </div>
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">敬请期待</h3>
-                        <p class="article-excerpt">...</p>
+                        <h3 class="article-title" style="color: #00f3ff;">自媒体变现全攻略</h3>
+                        <p class="article-excerpt">从零开始搭建个人品牌，通过小红书、抖音、知识星球等平台实现变现。包含选题技巧、内容制作、粉丝运营、商业合作等全流程指导...</p>
                         <div class="article-meta">
-                            <span>发布于: 2025-08-</span>
-                            <span>分类: 自由职业</span>
+                            <span>发布于: 2025-06-20</span>
+                            <span>分类: 自媒体运营</span>
+                            <span style="color: #4caf50;">💎 精品</span>
                         </div>
-                        <a href="make-money.html#freelance-platforms" class="read-more">阅读全文 →</a>
+                        <a href="make-money.html#media-monetization" class="read-more">开始变现 →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #00f3ff;">技能变现宝典</h3>
+                        <p class="article-excerpt">将你的专业技能转化为收入来源。包括在线教学、技术咨询、设计服务、写作投稿等多种变现模式，打造可持续的收入管道...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-06-25</span>
+                            <span>分类: 技能变现</span>
+                            <span style="color: #ff9800;">⭐ 推荐</span>
+                        </div>
+                        <a href="make-money.html#skill-monetization" class="read-more">挖掘潜力 →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #00f3ff;">投资理财入门</h3>
+                        <p class="article-excerpt">从基金定投到股票分析，从风险控制到资产配置。适合新手的投资理财指南，让钱生钱不再是梦想。包含实用工具和策略分析...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-06-30</span>
+                            <span>分类: 投资理财</span>
+                            <span style="color: #9c27b0;">📈 稳健</span>
+                        </div>
+                        <a href="make-money.html#investment-guide" class="read-more">理财起步 →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #00f3ff;">电商创业攻略</h3>
+                        <p class="article-excerpt">从选品到运营，从流量到转化。详细讲解淘宝、拼多多、跨境电商的运营策略，零基础也能快速上手，实现电商创业梦想...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-07-05</span>
+                            <span>分类: 电商创业</span>
+                            <span style="color: #f44336;">🚀 爆款</span>
+                        </div>
+                        <a href="make-money.html#ecommerce-startup" class="read-more">创业启程 →</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-content">
+                        <h3 class="article-title" style="color: #00f3ff;">被动收入系统</h3>
+                        <p class="article-excerpt">建立真正的被动收入流，包括版权收入、联盟营销、数字产品销售、自动化服务等。一次建设，长期受益的收入模式详解...</p>
+                        <div class="article-meta">
+                            <span>发布于: 2025-07-10</span>
+                            <span>分类: 被动收入</span>
+                            <span style="color: #00bcd4;">💰 长期</span>
+                        </div>
+                        <a href="make-money.html#passive-income-system" class="read-more">构建系统 →</a>
                     </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 30px;">
-                <a href="make-money.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看搞钱专栏 →</a>
+                <a href="make-money.html" class="read-more" style="font-size: 1.2rem; padding: 15px 30px; border: 2px solid #00f3ff; border-radius: 8px; background: linear-gradient(45deg, rgba(0, 243, 255, 0.1), rgba(0, 123, 255, 0.1)); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);">
+                    💎 解锁全部搞钱秘籍 →
+                </a>
             </div>
         </section>
 
-        <!-- 运动板块开始 -->
+        <!-- 运动板块 -->
         <section id="sports" style="margin-top: 60px;">
             <h2 class="section-title">运动健康</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">我的运动哲学</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">我的运动哲学</h3>
                         <p class="article-excerpt">身体是革命的本钱，运动不仅强健体魄，更能提升认知能力和创造力。每天30分钟的运动，就是投资未来的自己...</p>
                         <div class="article-meta">
                             <span>运动类型: 综合训练</span>
@@ -149,7 +347,7 @@
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">高效健身计划</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">高效健身计划</h3>
                         <p class="article-excerpt">力量训练 + 有氧运动 + 柔韧性练习的完美结合。周一三五力量训练，周二四六有氧运动，周日瑜伽拉伸...</p>
                         <div class="article-meta">
                             <span>训练强度: 中高强度</span>
@@ -159,7 +357,7 @@
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #555555;">运动与学习的协同效应</h3>
+                        <h3 class="article-title" style="color: #00f3ff;">运动与学习的协同效应</h3>
                         <p class="article-excerpt">科学研究表明，规律运动能够提高大脑的神经可塑性，增强记忆力和注意力。运动后学习效率提升40%...</p>
                         <div class="article-meta">
                             <span>科学依据: 神经科学研究</span>
@@ -169,42 +367,39 @@
                 </div>
             </div>
         </section>
-        <!-- 运动板块结束 -->
 
-        <!-- 关于我板块开始 -->
+        <!-- 关于我板块 -->
         <section id="about" style="margin-top: 60px;">
             <h2 class="section-title">关于我</h2>
             <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
                 <div class="about-intro" style="background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 243, 255, 0.1)); padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">个人简介</h3>
+                    <h3 style="color: #00f3ff; margin-bottom: 20px;">个人简介</h3>
                     <p>你好，我是AIFLOW的创建者。我是一个热爱学习、追求自我优化的终身学习者。相信通过科学的方法和持续的努力，每个人都能实现个人进化。</p>
                     <p>我专注于AI技术应用、个人成长方法论、历史文化研究以及高效学习策略的探索与实践。</p>
                 </div>
-                
                 <div class="about-philosophy" style="margin-bottom: 30px;">
-                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">我的理念</h3>
+                    <h3 style="color: #00f3ff; margin-bottom: 20px;">我的理念</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--neon-blue);">📚</span>
+                            <span style="position: absolute; left: 0; color: #00f3ff;">📚</span>
                             <strong>终身学习：</strong>保持好奇心，持续探索未知领域
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--neon-blue);">🔧</span>
+                            <span style="position: absolute; left: 0; color: #00f3ff;">🔧</span>
                             <strong>系统优化：</strong>用科学方法不断优化学习和工作流程
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--neon-blue);">🚀</span>
+                            <span style="position: absolute; left: 0; color: #00f3ff;">🚀</span>
                             <strong>AI赋能：</strong>拥抱AI技术，让科技成为成长的助推器
                         </li>
                         <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--neon-blue);">💪</span>
+                            <span style="position: absolute; left: 0; color: #00f3ff;">💪</span>
                             <strong>身心统一：</strong>保持身体健康与心智成长的平衡发展
                         </li>
                     </ul>
                 </div>
-
                 <div class="contact-info" style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 10px;">
-                    <h3 style="color: var(--neon-blue); margin-bottom: 20px;">联系方式</h3>
+                    <h3 style="color: #00f3ff; margin-bottom: 20px;">联系方式</h3>
                     <p><strong>邮箱：</strong> aiflow@example.com</p>
                     <p><strong>微信：</strong> AIFLOW2025</p>
                     <p><strong>个人理念：</strong> "赋能个体进化，探索学习、自我优化与成长的未来"</p>
@@ -214,37 +409,32 @@
                 </div>
             </div>
         </section>
-        <!-- 关于我板块结束 -->
-        
     </main>
-    
-    <!-- 添加音频标签 -->
+
+    <!-- 音频标签 -->
     <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/GF5JVK"></audio>
-    
+
     <script>
         let totalSeconds = 0;
         let reminderShown = false;
-        updateTimerDisplay();
-        
-        // 更新计时器显示
-        function updateTimerDisplay() {
+
+        // 更新高级计时器显示
+        function updateAdvancedTimer() {
             const hours = Math.floor(totalSeconds / 3600);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const seconds = totalSeconds % 60;
-            
-            // 格式化时间显示
-            const displayHours = hours < 10 ? `0${hours}` : hours;
-            const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
-            const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
-            
-            document.getElementById('timer').innerHTML = `${displayHours}:${displayMinutes}:${displaySeconds}`;
-            
+
+            // 翻页计算器效果
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
             // 每25分钟显示提醒
             if (totalSeconds > 0 && totalSeconds % (25 * 60) === 0) {
                 showEyeExerciseReminder();
             }
         }
-        
+
         // 显示眼保健操提醒
         function showEyeExerciseReminder() {
             const reminder = document.getElementById('eye-exercise-reminder');
@@ -252,39 +442,33 @@
             
             // 播放音乐
             const audio = document.getElementById('eyeExerciseMusic');
-            audio.play();
+            audio.play().catch(e => console.log('音频播放失败'));
             
             // 5秒后隐藏提醒
             setTimeout(() => {
                 reminder.style.display = 'none';
             }, 5000);
         }
-        
+
         // 启动计时器
         const timer = setInterval(() => {
             totalSeconds++;
-            updateTimerDisplay();
+            updateAdvancedTimer();
         }, 1000);
+
+        // 初始化显示
+        updateAdvancedTimer();
     </script>
-    
-    <!-- 添加眨眼动画的CSS -->
-    <style>
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-    </style>
-    
+
     <footer>
         <div class="container">
             <p>&copy; 2025 AIFLOW. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
-                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
-                <a href="#" style="color: var(--neon-blue);"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px var(--neon-blue));"></a>
+                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
+                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
+                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
             </div>
         </div>
     </footer>
 </body>
 </html>
-
