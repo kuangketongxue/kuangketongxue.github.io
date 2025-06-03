@@ -3,168 +3,558 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIFLOW - ai赋能</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AIFLOW - ai赋能 (护眼模式)</title>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* 高级护眼背景 */
-        body {
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            font-family: 'Arial', sans-serif;
-            color: #e0e0e0;
+        /* 变量定义 - 暖色护眼主题 */
+        :root {
+            --bg-gradient-start: #fdf6e3; /* 柔和米色 */
+            --bg-gradient-mid1: #f5eabc; /* 稍深米黄 */
+            --bg-gradient-mid2: #e0d8b0; /* 暖灰褐 */
+            --bg-gradient-end: #c7bea2; /* 灰褐色 */
+            --text-color: #555; /* 深灰色文字 */
+            --heading-color: #8B4513; /* 鞍褐色标题 */
+            --accent-color: #D2691E; /* 巧克力色强调 */
+            --card-bg: rgba(255, 255, 255, 0.6); /* 半透明白色卡片背景 */
+            --card-border: rgba(139, 69, 19, 0.2); /* 鞍褐色半透明边框 */
+            --card-hover-shadow: rgba(210, 105, 30, 0.3); /* 巧克力色阴影 */
+            --link-color: #D2691E; /* 链接颜色 */
+            --timer-bg: rgba(255, 250, 235, 0.9); /* 计时器背景 - 象牙白 */
+            --timer-border: #A0522D; /* 赭色 */
+            --timer-digit-bg: linear-gradient(45deg, #fff8dc, #faf0e6); /* 玉米丝/亚麻色 */
+            --timer-digit-color: #8B4513; /* 鞍褐色数字 */
+            --timer-shadow: rgba(160, 82, 45, 0.3); /* 赭色阴影 */
+            --reminder-bg: linear-gradient(45deg, #ffcc80, #ffb74d); /* 橙色提醒 */
+            --reminder-shadow: rgba(255, 152, 0, 0.4);
         }
 
-        /* 科幻计时器样式 */
+        /* 暖色护眼背景 */
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid1) 25%, var(--bg-gradient-mid2) 50%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'SimSun', 'Songti SC', serif; /* 宋体或类似衬线字体更柔和 */
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7; /* 增加行高 */
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.1); /* 稍微透明 */
+            backdrop-filter: blur(3px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* 页头 */
+        header .container {
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 30px;
+        }
+        .site-title {
+            font-size: 2.8rem;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .site-subtitle {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        header img {
+            border: 5px solid rgba(255, 255, 255, 0.5); /* 白色边框 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 暖色计时器样式 */
         #advanced-timer {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(0, 20, 40, 0.9);
-            border: 2px solid #00f3ff;
+            background: var(--timer-bg);
+            border: 2px solid var(--timer-border);
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px var(--timer-shadow);
             font-family: 'Courier New', monospace;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
         }
-
         .timer-display {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-
         .digit-section {
             text-align: center;
-            min-width: 50px;
+            min-width: 45px;
         }
-
         .digit {
-            background: linear-gradient(45deg, #001122, #003355);
-            color: #00f3ff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 1.5rem;
+            background: var(--timer-digit-bg);
+            color: var(--timer-digit-color);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 1.3rem;
             font-weight: bold;
-            border: 1px solid #00f3ff;
-            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2);
-            text-shadow: 0 0 10px #00f3ff;
+            border: 1px solid var(--timer-border);
+            box-shadow: inset 0 0 8px rgba(139, 69, 19, 0.1);
         }
-
         .digit-label {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: #888;
-            margin-top: 5px;
+            margin-top: 4px;
         }
-
         .separator {
-            color: #00f3ff;
-            font-size: 1.5rem;
+            color: var(--timer-digit-color);
+            font-size: 1.3rem;
             font-weight: bold;
-            text-shadow: 0 0 10px #00f3ff;
         }
-
         .timer-status {
             text-align: center;
-            font-size: 0.8rem;
-            color: #00f3ff;
-            border-top: 1px solid #333;
-            padding-top: 8px;
-            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--timer-digit-color);
+            border-top: 1px solid #ddd;
+            padding-top: 6px;
+            margin-top: 6px;
+        }
+        .timer-status .fa-clock {
+            margin-right: 5px;
         }
 
-        /* 护眼提醒增强 */
+        /* 护眼提醒 */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #ff6b6b, #ff8787);
+            background: var(--reminder-bg);
             color: white;
-            padding: 20px 40px;
+            padding: 20px 35px;
             border-radius: 15px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            box-shadow: 0 0 50px rgba(255, 107, 107, 0.5);
+            text-align: center;
+            box-shadow: 0 0 40px var(--reminder-shadow);
             z-index: 2000;
-            animation: pulse 1s infinite;
+            animation: pulse 1.2s infinite;
+        }
+         #eye-exercise-reminder .fa-eye {
+             margin-right: 10px;
+         }
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
+            50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.05); }
+        /* 导航栏 */
+        nav {
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--heading-color);
+            text-decoration: underline;
         }
 
         /* 内容区域优化 */
-        .container {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        main.container {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .section-title {
+            color: var(--heading-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+         h2.section-title { /* Center align section titles */
+            display: block;
+            border-bottom: none; /* Remove underline */
+            position: relative;
+            padding-bottom: 15px; /* Add space for the decorative line */
+        }
+        h2.section-title::after { /* Decorative line */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
         }
 
         .article-card {
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(83, 52, 131, 0.05));
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             margin-bottom: 20px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+            box-shadow: 0 8px 20px var(--card-hover-shadow);
         }
+        .article-title {
+            color: var(--accent-color); /* Changed title color */
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .article-excerpt {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .article-meta {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        .article-meta span {
+            margin-right: 15px;
+        }
+        .read-more {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .read-more:hover {
+            color: var(--heading-color);
+            text-decoration: underline;
+        }
+        .view-all-link { /* Common style for "view all" links */
+             display: inline-block;
+             text-align: center;
+             margin-top: 20px;
+             font-size: 1.1rem;
+             padding: 8px 18px;
+             border: 1px solid var(--accent-color);
+             color: var(--accent-color);
+             border-radius: 5px;
+             text-decoration: none;
+             transition: background-color 0.3s, color 0.3s;
+        }
+         .view-all-link:hover {
+             background-color: var(--accent-color);
+             color: white;
+             text-decoration: none;
+         }
+
+        /* 特色图标/可视化模型区域 */
+        .visual-model {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 0;
+            margin: 10px 0 30px 0;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+        .model-item {
+            text-align: center;
+            color: var(--heading-color);
+        }
+        .model-item i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--accent-color);
+        }
+        .model-item span {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* 搞钱专栏精简 */
+        #make-money-preview .article-excerpt {
+            /* Further shortening */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-box-orient: vertical;
+            min-height: 2.8em; /* Approximate height for 2 lines */
+        }
+        #make-money-preview .article-meta span[style*="color"] { /* Style for tags */
+             font-weight: bold;
+             padding: 2px 5px;
+             border-radius: 3px;
+             color: white !important; /* Override inline style for better contrast if needed */
+             margin-left: 5px;
+         }
+        #make-money-preview .article-meta span[style*="#ffeb3b"] { background-color: #fbc02d; } /* Yellow */
+        #make-money-preview .article-meta span[style*="#4caf50"] { background-color: #43a047; } /* Green */
+        #make-money-preview .article-meta span[style*="#ff9800"] { background-color: #fb8c00; } /* Orange */
+        #make-money-preview .article-meta span[style*="#9c27b0"] { background-color: #8e24aa; } /* Purple */
+        #make-money-preview .article-meta span[style*="#f44336"] { background-color: #e53935; } /* Red */
+        #make-money-preview .article-meta span[style*="#00bcd4"] { background-color: #00acc1; } /* Cyan */
+
+        #make-money-preview .view-all-link { /* Special styling for this link */
+             padding: 12px 25px;
+             border-width: 2px;
+             background: linear-gradient(45deg, rgba(210, 105, 30, 0.1), rgba(139, 69, 19, 0.1));
+        }
+         #make-money-preview .view-all-link:hover {
+             background: var(--accent-color);
+             color: white;
+         }
+
+        /* 关于我精简 */
+        #about .about-content {
+            max-width: 750px; /* Slightly narrower */
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.8;
+        }
+        #about .about-intro {
+             background: linear-gradient(135deg, rgba(210, 105, 30, 0.05), rgba(139, 69, 19, 0.1));
+             padding: 25px;
+             border-radius: 10px;
+             margin-bottom: 25px;
+             border: 1px solid var(--card-border);
+         }
+        #about .about-intro h3,
+        #about .about-philosophy h3,
+        #about .contact-info h3 {
+             color: var(--heading-color);
+             margin-bottom: 15px;
+         }
+        #about .about-intro p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+         #about .about-intro p:last-child {
+             margin-bottom: 0;
+         }
+        #about .about-philosophy ul {
+             list-style: none;
+             padding: 0;
+         }
+        #about .about-philosophy li {
+             margin-bottom: 12px;
+             padding-left: 30px;
+             position: relative;
+             font-size: 0.95rem;
+         }
+        #about .about-philosophy li span { /* Icon */
+             position: absolute;
+             left: 0;
+             color: var(--accent-color);
+             font-size: 1.2em;
+             top: 2px;
+         }
+        #about .contact-info {
+             background: rgba(255, 255, 255, 0.2);
+             padding: 20px;
+             border-radius: 10px;
+             font-size: 0.95rem;
+             border: 1px solid var(--card-border);
+         }
+        #about .contact-info p {
+             margin-bottom: 8px;
+         }
+        #about .contact-info p:last-child {
+             margin-bottom: 0;
+             margin-top: 15px;
+             font-style: italic;
+             color: #777;
+             font-size: 0.9rem; /* Smaller italic text */
+         }
+
+        /* 页脚 */
+        footer {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        footer .container {
+             padding: 10px 20px;
+             background: none;
+             border: none;
+             backdrop-filter: none;
+         }
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+         .social-links img {
+            width: 22px;
+            height: 22px;
+            filter: grayscale(50%) sepia(30%) brightness(90%); /* Make icons fit the theme */
+            vertical-align: middle;
+        }
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+        .social-links a:hover img {
+            filter: none; /* Remove filter on hover */
+        }
+
+        /* 返回顶部按钮 */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            border: none;
+            outline: none;
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%; /* Circular */
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--heading-color); /* Darken on hover */
+        }
+
+        /* 响应式设计调整 */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .site-title {
+                font-size: 2rem;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            .article-card {
+                padding: 15px;
+            }
+            #advanced-timer {
+                padding: 10px;
+                right: 10px;
+                top: 10px;
+            }
+            .digit {
+                font-size: 1.1rem;
+                padding: 5px 8px;
+            }
+            .digit-section {
+                min-width: 35px;
+            }
+            .separator {
+                font-size: 1.1rem;
+            }
+            #eye-exercise-reminder {
+                font-size: 1.1rem;
+                padding: 15px 25px;
+            }
+            .visual-model {
+                flex-direction: column;
+                gap: 20px; /* Add gap for column layout */
+            }
+            #scrollToTopBtn {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+        }
+
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <img src="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true" style="width:150px; height:150px; border-radius: 50%;">
+            <img src="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true" style="width:130px; height:130px; border-radius: 50%;" alt="头像">
             <h1 class="site-title">AIFLOW</h1>
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
-            
-            <!-- 高级科幻计时器 -->
+            <!-- 暖色科幻计时器 -->
             <div id="advanced-timer">
                 <div class="timer-display">
                     <div class="digit-section">
                         <div class="digit" id="hours">00</div>
-                        <div class="digit-label">HOURS</div>
+                        <div class="digit-label">小时</div>
                     </div>
                     <div class="separator">:</div>
                     <div class="digit-section">
                         <div class="digit" id="minutes">00</div>
-                        <div class="digit-label">MINS</div>
+                        <div class="digit-label">分钟</div>
                     </div>
                     <div class="separator">:</div>
                     <div class="digit-section">
                         <div class="digit" id="seconds">00</div>
-                        <div class="digit-label">SECS</div>
+                        <div class="digit-label">秒</div>
                     </div>
                 </div>
                 <div class="timer-status">
-                    <i class="fas fa-clock"></i> FOCUS TIME ACTIVE
+                    <i class="fas fa-clock"></i> 专注计时中
                 </div>
             </div>
-            
             <!-- 护眼提醒 -->
             <div id="eye-exercise-reminder" style="display: none;">
-                <i class="fas fa-eye"></i> 做眼保健操啦！
+                <i class="fas fa-eye"></i> 休息一下，看看远方！
             </div>
         </div>
     </header>
 
+    <!-- 可视化模型/核心理念区 -->
+    <div class="container visual-model">
+        <div class="model-item">
+            <i class="fas fa-brain"></i>
+            <span>持续学习</span>
+        </div>
+        <div class="model-item">
+            <i class="fas fa-cogs"></i>
+            <span>系统优化</span>
+        </div>
+        <div class="model-item">
+            <i class="fas fa-robot"></i>
+            <span>AI赋能</span>
+        </div>
+        <div class="model-item">
+            <i class="fas fa-heartbeat"></i>
+            <span>身心健康</span>
+        </div>
+    </div>
+
+
     <nav>
-        <a href="index.html#home">首页</a>
+        <a href="#home">首页</a>
         <a href="articles.html">封建脉络百战</a>
         <a href="thoughts.html">PrimePulse</a>
         <a href="self-study.html">如何自学</a>
@@ -179,30 +569,30 @@
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">楚汉双雄</h3>
-                        <p class="article-excerpt">从长平之战到决战垓下...</p>
+                        <h3 class="article-title">楚汉双雄</h3>
+                        <p class="article-excerpt">探索从长平之战的硝烟到决战垓下的史诗对决，分析关键人物与战役...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-</span>
-                            <span>分类: AI研究</span>
+                            <span>分类: 历史洞察</span>
                         </div>
                         <a href="articles.html#ai-future-full" class="read-more">阅读全文 →</a>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="articles.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px; box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);">
+            <div style="text-align: center;">
+                <a href="articles.html" class="view-all-link">
                     查看所有文章 →
                 </a>
             </div>
         </section>
 
-        <section id="latest-thoughts" style="margin-top: 60px;">
+        <section id="latest-thoughts" style="margin-top: 50px;">
             <h2 class="section-title">最新PrimePulse精选</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">我不过生日的九个理由</h3>
-                        <p class="article-excerpt">...</p>
+                        <h3 class="article-title">我不过生日的九个理由</h3>
+                        <p class="article-excerpt">关于时间、仪式感与个人意义的深度思考...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-</span>
                             <span>分类: 思考</span>
@@ -211,18 +601,18 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="thoughts.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看所有思考 →</a>
+            <div style="text-align: center;">
+                <a href="thoughts.html" class="view-all-link">查看所有思考 →</a>
             </div>
         </section>
 
-        <section id="self-study-preview" style="margin-top: 60px;">
+        <section id="self-study-preview" style="margin-top: 50px;">
             <h2 class="section-title">如何自学</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">认知心态（万物皆为我所用）</h3>
-                        <p class="article-excerpt">长期思维，系统思维，优化思维，成长思维...</p>
+                        <h3 class="article-title">认知心态（万物皆为我所用）</h3>
+                        <p class="article-excerpt">掌握长期、系统、优化、成长四大思维，构建强大认知框架...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-07-</span>
                             <span>分类: 认知</span>
@@ -232,8 +622,8 @@
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">落地方法（总字数小于1000）</h3>
-                        <p class="article-excerpt">如何每日10分钟复完盘，如何15分钟/天科学规划每一天...</p>
+                        <h3 class="article-title">落地方法（高效实践）</h3>
+                        <p class="article-excerpt">每日10分钟复盘、15分钟科学规划，将理论转化为行动力...</p>
                         <div class="article-meta">
                             <span>发布于: 2025-07-</span>
                             <span>分类: 落地</span>
@@ -242,19 +632,20 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="self-study.html" class="read-more" style="font-size: 1.2rem; padding: 10px 20px; border: 1px solid var(--neon-blue); border-radius: 5px;">查看自学专栏 →</a>
+            <div style="text-align: center;">
+                <a href="self-study.html" class="view-all-link">查看自学专栏 →</a>
             </div>
         </section>
 
-        <!-- 搞钱专栏完整版 -->
-        <section id="make-money-preview" style="margin-top: 60px;">
+        <!-- 搞钱专栏精选（精简版） -->
+        <section id="make-money-preview" style="margin-top: 50px;">
             <h2 class="section-title">💰 搞钱专栏精选</h2>
             <div class="articles">
-                <div class="article-card">
+                <!-- 保留 3-4 个最有代表性的 -->
+                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">AI副业赚钱指南</h3>
-                        <p class="article-excerpt">利用ChatGPT、Midjourney等AI工具，打造个人副业收入流。从内容创作到自动化服务，月入过万不是梦。详细教程包含实战案例和工具推荐...</p>
+                        <h3 class="article-title">AI副业赚钱指南</h3>
+                        <p class="article-excerpt">利用AI工具（ChatGPT/Midjourney等）开拓副业，实现内容创作与服务自动化创收。</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-15</span>
                             <span>分类: AI副业</span>
@@ -263,190 +654,147 @@
                         <a href="make-money.html#ai-side-hustle" class="read-more">立即学习 →</a>
                     </div>
                 </div>
-                <div class="article-card">
+                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">自媒体变现全攻略</h3>
-                        <p class="article-excerpt">从零开始搭建个人品牌，通过小红书、抖音、知识星球等平台实现变现。包含选题技巧、内容制作、粉丝运营、商业合作等全流程指导...</p>
+                        <h3 class="article-title">自媒体变现全攻略</h3>
+                        <p class="article-excerpt">从零打造个人品牌，掌握多平台（小红书/抖音等）内容、运营与变现技巧。</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-20</span>
                             <span>分类: 自媒体运营</span>
-                            <span style="color: #4caf50;">💎 精品</span>
+                             <span style="color: #4caf50;">💎 精品</span>
                         </div>
                         <a href="make-money.html#media-monetization" class="read-more">开始变现 →</a>
                     </div>
                 </div>
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">技能变现宝典</h3>
-                        <p class="article-excerpt">将你的专业技能转化为收入来源。包括在线教学、技术咨询、设计服务、写作投稿等多种变现模式，打造可持续的收入管道...</p>
+                        <h3 class="article-title">技能变现宝典</h3>
+                        <p class="article-excerpt">将专业技能（教学/咨询/设计/写作等）转化为稳定收入，构建多元变现渠道。</p>
                         <div class="article-meta">
                             <span>发布于: 2025-06-25</span>
                             <span>分类: 技能变现</span>
-                            <span style="color: #ff9800;">⭐ 推荐</span>
+                             <span style="color: #ff9800;">⭐ 推荐</span>
                         </div>
                         <a href="make-money.html#skill-monetization" class="read-more">挖掘潜力 →</a>
                     </div>
                 </div>
-                <div class="article-card">
+                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">投资理财入门</h3>
-                        <p class="article-excerpt">从基金定投到股票分析，从风险控制到资产配置。适合新手的投资理财指南，让钱生钱不再是梦想。包含实用工具和策略分析...</p>
-                        <div class="article-meta">
-                            <span>发布于: 2025-06-30</span>
-                            <span>分类: 投资理财</span>
-                            <span style="color: #9c27b0;">📈 稳健</span>
-                        </div>
-                        <a href="make-money.html#investment-guide" class="read-more">理财起步 →</a>
-                    </div>
-                </div>
-                <div class="article-card">
-                    <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">电商创业攻略</h3>
-                        <p class="article-excerpt">从选品到运营，从流量到转化。详细讲解淘宝、拼多多、跨境电商的运营策略，零基础也能快速上手，实现电商创业梦想...</p>
-                        <div class="article-meta">
-                            <span>发布于: 2025-07-05</span>
-                            <span>分类: 电商创业</span>
-                            <span style="color: #f44336;">🚀 爆款</span>
-                        </div>
-                        <a href="make-money.html#ecommerce-startup" class="read-more">创业启程 →</a>
-                    </div>
-                </div>
-                <div class="article-card">
-                    <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">被动收入系统</h3>
-                        <p class="article-excerpt">建立真正的被动收入流，包括版权收入、联盟营销、数字产品销售、自动化服务等。一次建设，长期受益的收入模式详解...</p>
+                        <h3 class="article-title">被动收入系统</h3>
+                        <p class="article-excerpt">构建版权、联盟营销、数字产品等被动收入流，实现一次投入长期受益。</p>
                         <div class="article-meta">
                             <span>发布于: 2025-07-10</span>
                             <span>分类: 被动收入</span>
-                            <span style="color: #00bcd4;">💰 长期</span>
+                             <span style="color: #00bcd4;">💰 长期</span>
                         </div>
                         <a href="make-money.html#passive-income-system" class="read-more">构建系统 →</a>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="make-money.html" class="read-more" style="font-size: 1.2rem; padding: 15px 30px; border: 2px solid #00f3ff; border-radius: 8px; background: linear-gradient(45deg, rgba(0, 243, 255, 0.1), rgba(0, 123, 255, 0.1)); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);">
+            <div style="text-align: center;">
+                <a href="make-money.html" class="view-all-link">
                     💎 解锁全部搞钱秘籍 →
                 </a>
             </div>
         </section>
 
         <!-- 运动板块 -->
-        <section id="sports" style="margin-top: 60px;">
+        <section id="sports" style="margin-top: 50px;">
             <h2 class="section-title">运动健康</h2>
             <div class="articles">
                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">我的运动哲学</h3>
-                        <p class="article-excerpt">身体是革命的本钱，运动不仅强健体魄，更能提升认知能力和创造力。每天30分钟的运动，就是投资未来的自己...</p>
+                        <h3 class="article-title">我的运动哲学</h3>
+                        <p class="article-excerpt">身体是基石，运动强健体魄，更能提升认知与创造力。每日运动，投资未来。</p>
                         <div class="article-meta">
                             <span>运动类型: 综合训练</span>
                             <span>频率: 每日必修</span>
                         </div>
                     </div>
                 </div>
-                <div class="article-card">
+                 <div class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">高效健身计划</h3>
-                        <p class="article-excerpt">力量训练 + 有氧运动 + 柔韧性练习的完美结合。周一三五力量训练，周二四六有氧运动，周日瑜伽拉伸...</p>
+                        <h3 class="article-title">运动与学习的协同</h3>
+                        <p class="article-excerpt">科学证明，规律运动提高大脑神经可塑性，增强记忆与注意力，显著提升学习效率。</p>
                         <div class="article-meta">
-                            <span>训练强度: 中高强度</span>
-                            <span>适合人群: 初中级健身者</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-card">
-                    <div class="article-content">
-                        <h3 class="article-title" style="color: #00f3ff;">运动与学习的协同效应</h3>
-                        <p class="article-excerpt">科学研究表明，规律运动能够提高大脑的神经可塑性，增强记忆力和注意力。运动后学习效率提升40%...</p>
-                        <div class="article-meta">
-                            <span>科学依据: 神经科学研究</span>
-                            <span>实践效果: 显著提升学习效率</span>
+                            <span>科学依据: 神经科学</span>
+                            <span>实践效果: 效率提升</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 关于我板块 -->
-        <section id="about" style="margin-top: 60px;">
+        <!-- 关于我板块（精简版） -->
+        <section id="about" style="margin-top: 50px;">
             <h2 class="section-title">关于我</h2>
-            <div class="about-content" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
-                <div class="about-intro" style="background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 243, 255, 0.1)); padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #00f3ff; margin-bottom: 20px;">个人简介</h3>
-                    <p>你好，我是AIFLOW的创建者。我是一个热爱学习、追求自我优化的终身学习者。相信通过科学的方法和持续的努力，每个人都能实现个人进化。</p>
-                    <p>我专注于AI技术应用、个人成长方法论、历史文化研究以及高效学习策略的探索与实践。</p>
+            <div class="about-content">
+                <div class="about-intro">
+                    <h3 >个人简介</h3>
+                    <p>你好，我是AIFLOW创建者，一个热衷于探索AI应用、个人成长、历史文化及高效学习的终身学习者。坚信科学方法与持续努力能赋能个体进化。</p>
                 </div>
-                <div class="about-philosophy" style="margin-bottom: 30px;">
-                    <h3 style="color: #00f3ff; margin-bottom: 20px;">我的理念</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: #00f3ff;">📚</span>
-                            <strong>终身学习：</strong>保持好奇心，持续探索未知领域
-                        </li>
-                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: #00f3ff;">🔧</span>
-                            <strong>系统优化：</strong>用科学方法不断优化学习和工作流程
-                        </li>
-                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: #00f3ff;">🚀</span>
-                            <strong>AI赋能：</strong>拥抱AI技术，让科技成为成长的助推器
-                        </li>
-                        <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                            <span style="position: absolute; left: 0; color: #00f3ff;">💪</span>
-                            <strong>身心统一：</strong>保持身体健康与心智成长的平衡发展
-                        </li>
+                <div class="about-philosophy">
+                    <h3>我的理念</h3>
+                    <ul >
+                        <li ><span >📚</span><strong>终身学习：</strong>保持好奇，持续探索。</li>
+                        <li ><span >🔧</span><strong>系统优化：</strong>科学优化学习与工作流。</li>
+                        <li ><span >🚀</span><strong>AI赋能：</strong>拥抱技术，助推成长。</li>
+                        <li ><span >💪</span><strong>身心统一：</strong>平衡身体健康与心智成长。</li>
                     </ul>
                 </div>
-                <div class="contact-info" style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 10px;">
-                    <h3 style="color: #00f3ff; margin-bottom: 20px;">联系方式</h3>
-                    <p><strong>邮箱：</strong> aiflow@example.com</p>
-                    <p><strong>微信：</strong> AIFLOW2025</p>
-                    <p><strong>个人理念：</strong> "赋能个体进化，探索学习、自我优化与成长的未来"</p>
-                    <p style="margin-top: 20px; font-style: italic; color: #888;">
-                        欢迎与我交流学习心得、AI应用经验或任何关于个人成长的话题。让我们一起在这个快速变化的时代中，找到属于自己的成长之路。
-                    </p>
+                <div class="contact-info">
+                    <h3>联系方式</h3>
+                    <p><strong>邮箱：</strong> 19927675096@163.com</p>
+                    <p><strong>微信：</strong> bin1026317qrpm0</p>
+                    <p style="margin-top: 15px;">欢迎交流学习、AI应用或个人成长话题，共同进步。</p>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- 音频标签 -->
-    <audio id="eyeExerciseMusic" src="https://aup4.bmwwx.cn/GF5JVK"></audio>
+    <audio id="eyeExerciseMusic" src="https://sf1-cdn-tos.douyinstatic.com/obj/ies-music/16870000149760133.mp3" preload="none"></audio> <!-- 换一个可能有效的链接或提示用户提供有效链接 -->
+
+    <!-- 返回顶部按钮 -->
+    <button id="scrollToTopBtn" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
 
     <script>
+        // --- 计时器逻辑 ---
         let totalSeconds = 0;
-        let reminderShown = false;
+        const hoursElem = document.getElementById('hours');
+        const minutesElem = document.getElementById('minutes');
+        const secondsElem = document.getElementById('seconds');
 
-        // 更新高级计时器显示
         function updateAdvancedTimer() {
             const hours = Math.floor(totalSeconds / 3600);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const seconds = totalSeconds % 60;
 
-            // 翻页计算器效果
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            hoursElem.textContent = hours.toString().padStart(2, '0');
+            minutesElem.textContent = minutes.toString().padStart(2, '0');
+            secondsElem.textContent = seconds.toString().padStart(2, '0');
 
-            // 每25分钟显示提醒
-            if (totalSeconds > 0 && totalSeconds % (25 * 60) === 0) {
+            // 每25分钟 (25 * 60 = 1500秒) 显示提醒
+            if (totalSeconds > 0 && totalSeconds % 1500 === 0) {
                 showEyeExerciseReminder();
             }
         }
 
-        // 显示眼保健操提醒
+        // --- 护眼提醒逻辑 ---
+        const reminder = document.getElementById('eye-exercise-reminder');
+        const audio = document.getElementById('eyeExerciseMusic');
+
         function showEyeExerciseReminder() {
-            const reminder = document.getElementById('eye-exercise-reminder');
             reminder.style.display = 'block';
-            
-            // 播放音乐
-            const audio = document.getElementById('eyeExerciseMusic');
-            audio.play().catch(e => console.log('音频播放失败'));
-            
+            // 尝试播放音乐，静默处理错误
+            audio.play().catch(e => console.log('音频播放请求被用户或浏览器阻止。', e));
+
             // 5秒后隐藏提醒
             setTimeout(() => {
                 reminder.style.display = 'none';
+                // 暂停音乐（如果还在播放）
+                audio.pause();
+                audio.currentTime = 0; // 重置播放位置
             }, 5000);
         }
 
@@ -458,15 +806,43 @@
 
         // 初始化显示
         updateAdvancedTimer();
-    </script>
 
+        // --- 返回顶部按钮逻辑 ---
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // 监听滚动事件
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          // 当页面向下滚动 100px 时显示按钮
+          if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.style.display = "block";
+            scrollToTopBtn.style.opacity = "1";
+          } else {
+             scrollToTopBtn.style.opacity = "0";
+             // 添加延迟隐藏，以显示淡出效果
+             setTimeout(() => {
+                  if (!(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
+                     scrollToTopBtn.style.display = "none";
+                  }
+             }, 300); // 延迟时间应与CSS中的transition时间匹配
+          }
+        }
+
+        // 点击按钮时，平滑滚动到顶部
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+    </script>
     <footer>
         <div class="container">
             <p>&copy; 2025 AIFLOW. All rights reserved.</p>
             <div class="social-links">
-                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
-                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
-                <a href="#" style="color: #00f3ff;"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标" style="width: 24px; height: 24px; filter: drop-shadow(0 0 5px #00f3ff);"></a>
+                 <!-- 示例链接，请替换成您自己的 -->
+                <a href="#" title="Twitter"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标"></a>
+                <a href="#" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标"></a>
+                <a href="#" title="YouTube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标"></a>
             </div>
         </div>
     </footer>
