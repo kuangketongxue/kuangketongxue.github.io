@@ -31,22 +31,23 @@
             --search-border: #A0522D; /* 搜索栏边框 */
             --search-shadow: rgba(160, 82, 45, 0.2); /* 搜索栏阴影 */
             --search-input-bg: #fff; /* 搜索输入框背景 */
+            --search-toggle-btn-width: 40px; /* 切换按钮大致宽度 */
         }
         /* 暖色护眼背景 */
         body {
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid1) 25%, var(--bg-gradient-mid2) 50%, var(--bg-gradient-end) 100%);
             background-attachment: fixed;
             min-height: 100vh;
-            font-family: 'SimSun', 'Songti SC', serif; /* 宋体或类似衬线字体更柔和 */
+            font-family: 'SimSun', 'Songti SC', serif;
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            line-height: 1.7; /* 增加行高 */
+            line-height: 1.7;
         }
         /* 容器 */
         .container {
             max-width: 1100px;
-            background: rgba(255, 255, 255, 0.1); /* 稍微透明 */
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(3px);
             border-radius: 15px;
             padding: 20px;
@@ -58,7 +59,7 @@
             text-align: center;
             padding-top: 40px;
             padding-bottom: 30px;
-            position: relative; /* Ensure header container context for absolute positioning if needed */
+            position: relative;
         }
         .site-title {
             font-size: 2.8rem;
@@ -73,97 +74,111 @@
             margin-bottom: 5px;
         }
         header img {
-            border: 5px solid rgba(255, 255, 255, 0.5); /* 白色边框 */
+            border: 5px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* 左侧搜索栏样式 */
         #search-sidebar {
             position: fixed;
-            top: 120px; /* 调整垂直位置，避开页头 */
+            top: 120px; /* 调整垂直位置 */
             left: 20px;
             background: var(--search-bg);
             border: 1px solid var(--search-border);
             border-radius: 10px;
-            padding: 10px;
+            padding: 8px; /* 调整内边距 */
             box-shadow: 0 2px 15px var(--search-shadow);
-            z-index: 998; /* 比返回顶部低，比提醒低 */
+            z-index: 998;
             display: flex;
             align-items: center;
             backdrop-filter: blur(5px);
-            transition: transform 0.4s ease-in-out; /* 使用transform进行动画 */
-            transform: translateX(0); /* 初始状态，可见 */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; /* 添加 transform 过渡 */
         }
-
-        .search-controls {
-            display: flex; /* 让输入框和搜索按钮水平排列 */
-            /* flex-grow: 1; */ /* 可选：如果希望搜索控件填充空间 */
-        }
-
         #search-sidebar input[type="search"] {
             border: 1px solid var(--search-border);
             padding: 6px 10px;
-            border-radius: 5px 0 0 5px; /* 左侧圆角 */
+            border-radius: 5px 0 0 5px;
             font-size: 0.9rem;
             background-color: var(--search-input-bg);
             color: var(--text-color);
-            width: 160px; /* 调整宽度 */
             outline: none;
             transition: border-color 0.3s;
-            border-right: none; /* 移除右边框以便与按钮无缝连接 */
+            flex-grow: 1; /* 占据可用空间 */
+            min-width: 100px; /* 保证最小宽度 */
+            margin-right: -1px; /* 合并边框 */
         }
         #search-sidebar input[type="search"]:focus {
             border-color: var(--accent-color);
+            z-index: 1; /* 确保focus时边框在最上层 */
         }
-        #search-sidebar #site-search-button { /* Specific selector for search button */
+        #search-sidebar button#site-search-button { /* 更具体的选择器 */
             background-color: var(--accent-color);
             color: white;
             border: 1px solid var(--accent-color);
+            border-left: none;
             padding: 6px 12px;
-            border-radius: 0 5px 5px 0; /* 右侧圆角 */
+            border-radius: 0 5px 5px 0; /* 只有右侧圆角 */
             cursor: pointer;
             font-size: 0.9rem;
             transition: background-color 0.3s ease;
             flex-shrink: 0; /* 防止按钮被压缩 */
         }
-        #search-sidebar #site-search-button:hover {
+        #search-sidebar button#site-search-button:hover {
             background-color: var(--heading-color);
             border-color: var(--heading-color);
         }
-        #search-sidebar #site-search-button i {
+        #search-sidebar button#site-search-button i {
              vertical-align: middle;
         }
-
         /* 切换按钮样式 */
-        #search-toggle-button {
-            background-color: rgba(139, 69, 19, 0.7); /* 使用稍暗的颜色或与主题协调的颜色 */
-            color: white;
-            border: 1px solid rgba(139, 69, 19, 0.5);
-            padding: 6px 8px; /* 调整内边距使其更紧凑 */
-            border-radius: 5px;
+        .toggle-button {
+            background: none;
+            border: none;
+            color: var(--accent-color);
             cursor: pointer;
-            margin-left: 8px; /* 与搜索控件的间距 */
-            font-size: 0.9rem; /* 与搜索按钮字体大小一致 */
-            transition: background-color 0.3s ease;
+            font-size: 1.1rem; /* 稍微调大图标 */
+            padding: 0 10px; /* 按钮点击区域 */
+            margin-left: 5px; /* 与搜索按钮间隔 */
+            transition: color 0.3s ease, transform 0.3s ease; /* 添加图标旋转过渡 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 34px; /* 大致与输入框和按钮同高 */
             flex-shrink: 0; /* 防止按钮被压缩 */
-            line-height: 1; /* 确保图标垂直居中 */
         }
-        #search-toggle-button:hover {
-            background-color: var(--heading-color);
-            border-color: var(--heading-color);
+        .toggle-button:hover {
+            color: var(--heading-color);
         }
-        #search-toggle-button i {
-            display: block; /* 确保图标占据块级空间 */
-            transition: transform 0.3s ease; /* 可以给图标本身添加旋转效果 */
+        .toggle-button i {
+            transition: transform 0.4s ease-in-out; /* 图标旋转动画 */
         }
 
         /* 搜索栏隐藏状态 */
-        #search-sidebar.hidden {
-            /* 将整个侧边栏（包括切换按钮）向左移动其自身的宽度加上初始的left间距 */
-            transform: translateX(calc(-100% - 20px));
+        #search-sidebar.search-sidebar-hidden {
+            transform: translateX(calc(-100% + var(--search-toggle-btn-width) - 8px)); /* 向左移出，保留切换按钮宽度和一点边距 */
+            box-shadow: none; /* 隐藏时可以移除阴影 */
+            border-left: none;
+            background: transparent; /* 隐藏时背景透明 */
+            border-color: transparent;
+        }
+        #search-sidebar.search-sidebar-hidden input[type="search"],
+        #search-sidebar.search-sidebar-hidden button#site-search-button {
+            opacity: 0; /* 隐藏内部元素 */
+            pointer-events: none; /* 阻止交互 */
+            transition: opacity 0.2s ease-out;
+        }
+        #search-sidebar.search-sidebar-hidden .toggle-button {
+            /* background: var(--search-bg); /* 可以给按钮一个背景以便看清 */
+            /* border: 1px solid var(--search-border); */
+            border-radius: 0 5px 5px 0; /* 保留右侧圆角 */
+            /* margin-left: 0; */
+        }
+        #search-sidebar.search-sidebar-hidden .toggle-button i {
+            transform: rotate(180deg); /* 箭头反向 */
         }
 
-        /* 暖色计时器样式 (保持不变) */
+
+        /* 暖色计时器样式 */
         #advanced-timer {
             position: fixed;
             top: 20px;
@@ -177,48 +192,8 @@
             z-index: 1000;
             backdrop-filter: blur(8px);
         }
-        .timer-display {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .digit-section {
-            text-align: center;
-            min-width: 45px;
-        }
-        .digit {
-            background: var(--timer-digit-bg);
-            color: var(--timer-digit-color);
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border: 1px solid var(--timer-border);
-            box-shadow: inset 0 0 8px rgba(139, 69, 19, 0.1);
-        }
-        .digit-label {
-            font-size: 0.6rem;
-            color: #888;
-            margin-top: 4px;
-        }
-        .separator {
-            color: var(--timer-digit-color);
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-        .timer-status {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--timer-digit-color);
-            border-top: 1px solid #ddd;
-            padding-top: 6px;
-            margin-top: 6px;
-        }
-        .timer-status .fa-clock {
-            margin-right: 5px;
-        }
-        /* 护眼提醒 (保持不变) */
+        /* ... (计时器、护眼提醒、导航、内容、页脚等其他样式保持不变) ... */
+        /* 护眼提醒 */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
@@ -242,7 +217,7 @@
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
-        /* 导航栏 (保持不变) */
+        /* 导航栏 */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 10px 0;
@@ -263,7 +238,7 @@
             color: var(--heading-color);
             text-decoration: underline;
         }
-        /* 内容区域优化 (保持不变) */
+        /* 内容区域优化 */
         main.container {
             background: rgba(255, 255, 255, 0.15);
         }
@@ -352,7 +327,7 @@
              color: white;
              text-decoration: none;
          }
-        /* 特色图标/可视化模型区域 (保持不变) */
+        /* 特色图标/可视化模型区域 */
         .visual-model {
             display: flex;
             justify-content: space-around;
@@ -376,7 +351,7 @@
             font-size: 0.9rem;
             font-weight: bold;
         }
-        /* 搞钱专栏精简 (保持不变) */
+        /* 搞钱专栏精简 */
         #make-money-preview .article-excerpt {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -407,7 +382,7 @@
              background: var(--accent-color);
              color: white;
          }
-        /* 关于我精简 (保持不变) */
+        /* 关于我精简 */
         #about .about-content {
             max-width: 750px;
             margin: 0 auto;
@@ -444,7 +419,7 @@
              position: relative;
              font-size: 0.95rem;
          }
-        #about .about-philosophy li span {
+        #about .about-philosophy li span { /* Icon */
              position: absolute;
              left: 0;
              color: var(--accent-color);
@@ -468,7 +443,7 @@
              color: #777;
              font-size: 0.9rem;
          }
-        /* 页脚 (保持不变) */
+        /* 页脚 */
         footer {
             margin-top: 40px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -501,7 +476,7 @@
         .social-links a:hover img {
             filter: none;
         }
-        /* 返回顶部按钮 (保持不变) */
+        /* 返回顶部按钮 */
         #scrollToTopBtn {
             display: none;
             position: fixed;
@@ -529,97 +504,67 @@
                 margin: 10px;
                 padding: 15px;
             }
-            .site-title {
-                font-size: 2rem;
-            }
-            nav a {
-                margin: 0 10px;
-                font-size: 0.9rem;
-            }
-            .article-card {
-                padding: 15px;
-            }
+            .site-title { font-size: 2rem; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+            .article-card { padding: 15px; }
 
-            /* 调整计时器和搜索栏在小屏幕上的位置 */
-            #advanced-timer {
-                padding: 10px;
-                right: 10px;
-                top: 10px;
-            }
+            /* 调整计时器和搜索栏 */
+            #advanced-timer { padding: 10px; right: 10px; top: 10px; }
              #search-sidebar {
-                top: 85px; /* 调整以适应较小的页头和计时器 */
-                left: 10px; /* 调整初始左边距 */
-                padding: 8px;
+                top: 85px;
+                left: 10px; /* 调整左边距 */
+                padding: 6px; /* 减少内边距 */
+                --search-toggle-btn-width: 35px; /* 调整小屏幕切换按钮宽度 */
              }
              #search-sidebar input[type="search"] {
-                 width: 100px; /* 缩小宽度 */
                  padding: 5px 8px;
                  font-size: 0.8rem;
+                 min-width: 80px;
              }
-            #search-sidebar #site-search-button { /* 调整搜索按钮 */
+            #search-sidebar button#site-search-button {
                 padding: 5px 10px;
                  font-size: 0.8rem;
             }
-            #search-toggle-button { /* 调整切换按钮 */
-                padding: 5px 7px;
-                font-size: 0.8rem;
-                margin-left: 5px;
+            .toggle-button {
+                font-size: 1rem;
+                padding: 0 8px;
+                height: 30px; /* 调整高度 */
             }
-            /* 调整隐藏状态的位移 */
-            #search-sidebar.hidden {
-                 transform: translateX(calc(-100% - 10px));
+             #search-sidebar.search-sidebar-hidden {
+                 transform: translateX(calc(-100% + var(--search-toggle-btn-width) - 6px)); /* 调整隐藏距离 */
             }
 
-            .digit {
-                font-size: 1.1rem;
-                padding: 5px 8px;
-            }
-            .digit-section {
-                min-width: 35px;
-            }
-            .separator {
-                font-size: 1.1rem;
-            }
-            #eye-exercise-reminder {
-                font-size: 1.1rem;
-                padding: 15px 25px;
-            }
-            .visual-model {
-                flex-direction: column;
-                gap: 20px; /* Add gap for column layout */
-            }
-            #scrollToTopBtn {
-                bottom: 20px;
-                right: 20px;
-                padding: 8px 12px;
-                font-size: 16px;
-            }
+            /* 计时器数字 */
+            .digit { font-size: 1.1rem; padding: 5px 8px; }
+            .digit-section { min-width: 35px; }
+            .separator { font-size: 1.1rem; }
+            #eye-exercise-reminder { font-size: 1.1rem; padding: 15px 25px; }
+            .visual-model { flex-direction: column; gap: 20px; }
+            #scrollToTopBtn { bottom: 20px; right: 20px; padding: 8px 12px; font-size: 16px; }
         }
          @media (max-width: 480px) {
-             /* 极小屏幕可能需要进一步调整或隐藏搜索栏 */
              #search-sidebar {
                  top: 75px;
-                 left: 5px; /* 调整初始左边距 */
+                 left: 5px;
                  padding: 5px;
+                 --search-toggle-btn-width: 30px;
              }
              #search-sidebar input[type="search"] {
-                 width: 80px;
+                 min-width: 60px;
              }
-             #search-sidebar #site-search-button { /* 调整搜索按钮 */
+             #search-sidebar button#site-search-button {
                  padding: 5px 8px;
              }
-             #search-toggle-button { /* 调整切换按钮 */
-                 padding: 4px 6px;
-                 font-size: 0.7rem;
-                 margin-left: 4px;
+             .toggle-button {
+                 font-size: 0.9rem;
+                 padding: 0 6px;
+                 height: 28px;
              }
-             /* 调整隐藏状态的位移 */
-            #search-sidebar.hidden {
-                 transform: translateX(calc(-100% - 5px));
-            }
-             .site-title {
-                 font-size: 1.8rem;
+              #search-sidebar.search-sidebar-hidden {
+                 transform: translateX(calc(-100% + var(--search-toggle-btn-width) - 5px));
              }
+             .site-title { font-size: 1.8rem; }
+             /* ... 其他极小屏幕调整 */
          }
     </style>
 </head>
@@ -627,15 +572,12 @@
 
     <!-- 左侧搜索栏 -->
     <div id="search-sidebar">
-        <div class="search-controls">
-            <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
-            <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
-        </div>
-        <!-- 添加切换按钮 -->
-        <button id="search-toggle-button" aria-label="隐藏搜索栏" title="隐藏搜索栏">
-            <i class="fas fa-chevron-left"></i> <!-- 初始为向左箭头 -->
+        <input type="search" id="site-search-input" placeholder="搜索..." aria-label="搜索全站">
+        <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
+        <button id="toggle-search-sidebar" class="toggle-button" aria-label="隐藏搜索栏">
+            <i class="fas fa-chevron-left"></i>
         </button>
-        <!-- 注意：此搜索框目前仅为UI元素，需要配合JavaScript实现实际搜索功能 -->
+        <!-- 注意：搜索功能仍需后端或JS库支持 -->
     </div>
 
     <header>
@@ -782,7 +724,6 @@
         <section id="make-money-preview" style="margin-top: 50px;">
             <h2 class="section-title">💰 搞钱专栏精选</h2>
             <div class="articles">
-                <!-- 保留 3-4 个最有代表性的 -->
                  <div class="article-card">
                     <div class="article-content">
                         <h3 class="article-title">AI副业赚钱指南</h3>
@@ -894,7 +835,7 @@
     </main>
 
     <!-- 音频标签 -->
-    <audio id="eyeExerciseMusic" src="https://sf1-cdn-tos.douyinstatic.com/obj/ies-music/16870000149760133.mp3" preload="none"></audio> <!-- 换一个可能有效的链接或提示用户提供有效链接 -->
+    <audio id="eyeExerciseMusic" src="https://sf1-cdn-tos.douyinstatic.com/obj/ies-music/16870000149760133.mp3" preload="none"></audio>
 
     <!-- 返回顶部按钮 -->
     <button id="scrollToTopBtn" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
@@ -913,8 +854,6 @@
             hoursElem.textContent = hours.toString().padStart(2, '0');
             minutesElem.textContent = minutes.toString().padStart(2, '0');
             secondsElem.textContent = seconds.toString().padStart(2, '0');
-
-            // 每25分钟 (25 * 60 = 1500秒) 显示提醒
             if (totalSeconds > 0 && totalSeconds % 1500 === 0) {
                 showEyeExerciseReminder();
             }
@@ -926,14 +865,11 @@
 
         function showEyeExerciseReminder() {
             reminder.style.display = 'block';
-            // 尝试播放音乐，静默处理错误
             audio.play().catch(e => console.log('音频播放请求被用户或浏览器阻止。', e));
-            // 5秒后隐藏提醒
             setTimeout(() => {
                 reminder.style.display = 'none';
-                // 暂停音乐（如果还在播放）
                 audio.pause();
-                audio.currentTime = 0; // 重置播放位置
+                audio.currentTime = 0;
             }, 5000);
         }
 
@@ -942,32 +878,24 @@
             totalSeconds++;
             updateAdvancedTimer();
         }, 1000);
-        // 初始化显示
-        updateAdvancedTimer();
+        updateAdvancedTimer(); // 初始化
 
         // --- 返回顶部按钮逻辑 ---
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-        // 监听滚动事件
         window.onscroll = function() { scrollFunction() };
-
         function scrollFunction() {
-          // 当页面向下滚动 100px 时显示按钮
           if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             scrollToTopBtn.style.display = "block";
             scrollToTopBtn.style.opacity = "1";
           } else {
              scrollToTopBtn.style.opacity = "0";
-             // 添加延迟隐藏，以显示淡出效果
              setTimeout(() => {
                   if (!(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
                      scrollToTopBtn.style.display = "none";
                   }
-             }, 300); // 延迟时间应与CSS中的transition时间匹配
+             }, 300);
           }
         }
-
-        // 点击按钮时，平滑滚动到顶部
         scrollToTopBtn.addEventListener('click', () => {
           window.scrollTo({top: 0, behavior: 'smooth'});
         });
@@ -975,60 +903,41 @@
         // --- 搜索功能占位符 ---
         const searchInput = document.getElementById('site-search-input');
         const searchButton = document.getElementById('site-search-button');
-
         searchButton.addEventListener('click', () => {
             const searchTerm = searchInput.value;
             if (searchTerm.trim() !== '') {
                 alert(`正在搜索: "${searchTerm}" (实际搜索功能待实现)`);
-                // 示例：跳转到搜索结果页 (需要创建 search.html 或类似页面)
                 // window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
             } else {
                 alert('请输入搜索关键词！');
             }
         });
-
-        // 允许按Enter键触发搜索
         searchInput.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault(); // 阻止默认表单提交行为
-                searchButton.click(); // 触发按钮点击事件
+                event.preventDefault();
+                searchButton.click();
             }
         });
 
-        // --- 搜索侧边栏切换逻辑 ---
+        // --- 搜索栏隐藏/显示切换逻辑 ---
         const searchSidebar = document.getElementById('search-sidebar');
-        const searchToggleButton = document.getElementById('search-toggle-button');
-        // 确保在按钮存在时才获取图标，避免脚本错误
-        const searchToggleIcon = searchToggleButton ? searchToggleButton.querySelector('i') : null;
+        const toggleSearchBtn = document.getElementById('toggle-search-sidebar');
+        const toggleSearchIcon = toggleSearchBtn.querySelector('i'); // 获取图标元素
 
-        if(searchSidebar && searchToggleButton && searchToggleIcon) { // 确保所有元素都存在
-            searchToggleButton.addEventListener('click', () => {
-                // 切换 'hidden' 类
-                searchSidebar.classList.toggle('hidden');
+        toggleSearchBtn.addEventListener('click', () => {
+            searchSidebar.classList.toggle('search-sidebar-hidden');
 
-                // 检查侧边栏是否处于隐藏状态，并更新图标和辅助文本
-                if (searchSidebar.classList.contains('hidden')) {
-                    searchToggleIcon.className = 'fas fa-chevron-right'; // 改为向右箭头
-                    searchToggleButton.setAttribute('aria-label', '显示搜索栏');
-                    searchToggleButton.setAttribute('title', '显示搜索栏'); // 更新 tooltip
-                } else {
-                    searchToggleIcon.className = 'fas fa-chevron-left'; // 改回向左箭头
-                    searchToggleButton.setAttribute('aria-label', '隐藏搜索栏');
-                    searchToggleButton.setAttribute('title', '隐藏搜索栏'); // 更新 tooltip
-                }
-            });
-
-            // // 可选：根据初始状态设置按钮的 aria-label 和 title (如果默认不是 hidden)
-            // if (!searchSidebar.classList.contains('hidden')) {
-            //     searchToggleButton.setAttribute('aria-label', '隐藏搜索栏');
-            //     searchToggleButton.setAttribute('title', '隐藏搜索栏');
-            // } else {
-            //     searchToggleButton.setAttribute('aria-label', '显示搜索栏');
-            //     searchToggleButton.setAttribute('title', '显示搜索栏');
-            // }
-        } else {
-            console.error("Search sidebar toggle elements not found.");
-        }
+            // 切换图标方向和 aria-label
+            if (searchSidebar.classList.contains('search-sidebar-hidden')) {
+                toggleSearchIcon.classList.remove('fa-chevron-left');
+                toggleSearchIcon.classList.add('fa-chevron-right');
+                toggleSearchBtn.setAttribute('aria-label', '显示搜索栏');
+            } else {
+                toggleSearchIcon.classList.remove('fa-chevron-right');
+                toggleSearchIcon.classList.add('fa-chevron-left');
+                toggleSearchBtn.setAttribute('aria-label', '隐藏搜索栏');
+            }
+        });
 
     </script>
 
@@ -1036,7 +945,6 @@
         <div class="container">
             <p>&copy; 2025 AIFLOW. All rights reserved.</p>
             <div class="social-links">
-                 <!-- 示例链接，请替换成您自己的 -->
                 <a href="#" title="Twitter"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="推特图标"></a>
                 <a href="#" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="ins图标"></a>
                 <a href="#" title="YouTube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube图标"></a>
