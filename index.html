@@ -27,8 +27,11 @@
             --timer-shadow: rgba(160, 82, 45, 0.3); /* 赭色阴影 */
             --reminder-bg: linear-gradient(45deg, #ffcc80, #ffb74d); /* 橙色提醒 */
             --reminder-shadow: rgba(255, 152, 0, 0.4);
+            --search-bg: rgba(255, 250, 235, 0.85); /* 搜索栏背景 */
+            --search-border: #A0522D; /* 搜索栏边框 */
+            --search-shadow: rgba(160, 82, 45, 0.2); /* 搜索栏阴影 */
+            --search-input-bg: #fff; /* 搜索输入框背景 */
         }
-
         /* 暖色护眼背景 */
         body {
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid1) 25%, var(--bg-gradient-mid2) 50%, var(--bg-gradient-end) 100%);
@@ -40,7 +43,6 @@
             padding: 0;
             line-height: 1.7; /* 增加行高 */
         }
-
         /* 容器 */
         .container {
             max-width: 1100px;
@@ -51,12 +53,12 @@
             margin: 20px auto;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
         /* 页头 */
         header .container {
             text-align: center;
             padding-top: 40px;
             padding-bottom: 30px;
+            position: relative; /* Ensure header container context for absolute positioning if needed */
         }
         .site-title {
             font-size: 2.8rem;
@@ -73,6 +75,55 @@
         header img {
             border: 5px solid rgba(255, 255, 255, 0.5); /* 白色边框 */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 左侧搜索栏样式 */
+        #search-sidebar {
+            position: fixed;
+            top: 120px; /* 调整垂直位置，避开页头 */
+            left: 20px;
+            background: var(--search-bg);
+            border: 1px solid var(--search-border);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 15px var(--search-shadow);
+            z-index: 998; /* 比返回顶部低，比提醒低 */
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        #search-sidebar input[type="search"] {
+            border: 1px solid var(--search-border);
+            padding: 6px 10px;
+            border-radius: 5px 0 0 5px; /* 左侧圆角 */
+            font-size: 0.9rem;
+            background-color: var(--search-input-bg);
+            color: var(--text-color);
+            width: 160px; /* 调整宽度 */
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #search-sidebar input[type="search"]:focus {
+            border-color: var(--accent-color);
+        }
+        #search-sidebar button {
+            background-color: var(--accent-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            border-left: none; /* 合并边框 */
+            padding: 6px 12px;
+            border-radius: 0 5px 5px 0; /* 右侧圆角 */
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        #search-sidebar button:hover {
+            background-color: var(--heading-color);
+            border-color: var(--heading-color);
+        }
+        #search-sidebar button i {
+             vertical-align: middle;
         }
 
         /* 暖色计时器样式 */
@@ -130,7 +181,6 @@
         .timer-status .fa-clock {
             margin-right: 5px;
         }
-
         /* 护眼提醒 */
         #eye-exercise-reminder {
             position: fixed;
@@ -155,7 +205,6 @@
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
-
         /* 导航栏 */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
@@ -177,7 +226,6 @@
             color: var(--heading-color);
             text-decoration: underline;
         }
-
         /* 内容区域优化 */
         main.container {
             background: rgba(255, 255, 255, 0.15);
@@ -208,7 +256,6 @@
             background-color: var(--accent-color);
             border-radius: 2px;
         }
-
         .article-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -268,7 +315,6 @@
              color: white;
              text-decoration: none;
          }
-
         /* 特色图标/可视化模型区域 */
         .visual-model {
             display: flex;
@@ -293,7 +339,6 @@
             font-size: 0.9rem;
             font-weight: bold;
         }
-
         /* 搞钱专栏精简 */
         #make-money-preview .article-excerpt {
             /* Further shortening */
@@ -317,7 +362,6 @@
         #make-money-preview .article-meta span[style*="#9c27b0"] { background-color: #8e24aa; } /* Purple */
         #make-money-preview .article-meta span[style*="#f44336"] { background-color: #e53935; } /* Red */
         #make-money-preview .article-meta span[style*="#00bcd4"] { background-color: #00acc1; } /* Cyan */
-
         #make-money-preview .view-all-link { /* Special styling for this link */
              padding: 12px 25px;
              border-width: 2px;
@@ -327,7 +371,6 @@
              background: var(--accent-color);
              color: white;
          }
-
         /* 关于我精简 */
         #about .about-content {
             max-width: 750px; /* Slightly narrower */
@@ -389,7 +432,6 @@
              color: #777;
              font-size: 0.9rem; /* Smaller italic text */
          }
-
         /* 页脚 */
         footer {
             margin-top: 40px;
@@ -423,7 +465,6 @@
         .social-links a:hover img {
             filter: none; /* Remove filter on hover */
         }
-
         /* 返回顶部按钮 */
         #scrollToTopBtn {
             display: none; /* Hidden by default */
@@ -442,11 +483,9 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, opacity 0.3s;
         }
-
         #scrollToTopBtn:hover {
             background-color: var(--heading-color); /* Darken on hover */
         }
-
         /* 响应式设计调整 */
         @media (max-width: 768px) {
             .container {
@@ -463,11 +502,28 @@
             .article-card {
                 padding: 15px;
             }
+
+            /* 调整计时器和搜索栏在小屏幕上的位置 */
             #advanced-timer {
                 padding: 10px;
                 right: 10px;
                 top: 10px;
             }
+             #search-sidebar {
+                top: 85px; /* 调整以适应较小的页头和计时器 */
+                left: 10px;
+                padding: 8px;
+             }
+             #search-sidebar input[type="search"] {
+                 width: 100px; /* 缩小宽度 */
+                 padding: 5px 8px;
+                 font-size: 0.8rem;
+             }
+            #search-sidebar button {
+                padding: 5px 10px;
+                 font-size: 0.8rem;
+            }
+
             .digit {
                 font-size: 1.1rem;
                 padding: 5px 8px;
@@ -493,10 +549,34 @@
                 font-size: 16px;
             }
         }
-
+         @media (max-width: 480px) {
+             /* 极小屏幕可能需要进一步调整或隐藏搜索栏 */
+             #search-sidebar {
+                 top: 75px;
+                 left: 5px;
+                 padding: 5px;
+             }
+             #search-sidebar input[type="search"] {
+                 width: 80px;
+             }
+             #search-sidebar button {
+                 padding: 5px 8px;
+             }
+             .site-title {
+                 font-size: 1.8rem;
+             }
+         }
     </style>
 </head>
 <body>
+
+    <!-- 左侧搜索栏 -->
+    <div id="search-sidebar">
+        <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
+        <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
+        <!-- 注意：此搜索框目前仅为UI元素，需要配合JavaScript实现实际搜索功能 -->
+    </div>
+
     <header>
         <div class="container">
             <img src="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true" style="width:130px; height:130px; border-radius: 50%;" alt="头像">
@@ -551,7 +631,6 @@
             <span>身心健康</span>
         </div>
     </div>
-
 
     <nav>
         <a href="#home">首页</a>
@@ -770,7 +849,6 @@
             const hours = Math.floor(totalSeconds / 3600);
             const minutes = Math.floor((totalSeconds % 3600) / 60);
             const seconds = totalSeconds % 60;
-
             hoursElem.textContent = hours.toString().padStart(2, '0');
             minutesElem.textContent = minutes.toString().padStart(2, '0');
             secondsElem.textContent = seconds.toString().padStart(2, '0');
@@ -789,7 +867,6 @@
             reminder.style.display = 'block';
             // 尝试播放音乐，静默处理错误
             audio.play().catch(e => console.log('音频播放请求被用户或浏览器阻止。', e));
-
             // 5秒后隐藏提醒
             setTimeout(() => {
                 reminder.style.display = 'none';
@@ -804,7 +881,6 @@
             totalSeconds++;
             updateAdvancedTimer();
         }, 1000);
-
         // 初始化显示
         updateAdvancedTimer();
 
@@ -812,7 +888,7 @@
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
         // 监听滚动事件
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function() { scrollFunction() };
 
         function scrollFunction() {
           // 当页面向下滚动 100px 时显示按钮
@@ -835,7 +911,34 @@
           window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
+        // --- 搜索功能占位符 ---
+        // 实际的搜索功能需要JavaScript实现。
+        // 这里可以添加一个简单的事件监听器来演示交互，
+        // 但实际搜索逻辑（如跳转到搜索结果页或使用JS库进行站内搜索）需要额外开发。
+        const searchInput = document.getElementById('site-search-input');
+        const searchButton = document.getElementById('site-search-button');
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value;
+            if (searchTerm.trim() !== '') {
+                alert(`正在搜索: "${searchTerm}" (实际搜索功能待实现)`);
+                // 示例：跳转到搜索结果页 (需要创建 search.html 或类似页面)
+                // window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                alert('请输入搜索关键词！');
+            }
+        });
+
+        // 允许按Enter键触发搜索
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // 阻止默认表单提交行为（如果未来放入form中）
+                searchButton.click(); // 触发按钮点击事件
+            }
+        });
+
     </script>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 AIFLOW. All rights reserved.</p>
@@ -847,5 +950,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
