@@ -91,8 +91,15 @@
             display: flex;
             align-items: center;
             backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
+            transition: transform 0.4s ease-in-out; /* 使用transform进行动画 */
+            transform: translateX(0); /* 初始状态，可见 */
         }
+
+        .search-controls {
+            display: flex; /* 让输入框和搜索按钮水平排列 */
+            /* flex-grow: 1; */ /* 可选：如果希望搜索控件填充空间 */
+        }
+
         #search-sidebar input[type="search"] {
             border: 1px solid var(--search-border);
             padding: 6px 10px;
@@ -103,30 +110,60 @@
             width: 160px; /* 调整宽度 */
             outline: none;
             transition: border-color 0.3s;
+            border-right: none; /* 移除右边框以便与按钮无缝连接 */
         }
         #search-sidebar input[type="search"]:focus {
             border-color: var(--accent-color);
         }
-        #search-sidebar button {
+        #search-sidebar #site-search-button { /* Specific selector for search button */
             background-color: var(--accent-color);
             color: white;
             border: 1px solid var(--accent-color);
-            border-left: none; /* 合并边框 */
             padding: 6px 12px;
             border-radius: 0 5px 5px 0; /* 右侧圆角 */
             cursor: pointer;
             font-size: 0.9rem;
             transition: background-color 0.3s ease;
+            flex-shrink: 0; /* 防止按钮被压缩 */
         }
-        #search-sidebar button:hover {
+        #search-sidebar #site-search-button:hover {
             background-color: var(--heading-color);
             border-color: var(--heading-color);
         }
-        #search-sidebar button i {
+        #search-sidebar #site-search-button i {
              vertical-align: middle;
         }
 
-        /* 暖色计时器样式 */
+        /* 切换按钮样式 */
+        #search-toggle-button {
+            background-color: rgba(139, 69, 19, 0.7); /* 使用稍暗的颜色或与主题协调的颜色 */
+            color: white;
+            border: 1px solid rgba(139, 69, 19, 0.5);
+            padding: 6px 8px; /* 调整内边距使其更紧凑 */
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 8px; /* 与搜索控件的间距 */
+            font-size: 0.9rem; /* 与搜索按钮字体大小一致 */
+            transition: background-color 0.3s ease;
+            flex-shrink: 0; /* 防止按钮被压缩 */
+            line-height: 1; /* 确保图标垂直居中 */
+        }
+        #search-toggle-button:hover {
+            background-color: var(--heading-color);
+            border-color: var(--heading-color);
+        }
+        #search-toggle-button i {
+            display: block; /* 确保图标占据块级空间 */
+            transition: transform 0.3s ease; /* 可以给图标本身添加旋转效果 */
+        }
+
+        /* 搜索栏隐藏状态 */
+        #search-sidebar.hidden {
+            /* 将整个侧边栏（包括切换按钮）向左移动其自身的宽度加上初始的left间距 */
+            transform: translateX(calc(-100% - 20px));
+        }
+
+        /* 暖色计时器样式 (保持不变) */
         #advanced-timer {
             position: fixed;
             top: 20px;
@@ -181,7 +218,7 @@
         .timer-status .fa-clock {
             margin-right: 5px;
         }
-        /* 护眼提醒 */
+        /* 护眼提醒 (保持不变) */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
@@ -205,7 +242,7 @@
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
-        /* 导航栏 */
+        /* 导航栏 (保持不变) */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 10px 0;
@@ -226,7 +263,7 @@
             color: var(--heading-color);
             text-decoration: underline;
         }
-        /* 内容区域优化 */
+        /* 内容区域优化 (保持不变) */
         main.container {
             background: rgba(255, 255, 255, 0.15);
         }
@@ -315,7 +352,7 @@
              color: white;
              text-decoration: none;
          }
-        /* 特色图标/可视化模型区域 */
+        /* 特色图标/可视化模型区域 (保持不变) */
         .visual-model {
             display: flex;
             justify-content: space-around;
@@ -339,30 +376,29 @@
             font-size: 0.9rem;
             font-weight: bold;
         }
-        /* 搞钱专栏精简 */
+        /* 搞钱专栏精简 (保持不变) */
         #make-money-preview .article-excerpt {
-            /* Further shortening */
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            min-height: 2.8em; /* Approximate height for 2 lines */
+            min-height: 2.8em;
         }
-        #make-money-preview .article-meta span[style*="color"] { /* Style for tags */
+        #make-money-preview .article-meta span[style*="color"] {
              font-weight: bold;
              padding: 2px 5px;
              border-radius: 3px;
-             color: white !important; /* Override inline style for better contrast if needed */
+             color: white !important;
              margin-left: 5px;
          }
-        #make-money-preview .article-meta span[style*="#ffeb3b"] { background-color: #fbc02d; } /* Yellow */
-        #make-money-preview .article-meta span[style*="#4caf50"] { background-color: #43a047; } /* Green */
-        #make-money-preview .article-meta span[style*="#ff9800"] { background-color: #fb8c00; } /* Orange */
-        #make-money-preview .article-meta span[style*="#9c27b0"] { background-color: #8e24aa; } /* Purple */
-        #make-money-preview .article-meta span[style*="#f44336"] { background-color: #e53935; } /* Red */
-        #make-money-preview .article-meta span[style*="#00bcd4"] { background-color: #00acc1; } /* Cyan */
-        #make-money-preview .view-all-link { /* Special styling for this link */
+        #make-money-preview .article-meta span[style*="#ffeb3b"] { background-color: #fbc02d; }
+        #make-money-preview .article-meta span[style*="#4caf50"] { background-color: #43a047; }
+        #make-money-preview .article-meta span[style*="#ff9800"] { background-color: #fb8c00; }
+        #make-money-preview .article-meta span[style*="#9c27b0"] { background-color: #8e24aa; }
+        #make-money-preview .article-meta span[style*="#f44336"] { background-color: #e53935; }
+        #make-money-preview .article-meta span[style*="#00bcd4"] { background-color: #00acc1; }
+        #make-money-preview .view-all-link {
              padding: 12px 25px;
              border-width: 2px;
              background: linear-gradient(45deg, rgba(210, 105, 30, 0.1), rgba(139, 69, 19, 0.1));
@@ -371,9 +407,9 @@
              background: var(--accent-color);
              color: white;
          }
-        /* 关于我精简 */
+        /* 关于我精简 (保持不变) */
         #about .about-content {
-            max-width: 750px; /* Slightly narrower */
+            max-width: 750px;
             margin: 0 auto;
             text-align: left;
             line-height: 1.8;
@@ -408,7 +444,7 @@
              position: relative;
              font-size: 0.95rem;
          }
-        #about .about-philosophy li span { /* Icon */
+        #about .about-philosophy li span {
              position: absolute;
              left: 0;
              color: var(--accent-color);
@@ -430,9 +466,9 @@
              margin-top: 15px;
              font-style: italic;
              color: #777;
-             font-size: 0.9rem; /* Smaller italic text */
+             font-size: 0.9rem;
          }
-        /* 页脚 */
+        /* 页脚 (保持不变) */
         footer {
             margin-top: 40px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -456,18 +492,18 @@
          .social-links img {
             width: 22px;
             height: 22px;
-            filter: grayscale(50%) sepia(30%) brightness(90%); /* Make icons fit the theme */
+            filter: grayscale(50%) sepia(30%) brightness(90%);
             vertical-align: middle;
         }
         .social-links a:hover {
             transform: scale(1.1);
         }
         .social-links a:hover img {
-            filter: none; /* Remove filter on hover */
+            filter: none;
         }
-        /* 返回顶部按钮 */
+        /* 返回顶部按钮 (保持不变) */
         #scrollToTopBtn {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -478,14 +514,15 @@
             color: white;
             cursor: pointer;
             padding: 10px 15px;
-            border-radius: 50%; /* Circular */
+            border-radius: 50%;
             font-size: 18px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, opacity 0.3s;
         }
         #scrollToTopBtn:hover {
-            background-color: var(--heading-color); /* Darken on hover */
+            background-color: var(--heading-color);
         }
+
         /* 响应式设计调整 */
         @media (max-width: 768px) {
             .container {
@@ -511,7 +548,7 @@
             }
              #search-sidebar {
                 top: 85px; /* 调整以适应较小的页头和计时器 */
-                left: 10px;
+                left: 10px; /* 调整初始左边距 */
                 padding: 8px;
              }
              #search-sidebar input[type="search"] {
@@ -519,9 +556,18 @@
                  padding: 5px 8px;
                  font-size: 0.8rem;
              }
-            #search-sidebar button {
+            #search-sidebar #site-search-button { /* 调整搜索按钮 */
                 padding: 5px 10px;
                  font-size: 0.8rem;
+            }
+            #search-toggle-button { /* 调整切换按钮 */
+                padding: 5px 7px;
+                font-size: 0.8rem;
+                margin-left: 5px;
+            }
+            /* 调整隐藏状态的位移 */
+            #search-sidebar.hidden {
+                 transform: translateX(calc(-100% - 10px));
             }
 
             .digit {
@@ -553,15 +599,24 @@
              /* 极小屏幕可能需要进一步调整或隐藏搜索栏 */
              #search-sidebar {
                  top: 75px;
-                 left: 5px;
+                 left: 5px; /* 调整初始左边距 */
                  padding: 5px;
              }
              #search-sidebar input[type="search"] {
                  width: 80px;
              }
-             #search-sidebar button {
+             #search-sidebar #site-search-button { /* 调整搜索按钮 */
                  padding: 5px 8px;
              }
+             #search-toggle-button { /* 调整切换按钮 */
+                 padding: 4px 6px;
+                 font-size: 0.7rem;
+                 margin-left: 4px;
+             }
+             /* 调整隐藏状态的位移 */
+            #search-sidebar.hidden {
+                 transform: translateX(calc(-100% - 5px));
+            }
              .site-title {
                  font-size: 1.8rem;
              }
@@ -572,8 +627,14 @@
 
     <!-- 左侧搜索栏 -->
     <div id="search-sidebar">
-        <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
-        <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
+        <div class="search-controls">
+            <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
+            <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
+        </div>
+        <!-- 添加切换按钮 -->
+        <button id="search-toggle-button" aria-label="隐藏搜索栏" title="隐藏搜索栏">
+            <i class="fas fa-chevron-left"></i> <!-- 初始为向左箭头 -->
+        </button>
         <!-- 注意：此搜索框目前仅为UI元素，需要配合JavaScript实现实际搜索功能 -->
     </div>
 
@@ -912,9 +973,6 @@
         });
 
         // --- 搜索功能占位符 ---
-        // 实际的搜索功能需要JavaScript实现。
-        // 这里可以添加一个简单的事件监听器来演示交互，
-        // 但实际搜索逻辑（如跳转到搜索结果页或使用JS库进行站内搜索）需要额外开发。
         const searchInput = document.getElementById('site-search-input');
         const searchButton = document.getElementById('site-search-button');
 
@@ -932,10 +990,45 @@
         // 允许按Enter键触发搜索
         searchInput.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
-                event.preventDefault(); // 阻止默认表单提交行为（如果未来放入form中）
+                event.preventDefault(); // 阻止默认表单提交行为
                 searchButton.click(); // 触发按钮点击事件
             }
         });
+
+        // --- 搜索侧边栏切换逻辑 ---
+        const searchSidebar = document.getElementById('search-sidebar');
+        const searchToggleButton = document.getElementById('search-toggle-button');
+        // 确保在按钮存在时才获取图标，避免脚本错误
+        const searchToggleIcon = searchToggleButton ? searchToggleButton.querySelector('i') : null;
+
+        if(searchSidebar && searchToggleButton && searchToggleIcon) { // 确保所有元素都存在
+            searchToggleButton.addEventListener('click', () => {
+                // 切换 'hidden' 类
+                searchSidebar.classList.toggle('hidden');
+
+                // 检查侧边栏是否处于隐藏状态，并更新图标和辅助文本
+                if (searchSidebar.classList.contains('hidden')) {
+                    searchToggleIcon.className = 'fas fa-chevron-right'; // 改为向右箭头
+                    searchToggleButton.setAttribute('aria-label', '显示搜索栏');
+                    searchToggleButton.setAttribute('title', '显示搜索栏'); // 更新 tooltip
+                } else {
+                    searchToggleIcon.className = 'fas fa-chevron-left'; // 改回向左箭头
+                    searchToggleButton.setAttribute('aria-label', '隐藏搜索栏');
+                    searchToggleButton.setAttribute('title', '隐藏搜索栏'); // 更新 tooltip
+                }
+            });
+
+            // // 可选：根据初始状态设置按钮的 aria-label 和 title (如果默认不是 hidden)
+            // if (!searchSidebar.classList.contains('hidden')) {
+            //     searchToggleButton.setAttribute('aria-label', '隐藏搜索栏');
+            //     searchToggleButton.setAttribute('title', '隐藏搜索栏');
+            // } else {
+            //     searchToggleButton.setAttribute('aria-label', '显示搜索栏');
+            //     searchToggleButton.setAttribute('title', '显示搜索栏');
+            // }
+        } else {
+            console.error("Search sidebar toggle elements not found.");
+        }
 
     </script>
 
