@@ -36,7 +36,6 @@
             --nav-link-active-bg: rgba(139, 69, 19, 0.1);
             --dark-mode: 0;
         }
-
         .dark-theme {
             --bg-gradient-start: #2d2a23;
             --bg-gradient-mid1: #3a362e;
@@ -62,7 +61,6 @@
             --nav-link-active-bg: rgba(230, 167, 110, 0.2);
             --reminder-bg: linear-gradient(45deg, #ff8c00, #ff6b00);
         }
-
         body {
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid1) 25%, var(--bg-gradient-mid2) 50%, var(--bg-gradient-end) 100%);
             background-attachment: fixed;
@@ -75,7 +73,6 @@
             scroll-behavior: smooth;
             transition: background 0.5s ease, color 0.3s ease;
         }
-
         .container {
             max-width: 1100px;
             background: rgba(255, 255, 255, 0.1);
@@ -86,14 +83,12 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
         }
-
         header .container {
             text-align: center;
             padding-top: 40px;
             padding-bottom: 30px;
             position: relative;
         }
-        
         .site-title {
             font-size: 2.8rem;
             color: var(--heading-color);
@@ -102,14 +97,12 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             transition: color 0.3s ease;
         }
-        
         .site-subtitle {
             font-size: 1rem;
             color: var(--text-color);
             margin-bottom: 5px;
             transition: color 0.3s ease;
         }
-        
         header img.profile-pic {
             border: 5px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -121,7 +114,7 @@
             object-fit: cover;
             transition: all 0.3s ease;
         }
-
+        /* Search Sidebar */
         #search-sidebar {
             position: fixed;
             top: 120px;
@@ -137,7 +130,6 @@
             backdrop-filter: blur(5px);
             transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background 0.4s, border-color 0.4s;
         }
-        
         #search-sidebar input[type="search"] {
             border: 1px solid var(--search-border);
             padding: 6px 10px;
@@ -153,12 +145,10 @@
             opacity: 1;
             pointer-events: auto;
         }
-        
         #search-sidebar input[type="search"]:focus {
             border-color: var(--accent-color);
             z-index: 1;
         }
-        
         #search-sidebar button#site-search-button {
             background-color: var(--accent-color);
             color: white;
@@ -173,17 +163,14 @@
             opacity: 1;
             pointer-events: auto;
         }
-        
         #search-sidebar button#site-search-button:hover {
             background-color: var(--heading-color);
             border-color: var(--heading-color);
         }
-        
         #search-sidebar button#site-search-button i {
              vertical-align: middle;
         }
-        
-        .toggle-button {
+        #search-sidebar .toggle-button { /* Combined styles for toggle button */
             background: none;
             border: none;
             color: var(--accent-color);
@@ -195,36 +182,72 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 34px;
+            height: 34px; /* Match input+button height */
             flex-shrink: 0;
         }
-        
-        .toggle-button:hover {
+        #search-sidebar .toggle-button:hover {
             color: var(--heading-color);
         }
-        
-        .toggle-button i {
+        #search-sidebar .toggle-button i {
             transition: transform 0.4s ease-in-out;
         }
-        
         #search-sidebar.search-sidebar-hidden {
-             transform: translateX(calc(-100% + 50px));
+             transform: translateX(calc(-100% + 50px)); /* Adjust based on toggle button width + padding */
             box-shadow: none;
             background: transparent;
             border-color: transparent;
             backdrop-filter: none;
         }
-        
         #search-sidebar.search-sidebar-hidden input[type="search"],
         #search-sidebar.search-sidebar-hidden button#site-search-button {
             opacity: 0;
             pointer-events: none;
         }
-        
         #search-sidebar.search-sidebar-hidden .toggle-button i {
             transform: rotate(180deg);
         }
-
+        /* Search Results */
+        .search-results {
+            position: absolute;
+            top: calc(100% + 5px); /* Position below the search input */
+            left: 8px; /* Align with search input padding */
+            right: 8px; /* Align with overall padding */
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            margin-top: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999; /* Ensure it's above other content but below the sidebar itself */
+            width: calc(100% - 16px); /* Match sidebar padding */
+            backdrop-filter: blur(3px); /* Consistent blur */
+        }
+        .search-results .result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            cursor: pointer;
+            transition: background 0.2s;
+            color: var(--text-color); /* Ensure text color is readable */
+        }
+        .search-results .result-item:hover {
+            background: rgba(210, 105, 30, 0.1);
+        }
+        .search-results .result-item:last-child {
+            border-bottom: none;
+        }
+        .search-results .result-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 3px;
+        }
+        .search-results .result-category {
+            font-size: 0.8rem;
+            color: var(--text-color); /* Use theme color */
+            opacity: 0.8;
+        }
+        /* Advanced Timer */
         #advanced-timer {
             position: fixed;
             top: 20px;
@@ -240,19 +263,16 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-        
         .timer-display {
             display: flex;
             justify-content: center;
             align-items: baseline;
             margin-bottom: 10px;
         }
-        
         .digit-section {
             text-align: center;
             min-width: 45px;
         }
-        
         .digit {
             display: inline-block;
             background: var(--timer-digit-bg);
@@ -264,7 +284,6 @@
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        
         .digit-label {
             font-size: 0.7rem;
             color: var(--text-color);
@@ -272,36 +291,32 @@
             text-transform: uppercase;
             transition: color 0.3s ease;
         }
-        
         .separator {
             font-size: 1.5rem;
             color: var(--timer-digit-color);
             margin: 0 5px;
             align-self: center;
-            padding-bottom: 18px;
+            padding-bottom: 18px; /* Adjust to align with digits */
             transition: color 0.3s ease;
         }
-        
         .timer-status {
             font-size: 0.8rem;
             color: var(--text-color);
             margin-top: 10px;
             transition: color 0.3s ease;
+            min-height: 1.2em; /* Prevent layout shift when text changes */
         }
-        
         .timer-status i {
             margin-right: 5px;
             color: var(--accent-color);
             transition: color 0.3s ease;
         }
-        
         .timer-controls {
             margin-top: 10px;
             display: flex;
             justify-content: center;
             gap: 5px;
         }
-        
         .timer-controls button {
             background-color: var(--timer-controls-bg);
             color: white;
@@ -314,15 +329,13 @@
             display: flex;
             align-items: center;
         }
-        
         .timer-controls button:hover {
             background-color: var(--timer-controls-hover-bg);
         }
-        
         .timer-controls button i {
             margin-right: 3px;
         }
-
+        /* Eye Exercise Reminder */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
@@ -340,13 +353,13 @@
             animation: pulse 1.2s infinite;
             display: none;
             transition: all 0.3s ease;
+            max-width: 90%; /* Ensure it fits on small screens */
         }
-        
         @keyframes pulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
-
+        /* Navigation */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 10px 0;
@@ -356,11 +369,10 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: sticky;
             top: 0;
-            z-index: 997;
+            z-index: 997; /* Below sidebar and timer */
             backdrop-filter: blur(4px);
             transition: all 0.3s ease;
         }
-        
         nav a {
             color: var(--link-color);
             text-decoration: none;
@@ -371,22 +383,21 @@
             font-weight: bold;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
-        
         nav a:hover, nav a.active {
             color: var(--heading-color);
             background-color: var(--nav-link-active-bg);
             text-decoration: none;
         }
-
+        /* Main Content */
         main.container {
             background: rgba(255, 255, 255, 0.15);
-            scroll-padding-top: 70px;
+            scroll-padding-top: 70px; /* Adjust based on sticky nav height */
             transition: all 0.3s ease;
         }
-        
         .section-title {
             color: var(--heading-color);
             text-align: center;
+            margin-top: 0; /* Remove default margin if needed */
             margin-bottom: 30px;
             font-size: 1.8rem;
             padding-bottom: 15px;
@@ -394,7 +405,6 @@
             position: relative;
             transition: color 0.3s ease;
         }
-        
         h2.section-title::after {
             content: '';
             position: absolute;
@@ -407,8 +417,8 @@
             border-radius: 2px;
             transition: background-color 0.3s ease;
         }
-        
-        .article-card {
+        /* Article Card */
+        .article-card { /* Used within <article> tag */
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -417,13 +427,12 @@
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden; /* Contain content */
         }
-        
         .article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px var(--card-hover-shadow);
         }
-        
         .article-title {
             color: var(--accent-color);
             margin-top: 0;
@@ -431,39 +440,49 @@
             font-size: 1.4rem;
             transition: color 0.3s ease;
         }
-        
         .article-excerpt {
             color: var(--text-color);
             margin-bottom: 15px;
             font-size: 0.95rem;
             transition: color 0.3s ease;
         }
-        
         .article-meta {
             font-size: 0.8rem;
-            color: #777;
+            color: #777; /* Consider using a theme variable? */
             transition: color 0.3s ease;
+            display: flex; /* Better alignment */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 5px 15px; /* Spacing between items */
         }
-        
         .article-meta span {
-            margin-right: 15px;
+            margin-right: 0; /* Removed fixed margin, use gap */
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
         }
-        
+        .article-meta i {
+             margin-right: 5px; /* Space between icon and text */
+        }
         .read-more {
             color: var(--link-color);
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
+            display: inline-block; /* Ensure it's block-like for spacing */
+            margin-top: 10px;
         }
-        
         .read-more:hover {
             color: var(--heading-color);
             text-decoration: underline;
         }
-        
+        .view-all-link-container {
+            text-align: center;
+            margin-top: 30px; /* Consistent spacing */
+        }
         .view-all-link {
-            display: inline-block;
-            margin-top: 20px;
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            margin-top: 0; /* Reset margin if inside container */
             font-size: 1.1rem;
             padding: 8px 18px;
             border: 1px solid var(--accent-color);
@@ -472,17 +491,12 @@
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;
         }
-        
-        .view-all-link-container {
-            text-align: center;
-        }
-        
         .view-all-link:hover {
             background-color: var(--accent-color);
             color: white;
             text-decoration: none;
         }
-
+        /* Visual Model / Core Concepts */
         .visual-model {
             display: flex;
             justify-content: space-around;
@@ -495,7 +509,6 @@
             border-bottom: 1px solid var(--card-border);
             transition: border-color 0.3s ease;
         }
-        
         .model-item {
             text-align: center;
             color: var(--heading-color);
@@ -503,7 +516,6 @@
             min-width: 120px;
             transition: color 0.3s ease;
         }
-        
         .model-item i {
             font-size: 2.5rem;
             margin-bottom: 10px;
@@ -511,62 +523,79 @@
             color: var(--accent-color);
             transition: color 0.3s ease;
         }
-        
         .model-item span {
             font-size: 0.9rem;
             font-weight: bold;
         }
-
+        /* Make Money Preview Specifics */
         #make-money-preview .article-excerpt {
+            /* Apply text truncation using line-clamp */
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 2; /* Show 2 lines */
             -webkit-box-orient: vertical;
-            min-height: calc(1.7 * 0.95rem * 2);
+             /* Calculate min-height based on line-height and font-size */
+             /* Example: line-height * font-size * number of lines */
+             /* Ensure fallback height */
+            min-height: calc(1.7 * 0.95rem * 2); /* Approximate height */
         }
-        
+        /* Tags */
+        .tag { /* Base tag style */
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: white;
+            font-weight: bold;
+            line-height: 1.4;
+        }
         .tag-hot { background-color: #fbc02d; }
         .tag-premium { background-color: #43a047; }
         .tag-recommended { background-color: #fb8c00; }
         .tag-passive { background-color: #00acc1; }
 
+        /* About Section */
         #about .about-content {
             max-width: 750px;
             margin: 0 auto;
             text-align: left;
             line-height: 1.8;
         }
-        
+        #about .about-intro,
+        #about .about-philosophy,
+        #about .contact-info {
+            margin-bottom: 25px; /* Consistent spacing */
+        }
         #about .about-intro {
              background: linear-gradient(135deg, rgba(210, 105, 30, 0.05), rgba(139, 69, 19, 0.1));
              padding: 25px;
              border-radius: 10px;
-             margin-bottom: 25px;
              border: 1px solid var(--card-border);
              transition: all 0.3s ease;
          }
-        
         #about .about-intro h3,
         #about .about-philosophy h3,
         #about .contact-info h3 {
              color: var(--heading-color);
+             margin-top: 0;
              margin-bottom: 15px;
              font-size: 1.3rem;
              transition: color 0.3s ease;
+             display: flex; /* Align icon and text */
+             align-items: center;
+             gap: 8px;
          }
-        
         #about .about-intro p {
             margin-bottom: 10px;
             font-size: 0.95rem;
             transition: color 0.3s ease;
         }
-        
         #about .about-philosophy ul {
              list-style: none;
              padding: 0;
+             margin: 0;
          }
-        
         #about .about-philosophy li {
              margin-bottom: 12px;
              padding-left: 35px;
@@ -574,18 +603,16 @@
              font-size: 0.95rem;
              transition: color 0.3s ease;
          }
-        
         #about .about-philosophy li .philosophy-icon {
              position: absolute;
              left: 0;
-             top: 0;
+             top: 0; /* Adjust alignment if needed */
              color: var(--accent-color);
              font-size: 1.3em;
              width: 25px;
              text-align: center;
              transition: color 0.3s ease;
          }
-        
         #about .contact-info {
              background: rgba(255, 255, 255, 0.2);
              padding: 20px;
@@ -594,18 +621,27 @@
              border: 1px solid var(--card-border);
              transition: all 0.3s ease;
          }
-        
         #about .contact-info p {
              margin-bottom: 8px;
              transition: color 0.3s ease;
          }
-        
         #about .contact-info p strong {
              color: var(--heading-color);
              margin-right: 5px;
              transition: color 0.3s ease;
+             font-weight: bold; /* Ensure it's bold */
+         }
+         #about .contact-info a { /* Style links within contact info */
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+         }
+         #about .contact-info a:hover {
+             color: var(--heading-color);
+             text-decoration: underline;
          }
 
+        /* Footer */
         footer {
             margin-top: 40px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -616,13 +652,20 @@
             border-top: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
         }
-        
+        footer .container {
+             padding: 15px 20px; /* Add padding to footer container */
+             background: none; /* Remove container background if not needed */
+             border: none;
+             backdrop-filter: none;
+        }
+        footer p {
+            margin-bottom: 10px; /* Space below copyright */
+        }
         .social-links a {
             margin: 0 10px;
             display: inline-block;
             transition: transform 0.3s ease;
         }
-        
         .social-links img {
             width: 22px;
             height: 22px;
@@ -630,45 +673,47 @@
             vertical-align: middle;
             transition: filter 0.3s ease;
         }
-        
         .social-links a:hover {
             transform: scale(1.15);
         }
-        
         .social-links a:hover img {
             filter: none;
         }
-
+        /* Scroll to Top Button */
         #scrollToTopBtn {
             display: none;
             opacity: 0;
             position: fixed;
             bottom: 30px;
             right: 30px;
-            z-index: 999;
+            z-index: 999; /* Ensure it's above most content */
             border: none;
             outline: none;
             background-color: var(--accent-color);
             color: white;
             cursor: pointer;
-            padding: 10px 15px;
+            padding: 0; /* Remove padding, use width/height */
+            width: 45px; /* Fixed size */
+            height: 45px;
             border-radius: 50%;
             font-size: 18px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, opacity 0.4s ease-out, transform 0.3s ease;
+            display: flex; /* Center icon */
+            align-items: center;
+            justify-content: center;
         }
-        
         #scrollToTopBtn:hover {
             background-color: var(--heading-color);
             transform: scale(1.05);
         }
-
+        /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: var(--timer-bg);
-            border: 2px solid var(--timer-border);
+            background: var(--timer-bg); /* Consistent background */
+            border: 2px solid var(--timer-border); /* Consistent border */
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -676,16 +721,18 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1001; /* Above timer */
             backdrop-filter: blur(5px);
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            color: var(--accent-color); /* Make icon use theme color */
+            font-size: 1.2rem; /* Adjust icon size */
         }
-        
         .theme-toggle:hover {
             transform: rotate(15deg) scale(1.1);
+            color: var(--heading-color); /* Hover color */
         }
-        
+        /* Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0;
@@ -693,51 +740,12 @@
             height: 4px;
             background: var(--accent-color);
             width: 0;
-            z-index: 9999;
-            transition: width 0.3s ease;
+            z-index: 9999; /* Highest */
+            transition: width 0.3s ease, opacity 0.5s 0.3s ease; /* Add opacity transition */
+            opacity: 1; /* Start visible */
         }
-        
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 0 0 8px 8px;
-            margin-top: 5px;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
-        
-        .search-results .result-item {
-            padding: 10px 15px;
-            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        
-        .search-results .result-item:hover {
-            background: rgba(210, 105, 30, 0.1);
-        }
-        
-        .search-results .result-item:last-child {
-            border-bottom: none;
-        }
-        
-        .search-results .result-title {
-            font-weight: bold;
-            color: var(--accent-color);
-            margin-bottom: 3px;
-        }
-        
-        .search-results .result-category {
-            font-size: 0.8rem;
-            color: #888;
-        }
+
+        /* --- Responsive Styles --- */
 
         @media (max-width: 768px) {
             .container {
@@ -745,142 +753,136 @@
                 padding: 15px;
                 border-radius: 10px;
             }
-            
             .site-title { font-size: 2.2rem; }
             .site-subtitle { font-size: 0.9rem; }
             header img.profile-pic { width: 100px; height: 100px; }
-            
             nav {
                 padding: 8px 0;
+                /* Sticky nav might need top adjusted if header changes height significantly */
             }
-            
             nav a { margin: 0 8px; font-size: 0.9rem; padding: 4px 8px; }
-            main.container { scroll-padding-top: 60px; }
+            main.container { scroll-padding-top: 60px; } /* Adjust for potentially shorter sticky nav */
             #about { scroll-margin-top: 60px; }
-            
             .article-card { padding: 15px; border-radius: 10px; }
             .article-title { font-size: 1.2rem; }
             .article-excerpt { font-size: 0.9rem; }
-            
             #advanced-timer {
                 padding: 10px;
                 right: 10px;
-                top: 10px;
+                top: 10px; /* Adjust if overlapping with theme toggle */
                 border-radius: 10px;
             }
-            
             .digit { font-size: 1.2rem; padding: 6px 8px; }
             .digit-section { min-width: 38px; }
             .separator { font-size: 1.2rem; padding-bottom: 15px;}
             .timer-controls button { font-size: 0.75rem; padding: 4px 8px; }
-            
             #search-sidebar {
-                top: 80px;
+                top: 80px; /* Position below potentially smaller header */
                 left: 10px;
                 padding: 6px;
                 border-radius: 8px;
              }
-             
              #search-sidebar input[type="search"] {
                  padding: 5px 8px;
                  font-size: 0.85rem;
                  min-width: 70px;
              }
-             
             #search-sidebar button#site-search-button {
                 padding: 5px 10px;
                  font-size: 0.85rem;
             }
-            
-            .toggle-button {
+            #search-sidebar .toggle-button {
                 font-size: 1rem;
                 padding: 0 8px;
-                height: 31px;
+                height: 31px; /* Match smaller input height */
             }
-             
              #search-sidebar.search-sidebar-hidden {
-                  transform: translateX(calc(-100% + 45px));
+                  transform: translateX(calc(-100% + 45px)); /* Adjust based on smaller toggle button */
              }
-             
+            .search-results {
+                 left: 6px;
+                 right: 6px;
+                 width: calc(100% - 12px);
+             }
             #eye-exercise-reminder { font-size: 1.1rem; padding: 15px 25px; border-radius: 10px; }
             .visual-model { gap: 15px; }
             .model-item i { font-size: 2rem; }
             .model-item span { font-size: 0.8rem; }
-            #scrollToTopBtn { bottom: 20px; right: 20px; padding: 8px 12px; font-size: 16px; }
+            #scrollToTopBtn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 16px; }
+             .theme-toggle { width: 45px; height: 45px; top: 15px; left: 15px; }
         }
 
          @media (max-width: 480px) {
              body { line-height: 1.6; }
+             .container { padding: 10px; }
              .site-title { font-size: 1.9rem; }
              .site-subtitle { font-size: 0.8rem; }
              header img.profile-pic { width: 80px; height: 80px; }
-             
-             nav { position: static; }
+             nav { position: static; margin-bottom: 20px;} /* Unstick nav on smallest screens */
              main.container { scroll-padding-top: 0; }
              #about { scroll-margin-top: 0; }
              nav a { font-size: 0.8rem; margin: 0 5px; }
-             
              #search-sidebar {
-                 top: 10px;
-                 left: 10px;
-                 width: calc(100% - 20px);
+                 /* Consider making search static or modal on very small screens */
+                 position: static; /* Example: Make it static */
+                 width: calc(100% - 20px); /* Full width in container */
+                 margin: 15px auto; /* Center it */
+                 top: auto; left: auto; /* Reset fixed positioning */
                  justify-content: space-between;
                  padding: 5px;
+                 box-shadow: 0 2px 8px var(--search-shadow); /* Add back shadow if static */
              }
-             
              #search-sidebar input[type="search"] {
                  min-width: 50px;
                  flex-grow: 1;
              }
-             
              #search-sidebar button#site-search-button {
                  padding: 5px 8px;
              }
-             
-             .toggle-button {
-                 font-size: 0.9rem;
-                 padding: 0 6px;
-                 height: 28px;
-                 margin-left: 3px;
+             #search-sidebar .toggle-button { /* Hide toggle if static */
+                 display: none;
              }
-             
+              .search-results {
+                 position: static; /* Results below static search */
+                 margin-top: 5px;
+                 width: 100%;
+                 left: 0; right: 0;
+                 box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+              }
              #advanced-timer {
-                position: static;
+                position: static; /* Make timer static */
                 margin: 15px auto;
                 width: fit-content;
                 box-shadow: 0 4px 10px var(--timer-shadow);
+                top: auto; right: auto; /* Reset fixed positioning */
              }
-             
              .digit { font-size: 1rem; padding: 5px 6px; }
              .separator { font-size: 1rem; padding-bottom: 12px;}
              .digit-section { min-width: 30px; }
-             
-            .section-title { font-size: 1.5rem; padding-bottom: 10px; }
+            .section-title { font-size: 1.5rem; padding-bottom: 10px; margin-bottom: 20px;}
             h2.section-title::after { width: 60px; height: 2px; }
             .article-title { font-size: 1.1rem; }
             .article-excerpt { font-size: 0.85rem; }
-            .article-meta { font-size: 0.7rem; }
+            .article-meta { font-size: 0.7rem; gap: 3px 10px; }
              .view-all-link { font-size: 0.9rem; padding: 6px 12px; }
-             
             .visual-model { padding: 15px 0; }
             .model-item { min-width: 90px; }
              .model-item i { font-size: 1.8rem; }
-             
             #about .about-content { padding: 0 10px; }
              #about .about-intro, #about .contact-info { padding: 15px; }
              #about .about-intro h3, #about .about-philosophy h3, #about .contact-info h3 { font-size: 1.1rem; }
              #about .about-philosophy li { padding-left: 30px; font-size: 0.9rem; }
              #about .about-philosophy li .philosophy-icon { font-size: 1.1em; width: 20px; }
-             
             footer { font-size: 0.75rem; }
+            footer .container { padding: 10px; }
             .social-links img { width: 18px; height: 18px; }
-            #scrollToTopBtn { bottom: 15px; right: 15px; padding: 6px 10px; font-size: 14px; }
-            
+            #scrollToTopBtn { bottom: 15px; right: 15px; width: 35px; height: 35px; font-size: 14px; }
             .theme-toggle {
-                top: 10px;
-                left: 10px;
-                width: 40px;
-                height: 40px;
+                 /* Keep theme toggle accessible */
+                 top: 10px;
+                 left: 10px;
+                 width: 40px;
+                 height: 40px;
             }
          }
     </style>
@@ -888,21 +890,24 @@
 <body>
     <!-- 页面加载进度条 -->
     <div class="progress-bar"></div>
-    
+
     <!-- 主题切换按钮 -->
-    <div class="theme-toggle" id="themeToggle">
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
         <i class="fas fa-moon"></i>
-    </div>
-    
-    <!-- 左侧搜索栏 -->
-    <div id="search-sidebar">
-        <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
+    </button>
+
+    <!-- 左侧搜索栏 (ARIA role added) -->
+    <aside id="search-sidebar" role="search">
+        <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站" aria-controls="searchResults" aria-expanded="false">
         <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
-        <div class="search-results" id="searchResults"></div>
-        <button id="toggle-search-sidebar" class="toggle-button" aria-label="隐藏搜索栏">
+        <!-- Search Results Container -->
+        <div class="search-results" id="searchResults" role="listbox">
+            <!-- Results will be populated by JS -->
+        </div>
+        <button id="toggle-search-sidebar" class="toggle-button" aria-label="隐藏/显示搜索栏" aria-expanded="true">
             <i class="fas fa-chevron-left"></i>
         </button>
-    </div>
+    </aside>
 
     <header>
         <div class="container">
@@ -915,9 +920,9 @@
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
 
-            <!-- 暖色科幻计时器 -->
-            <div id="advanced-timer">
-                <div class="timer-display">
+            <!-- 暖色科幻计时器 (ARIA live region added) -->
+            <div id="advanced-timer" role="timer" aria-live="polite" aria-atomic="true">
+                <div class="timer-display" aria-hidden="true"> <!-- Hide visual display from screen readers, status is enough -->
                     <div class="digit-section">
                         <div class="digit" id="hours">00</div>
                         <div class="digit-label">小时</div>
@@ -934,24 +939,24 @@
                     </div>
                 </div>
                 <div class="timer-status">
-                    <i class="fas fa-clock"></i> <span id="timer-status-text">专注计时中</span>
+                    <i class="fas fa-clock" aria-hidden="true"></i> <span id="timer-status-text">专注计时中</span>
                 </div>
                 <div class="timer-controls">
                      <button id="timer-pause-resume" aria-label="暂停计时器">
-                         <i class="fas fa-pause"></i> 暂停
+                         <i class="fas fa-pause" aria-hidden="true"></i> 暂停
                      </button>
                      <button id="timer-reset" aria-label="重置计时器">
-                         <i class="fas fa-undo"></i> 重置
+                         <i class="fas fa-undo" aria-hidden="true"></i> 重置
                      </button>
                      <button id="timer-mode" aria-label="切换计时模式">
-                         <i class="fas fa-cog"></i> 模式
+                         <i class="fas fa-cog" aria-hidden="true"></i> 模式
                      </button>
                 </div>
             </div>
 
-            <!-- 护眼提醒 -->
-            <div id="eye-exercise-reminder">
-                <i class="fas fa-eye"></i> 休息一下，看看远方！
+            <!-- 护眼提醒 (Role added) -->
+            <div id="eye-exercise-reminder" role="alert" aria-live="assertive">
+                <i class="fas fa-eye" aria-hidden="true"></i> 休息一下，看看远方！
             </div>
         </div>
     </header>
@@ -959,25 +964,25 @@
     <!-- 可视化模型/核心理念区 -->
     <div class="container visual-model">
         <div class="model-item">
-            <i class="fas fa-brain"></i>
+            <i class="fas fa-brain" aria-hidden="true"></i>
             <span>持续学习</span>
         </div>
         <div class="model-item">
-            <i class="fas fa-cogs"></i>
+            <i class="fas fa-cogs" aria-hidden="true"></i>
             <span>系统优化</span>
         </div>
         <div class="model-item">
-            <i class="fas fa-robot"></i>
+            <i class="fas fa-robot" aria-hidden="true"></i>
             <span>AI赋能</span>
         </div>
         <div class="model-item">
-            <i class="fas fa-heartbeat"></i>
+            <i class="fas fa-heartbeat" aria-hidden="true"></i>
             <span>身心健康</span>
         </div>
     </div>
 
     <!-- Sticky Navigation -->
-    <nav>
+    <nav aria-label="主导航">
         <a href="#home" class="nav-link">首页</a>
         <a href="articles.html" class="nav-link">封建脉络百战</a>
         <a href="thoughts.html" class="nav-link">PrimePulse</a>
@@ -988,193 +993,193 @@
     </nav>
 
     <main class="container">
-        <section id="home" style="scroll-margin-top: 70px;">
-            <h2 class="section-title">封建脉络百战</h2>
+        <section id="home" role="region" aria-labelledby="home-title" style="scroll-margin-top: 70px;">
+            <h2 class="section-title" id="home-title">封建脉络百战</h2>
             <div class="articles">
-                <div class="article-card">
+                <!-- Replaced div.article-card with article element -->
+                <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">楚汉双雄</h3>
+                        <h3 class="article-title"><a href="articles.html#chu-han" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">楚汉双雄</a></h3>
                         <p class="article-excerpt">探索从长平之战的硝烟到决战垓下的史诗对决，分析关键人物与战役，揭示权力更迭的深层逻辑与历史智慧...</p>
                         <div class="article-meta">
-                            <span><i class="far fa-calendar-alt"></i> 发布于: 2025-06-</span>
-                            <span><i class="fas fa-folder-open"></i> 分类: 历史洞察</span>
+                            <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-06-</span>
+                            <span><i class="fas fa-folder-open" aria-hidden="true"></i> 分类: 历史洞察</span>
                         </div>
                         <a href="articles.html#chu-han" class="read-more">阅读全文 →</a>
                     </div>
-                </div>
+                </article>
             </div>
             <div class="view-all-link-container">
                 <a href="articles.html" class="view-all-link">
-                    <i class="fas fa-book-reader"></i> 查看所有历史文章 →
+                    <i class="fas fa-book-reader" aria-hidden="true"></i> 查看所有历史文章 →
                 </a>
             </div>
         </section>
 
-        <section id="latest-thoughts" style="margin-top: 50px; scroll-margin-top: 70px;">
-            <h2 class="section-title">最新PrimePulse精选</h2>
+        <section id="latest-thoughts" role="region" aria-labelledby="thoughts-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+            <h2 class="section-title" id="thoughts-title">最新PrimePulse精选</h2>
             <div class="articles">
-                <div class="article-card">
+                <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">"注意力 > 时间 > 金钱"</h3>
+                        <h3 class="article-title"><a href="thoughts.html#attention" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">"注意力 > 时间 > 金钱"</a></h3>
                         <p class="article-excerpt">在这个信息爆炸的时代，注意力是最稀缺的资源。警惕三大敌人：1. 凑热闹：盲目追随无关热点。 2. 随大流：被焦虑驱动，缺乏独立判断。 3. 瞎操心：过度关注他人，内耗自身。守护注意力，就是守护你的未来...</p>
                         <div class="article-meta">
-                            <span><i class="far fa-calendar-alt"></i> 发布于: 2025-06-</span>
-                            <span><i class="fas fa-lightbulb"></i> 分类: 思考</span>
+                            <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-06-</span>
+                            <span><i class="fas fa-lightbulb" aria-hidden="true"></i> 分类: 思考</span>
                         </div>
                         <a href="thoughts.html#attention" class="read-more">阅读完整思考 →</a>
                     </div>
-                </div>
+                </article>
             </div>
             <div class="view-all-link-container">
                 <a href="thoughts.html" class="view-all-link">
-                    <i class="fas fa-brain"></i> 查看所有深度思考 →
+                    <i class="fas fa-brain" aria-hidden="true"></i> 查看所有深度思考 →
                 </a>
             </div>
         </section>
 
-        <section id="self-study-preview" style="margin-top: 50px; scroll-margin-top: 70px;">
-            <h2 class="section-title">如何自学</h2>
+        <section id="self-study-preview" role="region" aria-labelledby="selfstudy-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+            <h2 class="section-title" id="selfstudy-title">如何自学</h2>
             <div class="articles">
-                <div class="article-card">
+                <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">认知心态：万物皆为我所用</h3>
+                        <h3 class="article-title"><a href="self-study.html#mindset" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">认知心态：万物皆为我所用</a></h3>
                         <p class="article-excerpt">自学始于心态。拥抱长期主义，构建系统思维，持续优化迭代，坚信成长可能性。将世界视为你的知识库，无处不可学...</p>
                         <div class="article-meta">
-                             <span><i class="far fa-calendar-alt"></i> 发布于: 2025-07-</span>
-                             <span><i class="fas fa-mind-share"></i> 分类: 认知</span>
+                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-07-</span>
+                             <span><i class="fas fa-mind-share" aria-hidden="true"></i> 分类: 认知</span>
                         </div>
                         <a href="self-study.html#mindset" class="read-more">深入理解 →</a>
                     </div>
-                </div>
-                <div class="article-card">
+                </article>
+                <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">落地方法：高效实践</h3>
+                        <h3 class="article-title"><a href="self-study.html#methods" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">落地方法：高效实践</a></h3>
                         <p class="article-excerpt">光说不练假把式。掌握每日复盘（10分钟）、科学规划（15分钟）、费曼技巧、刻意练习等核心方法，知行合一...</p>
                         <div class="article-meta">
-                             <span><i class="far fa-calendar-alt"></i> 发布于: 2025-07-</span>
-                             <span><i class="fas fa-tasks"></i> 分类: 落地</span>
+                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-07-</span>
+                             <span><i class="fas fa-tasks" aria-hidden="true"></i> 分类: 落地</span>
                         </div>
                         <a href="self-study.html#methods" class="read-more">立即实践 →</a>
                     </div>
-                </div>
+                </article>
             </div>
             <div class="view-all-link-container">
                 <a href="self-study.html" class="view-all-link">
-                    <i class="fas fa-graduation-cap"></i> 查看完整自学体系 →
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i> 查看完整自学体系 →
                 </a>
             </div>
         </section>
 
         <!-- 搞钱专栏精选 -->
-        <section id="make-money-preview" style="margin-top: 50px; scroll-margin-top: 70px;">
-            <h2 class="section-title">💰 搞钱专栏精选</h2>
+        <section id="make-money-preview" role="region" aria-labelledby="makemoney-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+            <h2 class="section-title" id="makemoney-title">💰 搞钱专栏精选</h2>
             <div class="articles">
-                 <div class="article-card">
+                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">AI副业赚钱指南</h3>
+                        <h3 class="article-title"><a href="make-money.html#ai-side-hustle" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">AI副业赚钱指南</a></h3>
                         <p class="article-excerpt">拥抱AI浪潮！学习如何利用 ChatGPT、Midjourney 等工具，在内容创作、设计、咨询等领域开拓副业，实现智能化创收。</p>
                         <div class="article-meta">
-                            <span><i class="far fa-calendar-alt"></i> 2025-06-15</span>
-                            <span><i class="fas fa-robot"></i> AI副业</span>
-                            <span class="tag-hot">🔥 热门</span>
+                            <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-15</span>
+                            <span><i class="fas fa-robot" aria-hidden="true"></i> AI副业</span>
+                            <span class="tag tag-hot">🔥 热门</span>
                         </div>
                         <a href="make-money.html#ai-side-hustle" class="read-more">立即学习 →</a>
                     </div>
-                </div>
-                 <div class="article-card">
+                </article>
+                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">自媒体变现全攻略</h3>
+                        <h3 class="article-title"><a href="make-money.html#media-monetization" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">自媒体变现全攻略</a></h3>
                         <p class="article-excerpt">人人都是媒体的时代，如何脱颖而出？从定位、内容、运营到多平台（小红书/抖音/B站/公众号）变现，打造你的个人影响力品牌。</p>
                         <div class="article-meta">
-                             <span><i class="far fa-calendar-alt"></i> 2025-06-20</span>
-                             <span><i class="fas fa-bullhorn"></i> 自媒体</span>
-                             <span class="tag-premium">💎 精品</span>
+                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-20</span>
+                             <span><i class="fas fa-bullhorn" aria-hidden="true"></i> 自媒体</span>
+                             <span class="tag tag-premium">💎 精品</span>
                         </div>
                         <a href="make-money.html#media-monetization" class="read-more">开始变现 →</a>
                     </div>
-                </div>
-                <div class="article-card">
+                </article>
+                <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">技能变现宝典</h3>
+                        <h3 class="article-title"><a href="make-money.html#skill-monetization" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">技能变现宝典</a></h3>
                         <p class="article-excerpt">你的专业技能就是宝藏！无论是教学、咨询、设计、编程还是写作，学习如何包装、定价、推广，将技能转化为实实在在的收入。</p>
                         <div class="article-meta">
-                             <span><i class="far fa-calendar-alt"></i> 2025-06-25</span>
-                             <span><i class="fas fa-tools"></i> 技能变现</span>
-                             <span class="tag-recommended">⭐ 推荐</span>
+                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-25</span>
+                             <span><i class="fas fa-tools" aria-hidden="true"></i> 技能变现</span>
+                             <span class="tag tag-recommended">⭐ 推荐</span>
                         </div>
                         <a href="make-money.html#skill-monetization" class="read-more">挖掘潜力 →</a>
                     </div>
-                </div>
-                 <div class="article-card">
+                </article>
+                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title">被动收入系统</h3>
+                        <h3 class="article-title"><a href="make-money.html#passive-income-system" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">被动收入系统</a></h3>
                         <p class="article-excerpt">告别“手停口停”！探索版权、联盟营销、知识付费、数字产品等多种被动收入模式，构建可持续的财富增长引擎。</p>
                         <div class="article-meta">
-                             <span><i class="far fa-calendar-alt"></i> 2025-07-10</span>
-                             <span><i class="fas fa-chart-line"></i> 被动收入</span>
-                             <span class="tag-passive">💰 长期</span>
+                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-07-10</span>
+                             <span><i class="fas fa-chart-line" aria-hidden="true"></i> 被动收入</span>
+                             <span class="tag tag-passive">💰 长期</span>
                         </div>
                         <a href="make-money.html#passive-income-system" class="read-more">构建系统 →</a>
                     </div>
-                </div>
+                </article>
             </div>
             <div class="view-all-link-container">
                 <a href="make-money.html" class="view-all-link">
-                    💎 解锁全部搞钱秘籍 →
+                    <i class="fas fa-gem" aria-hidden="true"></i> 解锁全部搞钱秘籍 →
                 </a>
             </div>
         </section>
 
         <!-- 运动板块 -->
-        <section id="sports" style="margin-top: 50px; scroll-margin-top: 70px;">
-            <h2 class="section-title">运动健康</h2>
+        <section id="sports" role="region" aria-labelledby="sports-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+            <h2 class="section-title" id="sports-title">运动健康</h2>
             <div class="articles">
-                <div class="article-card">
+                <!-- Using article for thematic content blocks -->
+                <article class="article-card">
                     <div class="article-content">
                         <h3 class="article-title">我的运动哲学：身心合一</h3>
                         <p class="article-excerpt">身体是承载一切的殿堂。规律运动不仅强健体魄，更能磨练意志，激发思维活力。每日投入时间运动，是对未来的最佳投资。</p>
                         <div class="article-meta">
-                            <span><i class="fas fa-dumbbell"></i> 类型: 综合训练</span>
-                            <span><i class="far fa-clock"></i> 频率: 每日坚持</span>
+                            <span><i class="fas fa-dumbbell" aria-hidden="true"></i> 类型: 综合训练</span>
+                            <span><i class="far fa-clock" aria-hidden="true"></i> 频率: 每日坚持</span>
                         </div>
                     </div>
-                </div>
-                 <div class="article-card">
+                </article>
+                 <article class="article-card">
                     <div class="article-content">
                         <h3 class="article-title">运动与学习的协同效应</h3>
                         <p class="article-excerpt">大脑并非孤立存在。科学研究表明，规律的有氧运动和力量训练能促进神经发生，改善血液循环，显著提升记忆力、专注力及学习效率。</p>
                         <div class="article-meta">
-                            <span><i class="fas fa-brain"></i> 科学依据: 神经科学</span>
-                            <span><i class="fas fa-chart-bar"></i> 实践效果: 效率提升</span>
+                            <span><i class="fas fa-brain" aria-hidden="true"></i> 科学依据: 神经科学</span>
+                            <span><i class="fas fa-chart-bar" aria-hidden="true"></i> 实践效果: 效率提升</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- 关于我板块 -->
-        <section id="about" style="margin-top: 50px; scroll-margin-top: 70px;">
-            <h2 class="section-title">关于我</h2>
+        <section id="about" role="region" aria-labelledby="about-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+            <h2 class="section-title" id="about-title">关于我</h2>
             <div class="about-content">
                 <div class="about-intro">
-                    <h3><i class="fas fa-user-circle"></i> 个人简介</h3>
+                    <h3><i class="fas fa-user-circle" aria-hidden="true"></i> 个人简介</h3>
                     <p>你好，我是AIFLOW创建者，一个穿梭于代码、历史与健身房之间的终身学习者。热衷于探索 AI 如何赋能个人成长，痴迷于从历史长河中汲取智慧，坚信科学方法与持续行动的力量。</p>
                     <p>这个网站是我记录思考、分享所得、链接同好的空间。希望能与你一起，在学习、优化、成长的道路上并肩前行。</p>
                 </div>
-
                 <div class="about-philosophy">
-                    <h3><i class="fas fa-lightbulb"></i> 我的理念</h3>
+                    <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 我的理念</h3>
                     <ul>
-                        <li><span class="philosophy-icon">📚</span><strong>终身学习：</strong> 世界是无尽的课堂，保持好奇，永远在路上。</li>
-                        <li><span class="philosophy-icon">🔧</span><strong>系统优化：</strong> 拒绝低效重复，用科学方法打磨学习、工作与生活流。</li>
-                        <li><span class="philosophy-icon">🚀</span><strong>AI赋能：</strong> 拥抱智能时代，让AI成为提升自我、创造价值的强大工具。</li>
-                        <li><span class="philosophy-icon">💪</span><strong>身心统一：</strong> 健康的体魄是思维的基石，平衡发展，缺一不可。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">📚</span><strong>终身学习：</strong> 世界是无尽的课堂，保持好奇，永远在路上。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">🔧</span><strong>系统优化：</strong> 拒绝低效重复，用科学方法打磨学习、工作与生活流。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">🚀</span><strong>AI赋能：</strong> 拥抱智能时代，让AI成为提升自我、创造价值的强大工具。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">💪</span><strong>身心统一：</strong> 健康的体魄是思维的基石，平衡发展，缺一不可。</li>
                     </ul>
                 </div>
-
                 <div class="contact-info">
-                    <h3><i class="fas fa-envelope"></i> 联系方式</h3>
-                    <p><strong>邮箱：</strong> <a href="mailto:19927675096@163.com" style="color: var(--link-color);">19927675096@163.com</a></p>
+                    <h3><i class="fas fa-envelope" aria-hidden="true"></i> 联系方式</h3>
+                    <p><strong>邮箱：</strong> <a href="mailto:19927675096@163.com">19927675096@163.com</a></p>
                     <p><strong>微信：</strong> bin1026317qrpm0 (添加请注明"AIFLOW读者")</p>
                     <p>欢迎就学习方法、AI应用、个人成长、历史思考或任何感兴趣的话题进行交流。期待听到你的声音！</p>
                 </div>
@@ -1183,45 +1188,27 @@
     </main>
 
     <!-- 返回顶部按钮 -->
-    <button id="scrollToTopBtn" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
+    <button id="scrollToTopBtn" title="返回顶部" aria-label="返回顶部">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 AIFLOW. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for Growth.</p>
-            <div class="social-links">
-                <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter / X"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter/X 图标" loading="lazy" width="22" height="22"></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub 图标" loading="lazy" width="22" height="22"></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube 图标" loading="lazy" width="22" height="22"></a>
+            <p>&copy; 2025 AIFLOW. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-color);" aria-label="爱心"></i> for Growth.</p>
+            <div class="social-links" aria-label="社交媒体链接">
+                <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter / X" aria-label="在 Twitter / X 上关注我们"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter/X 图标" loading="lazy" width="22" height="22"></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="在 GitHub 上查看我们的项目"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub 图标" loading="lazy" width="22" height="22"></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="订阅我们的 YouTube 频道"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube 图标" loading="lazy" width="22" height="22"></a>
             </div>
         </div>
     </footer>
 
-    <script>
+    <!-- Placed script at the end, added defer attribute -->
+    <script defer>
         document.addEventListener('DOMContentLoaded', () => {
-            // 页面加载进度条
+            // --- Selectors ---
             const progressBar = document.querySelector('.progress-bar');
-            window.addEventListener('load', () => {
-                progressBar.style.width = '100%';
-                setTimeout(() => progressBar.style.opacity = '0', 500);
-            });
-
-            // 暗黑模式切换
             const themeToggle = document.getElementById('themeToggle');
-            const isDarkMode = localStorage.getItem('darkMode') === 'true';
-            
-            if (isDarkMode) {
-                document.body.classList.add('dark-theme');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-            
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-theme');
-                const isDark = document.body.classList.contains('dark-theme');
-                localStorage.setItem('darkMode', isDark);
-                themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            });
-
-            // 计时器逻辑
             const hoursElem = document.getElementById('hours');
             const minutesElem = document.getElementById('minutes');
             const secondsElem = document.getElementById('seconds');
@@ -1229,240 +1216,323 @@
             const pauseResumeButton = document.getElementById('timer-pause-resume');
             const resetButton = document.getElementById('timer-reset');
             const modeButton = document.getElementById('timer-mode');
-            
+            const reminder = document.getElementById('eye-exercise-reminder');
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            const searchInput = document.getElementById('site-search-input');
+            const searchResults = document.getElementById('searchResults');
+            const searchButton = document.getElementById('site-search-button');
+            const toggleSearchBtn = document.getElementById('toggle-search-sidebar');
+            const searchSidebar = document.getElementById('search-sidebar');
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('main section[id]'); // Select only sections in main with an ID
+
+            // --- State Variables ---
             let totalSeconds = 0;
             let timerInterval = null;
             let isPaused = false;
             let timerMode = 'focus'; // focus, break, or custom
-            
-            // 初始化计时器状态
-            function initTimer() {
-                const savedSeconds = localStorage.getItem('aiflowTimerSeconds');
-                const savedPaused = localStorage.getItem('aiflowTimerPaused');
-                const savedMode = localStorage.getItem('timerMode');
-                
-                if (savedSeconds) totalSeconds = parseInt(savedSeconds, 10);
-                if (savedPaused === 'true') {
-                    isPaused = true;
-                    pauseResumeButton.innerHTML = '<i class="fas fa-play"></i> 继续';
-                    timerStatusText.textContent = "计时已暂停";
-                }
-                if (savedMode) timerMode = savedMode;
-                
-                updateTimerDisplay();
-            }
-            
-            function updateTimerDisplay() {
+            let eyeReminderTimeout = null;
+            let scrollTimeout = null;
+
+            // --- Functions ---
+
+            // Progress Bar
+            const handlePageLoad = () => {
+                progressBar.style.width = '100%';
+                // Use transitionend event for better timing
+                progressBar.addEventListener('transitionend', () => {
+                     // Start fade out slightly after completion
+                     setTimeout(() => {
+                         progressBar.style.opacity = '0';
+                     }, 100);
+                }, { once: true }); // Ensure listener runs only once
+            };
+
+            // Dark Mode
+            const applyTheme = (isDark) => {
+                 document.body.classList.toggle('dark-theme', isDark);
+                 themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                 themeToggle.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
+                 localStorage.setItem('darkMode', isDark);
+            };
+            const toggleTheme = () => {
+                 applyTheme(!document.body.classList.contains('dark-theme'));
+            };
+            const loadTheme = () => {
+                 const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+                 applyTheme(savedDarkMode);
+            };
+
+            // Timer
+            const updateTimerDisplay = () => {
                 const hours = Math.floor(totalSeconds / 3600);
                 const minutes = Math.floor((totalSeconds % 3600) / 60);
                 const seconds = totalSeconds % 60;
-                
                 hoursElem.textContent = hours.toString().padStart(2, '0');
                 minutesElem.textContent = minutes.toString().padStart(2, '0');
                 secondsElem.textContent = seconds.toString().padStart(2, '0');
-                
-                // 根据模式更新状态文本
+
                 const modeText = {
                     'focus': '专注计时中',
                     'break': '休息计时中',
                     'custom': '自定义计时中'
                 };
-                timerStatusText.textContent = modeText[timerMode] || "计时中";
-            }
-            
-            function startTimer() {
+                let status = modeText[timerMode] || "计时中";
+                if (isPaused) {
+                    status = "计时已暂停";
+                }
+                // Update ARIA live region text
+                timerStatusText.textContent = `${status}: ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+            };
+            const showEyeExerciseReminder = () => {
+                if (reminder.style.display === 'block' || document.hidden) return; // Don't show if already visible or tab inactive
+                reminder.style.display = 'block';
+                // Clear previous timeout if exists
+                if (eyeReminderTimeout) clearTimeout(eyeReminderTimeout);
+                eyeReminderTimeout = setTimeout(() => {
+                    reminder.style.display = 'none';
+                }, 6000);
+            };
+            const startTimer = () => {
                 if (timerInterval) clearInterval(timerInterval);
                 timerInterval = setInterval(() => {
-                    if (!isPaused) {
+                    if (!isPaused && !document.hidden) { // Only increment if not paused and tab is active
                         totalSeconds++;
                         updateTimerDisplay();
-                        
-                        // 根据模式检查提醒
+
                         const reminderInterval = {
-                            'focus': 1500, // 25分钟
-                            'break': 300,  // 5分钟
-                            'custom': 1800 // 30分钟
+                            'focus': 1500, // 25 min (25 * 60)
+                            'break': 300,  // 5 min (5 * 60)
+                            'custom': 1800 // 30 min (30 * 60)
                         }[timerMode] || 1500;
-                        
+
                         if (totalSeconds > 0 && totalSeconds % reminderInterval === 0) {
                             showEyeExerciseReminder();
                         }
-                        
                         saveTimerState();
                     }
                 }, 1000);
-            }
-            
-            function togglePauseResume() {
+            };
+            const togglePauseResume = () => {
                 isPaused = !isPaused;
                 if (isPaused) {
-                    pauseResumeButton.innerHTML = '<i class="fas fa-play"></i> 继续';
-                    timerStatusText.textContent = "计时已暂停";
+                    pauseResumeButton.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i> 继续';
+                    pauseResumeButton.setAttribute('aria-label', '继续计时器');
                     clearInterval(timerInterval);
                 } else {
-                    pauseResumeButton.innerHTML = '<i class="fas fa-pause"></i> 暂停';
-                    timerStatusText.textContent = timerMode === 'focus' ? "专注计时中" : "计时中";
-                    startTimer();
+                    pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
+                    pauseResumeButton.setAttribute('aria-label', '暂停计时器');
+                    startTimer(); // Resume timer
                 }
+                updateTimerDisplay(); // Update status text immediately
                 saveTimerState();
-            }
-            
-            function resetTimer() {
+            };
+            const resetTimer = () => {
                 totalSeconds = 0;
                 isPaused = false;
-                pauseResumeButton.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
+                pauseResumeButton.setAttribute('aria-label', '暂停计时器');
                 updateTimerDisplay();
+                if (timerInterval) clearInterval(timerInterval); // Clear existing before starting new
                 startTimer();
                 saveTimerState();
-            }
-            
-            function toggleTimerMode() {
+            };
+            const toggleTimerMode = () => {
                 const modes = ['focus', 'break', 'custom'];
                 const nextIndex = (modes.indexOf(timerMode) + 1) % modes.length;
                 timerMode = modes[nextIndex];
+                updateTimerDisplay(); // Update status text for new mode
                 saveTimerState();
-                updateTimerDisplay();
-            }
-            
-            function saveTimerState() {
+                // Optionally reset timer on mode change? Depends on desired behavior.
+                // resetTimer();
+            };
+            const saveTimerState = () => {
                 localStorage.setItem('aiflowTimerSeconds', totalSeconds);
                 localStorage.setItem('aiflowTimerPaused', isPaused);
                 localStorage.setItem('timerMode', timerMode);
-            }
-            
-            // 初始化计时器
-            initTimer();
-            if (!isPaused) startTimer();
-            
-            // 事件监听
-            pauseResumeButton.addEventListener('click', togglePauseResume);
-            resetButton.addEventListener('click', resetTimer);
-            modeButton.addEventListener('click', toggleTimerMode);
-            
-            // 护眼提醒
-            const reminder = document.getElementById('eye-exercise-reminder');
-            function showEyeExerciseReminder() {
-                if (reminder.style.display === 'block') return;
-                
-                reminder.style.display = 'block';
-                setTimeout(() => {
-                    reminder.style.display = 'none';
-                }, 6000);
-            }
-            
-            // 返回顶部按钮
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 150) {
-                    scrollToTopBtn.style.display = 'block';
-                    scrollToTopBtn.style.opacity = '1';
+            };
+            const initTimer = () => {
+                const savedSeconds = localStorage.getItem('aiflowTimerSeconds');
+                const savedPaused = localStorage.getItem('aiflowTimerPaused');
+                const savedMode = localStorage.getItem('timerMode');
+
+                if (savedSeconds) totalSeconds = parseInt(savedSeconds, 10);
+                if (savedMode) timerMode = savedMode; // Load mode first
+                if (savedPaused === 'true') {
+                    isPaused = true;
+                    pauseResumeButton.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i> 继续';
+                    pauseResumeButton.setAttribute('aria-label', '继续计时器');
                 } else {
-                    scrollToTopBtn.style.opacity = '0';
-                    setTimeout(() => {
-                        if (window.scrollY <= 150) scrollToTopBtn.style.display = 'none';
-                    }, 400);
+                    isPaused = false; // Ensure isPaused is false if not saved as true
+                    pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
+                    pauseResumeButton.setAttribute('aria-label', '暂停计时器');
                 }
-            });
-            
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            });
-            
-            // 搜索功能
-            const searchInput = document.getElementById('site-search-input');
-            const searchResults = document.getElementById('searchResults');
-            const searchButton = document.getElementById('site-search-button');
-            
-            // 模拟搜索数据
-            const searchData = [
+
+                updateTimerDisplay(); // Initial display update
+                if (!isPaused) {
+                    startTimer(); // Start timer if not paused
+                }
+            };
+
+            // Scroll to Top
+            const handleScroll = () => {
+                 // Clear existing timeout
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+
+                // Set timeout to check scroll position after a short delay
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY > 150) {
+                        if (scrollToTopBtn.style.display !== 'flex') { // Check current display style
+                           scrollToTopBtn.style.display = 'flex'; // Use flex for centering
+                           // Force reflow to ensure transition starts
+                           void scrollToTopBtn.offsetWidth;
+                           scrollToTopBtn.style.opacity = '1';
+                        }
+                    } else {
+                        if (scrollToTopBtn.style.opacity === '1') { // Check current opacity
+                            scrollToTopBtn.style.opacity = '0';
+                            // Hide after transition ends
+                            scrollToTopBtn.addEventListener('transitionend', () => {
+                                if (window.scrollY <= 150) { // Double check position before hiding
+                                    scrollToTopBtn.style.display = 'none';
+                                }
+                            }, { once: true });
+                        }
+                    }
+                }, 100); // Adjust delay as needed (e.g., 100ms)
+            };
+            const scrollToTop = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            // Search
+            const searchData = [ // Keep using mock data as requested
                 { title: "楚汉双雄", category: "历史洞察", link: "articles.html#chu-han" },
                 { title: "注意力 > 时间 > 金钱", category: "思考", link: "thoughts.html#attention" },
                 { title: "认知心态：万物皆为我所用", category: "自学方法", link: "self-study.html#mindset" },
                 { title: "AI副业赚钱指南", category: "搞钱专栏", link: "make-money.html#ai-side-hustle" },
                 { title: "被动收入系统", category: "搞钱专栏", link: "make-money.html#passive-income-system" }
+                // Add more searchable items if needed
             ];
-            
-            function performSearch() {
+            const performSearch = () => {
                 const query = searchInput.value.trim().toLowerCase();
-                searchResults.innerHTML = '';
-                
+                searchResults.innerHTML = ''; // Clear previous results
+
                 if (!query) {
                     searchResults.style.display = 'none';
+                    searchInput.setAttribute('aria-expanded', 'false');
                     return;
                 }
-                
-                const results = searchData.filter(item => 
-                    item.title.toLowerCase().includes(query) || 
+
+                const results = searchData.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
                     item.category.toLowerCase().includes(query)
                 );
-                
+
                 if (results.length > 0) {
                     results.forEach(result => {
                         const item = document.createElement('div');
                         item.className = 'result-item';
+                        item.setAttribute('role', 'option'); // ARIA role for listbox item
                         item.innerHTML = `
                             <div class="result-title">${result.title}</div>
                             <div class="result-category">${result.category}</div>
                         `;
                         item.addEventListener('click', () => {
                             window.location.href = result.link;
+                            searchResults.style.display = 'none'; // Hide results after click
+                            searchInput.setAttribute('aria-expanded', 'false');
+                        });
+                         item.addEventListener('keydown', (e) => { // Basic keyboard nav
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                window.location.href = result.link;
+                                searchResults.style.display = 'none';
+                                searchInput.setAttribute('aria-expanded', 'false');
+                            }
                         });
                         searchResults.appendChild(item);
                     });
-                    searchResults.style.display = 'block';
                 } else {
                     const noResult = document.createElement('div');
                     noResult.className = 'result-item';
                     noResult.textContent = '没有找到相关内容';
+                    noResult.setAttribute('aria-disabled', 'true'); // Indicate non-interactive
                     searchResults.appendChild(noResult);
-                    searchResults.style.display = 'block';
                 }
-            }
-            
-            searchInput.addEventListener('input', performSearch);
-            searchButton.addEventListener('click', performSearch);
-            
-            // 点击页面其他地方关闭搜索结果
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#search-sidebar')) {
-                    searchResults.style.display = 'none';
-                }
-            });
-            
-            // 搜索栏切换
-            const toggleSearchBtn = document.getElementById('toggle-search-sidebar');
-            const searchSidebar = document.getElementById('search-sidebar');
-            
-            toggleSearchBtn.addEventListener('click', () => {
-                const isHidden = searchSidebar.classList.toggle('search-sidebar-hidden');
-                toggleSearchBtn.querySelector('i').className = isHidden ? 
-                    'fas fa-chevron-right' : 'fas fa-chevron-left';
-            });
-            
-            // 导航高亮
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('section');
-            
-            function highlightNav() {
-                let current = '';
-                
+                searchResults.style.display = 'block';
+                searchInput.setAttribute('aria-expanded', 'true');
+            };
+             const hideSearchResults = (e) => {
+                 // Check if the click is outside the search sidebar entirely
+                 if (!searchSidebar.contains(e.target)) {
+                     searchResults.style.display = 'none';
+                     searchInput.setAttribute('aria-expanded', 'false');
+                 }
+             };
+
+            // Search Sidebar Toggle
+            const toggleSearchSidebar = () => {
+                 const isHidden = searchSidebar.classList.toggle('search-sidebar-hidden');
+                 const icon = toggleSearchBtn.querySelector('i');
+                 icon.className = isHidden ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+                 toggleSearchBtn.setAttribute('aria-expanded', !isHidden);
+                 // Hide search results when sidebar collapses
+                 if (isHidden) {
+                     searchResults.style.display = 'none';
+                     searchInput.setAttribute('aria-expanded', 'false');
+                 }
+            };
+
+            // Navigation Highlighting
+            const highlightNav = () => {
+                let currentSectionId = '';
+                const scrollPosition = window.scrollY;
+
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (window.scrollY >= sectionTop - 100) {
-                        current = section.getAttribute('id');
+                    // Consider nav height + some offset
+                    const sectionTop = section.offsetTop - (document.querySelector('nav')?.offsetHeight || 70) - 20;
+                    if (scrollPosition >= sectionTop) {
+                        currentSectionId = section.getAttribute('id');
                     }
                 });
-                
+
+                 // Fallback to 'home' if near top or no section detected
+                if (!currentSectionId && scrollPosition < 200) {
+                    currentSectionId = 'home';
+                 }
+
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
+                    // Match href containing the section ID anchor
+                    if (link.getAttribute('href').includes(`#${currentSectionId}`)) {
                         link.classList.add('active');
                     }
                 });
-            }
-            
-            window.addEventListener('scroll', highlightNav);
-            highlightNav();
+            };
+
+            // --- Event Listeners ---
+            window.addEventListener('load', handlePageLoad);
+            themeToggle.addEventListener('click', toggleTheme);
+            pauseResumeButton.addEventListener('click', togglePauseResume);
+            resetButton.addEventListener('click', resetTimer);
+            modeButton.addEventListener('click', toggleTimerMode);
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', highlightNav); // Also highlight on scroll
+            scrollToTopBtn.addEventListener('click', scrollToTop);
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch); // Allow button click search
+            searchInput.addEventListener('focus', performSearch); // Show results on focus if query exists
+            document.addEventListener('click', hideSearchResults);
+            toggleSearchBtn.addEventListener('click', toggleSearchSidebar);
+
+            // --- Initializations ---
+            loadTheme();
+            initTimer();
+            handleScroll(); // Initial check for scroll button
+            highlightNav(); // Initial nav highlight
+            // Ensure sidebar starts with correct ARIA state based on class
+            toggleSearchBtn.setAttribute('aria-expanded', !searchSidebar.classList.contains('search-sidebar-hidden'));
+
         });
     </script>
 </body>
