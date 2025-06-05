@@ -3,119 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Meta Tags -->
     <title>AIFLOW - AI赋能个体进化 (护眼模式)</title>
     <meta name="description" content="AIFLOW - 赋能个体进化，探索学习、自我优化、搞钱副业与成长的未来。提供历史洞察、深度思考、自学方法和AI应用。">
     <meta name="keywords" content="AIFLOW, AI, 人工智能, 个人成长, 自我优化, 学习方法, 搞钱, 副业, 历史, 思考, 效率, 终身学习">
-
-    <!-- Open Graph Meta Tags (for social sharing) -->
-    <meta property="og:title" content="AIFLOW - AI赋能个体进化">
-    <meta property="og:description" content="探索学习、自我优化、AI应用与成长的未来。">
-    <meta property="og:image" content="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true"> <!-- 使用头像作为示例 OG image -->
-    <meta property="og:url" content="YOUR_WEBSITE_URL"> <!-- 替换为你的网站实际URL -->
-    <meta property="og:type" content="website">
-
-    <!-- Font Awesome for icons (via CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- PWA Manifest (需要创建 manifest.json 文件) -->
-    <!-- <link rel="manifest" href="/manifest.json"> -->
-    <meta name="theme-color" content="#fdf6e3"> <!-- 主题颜色，可根据需要调整 -->
-
-    <!-- Basic Content Security Policy (CSP) - 需要根据实际资源调整 -->
-    <!-- meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://github.com https://cdn-icons-png.flaticon.com data:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; media-src 'self' https://sf1-cdn-tos.douyinstatic.com;" -->
-
-    <!-- Google Analytics (替换 GA_MEASUREMENT_ID) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-     -->
-
     <style>
-        /* CSS Structure Suggestion:
-           In a real project, consider splitting this CSS into multiple files:
-           - base.css (body, basic typography, variables)
-           - layout.css (container, header, footer, sidebar positioning)
-           - components.css (buttons, cards, timer, search, nav, etc.)
-           - theme.css (color schemes, potentially light/dark modes)
-        */
-
-        /* 变量定义 - 暖色护眼主题 */
         :root {
-            --bg-gradient-start: #fdf6e3; /* 柔和米色 */
-            --bg-gradient-mid1: #f5eabc; /* 稍深米黄 */
-            --bg-gradient-mid2: #e0d8b0; /* 暖灰褐 */
-            --bg-gradient-end: #c7bea2; /* 灰褐色 */
-            --text-color: #555; /* 深灰色文字 */
-            --heading-color: #8B4513; /* 鞍褐色标题 */
-            --accent-color: #D2691E; /* 巧克力色强调 */
-            --card-bg: rgba(255, 255, 255, 0.6); /* 半透明白色卡片背景 */
-            --card-border: rgba(139, 69, 19, 0.2); /* 鞍褐色半透明边框 */
-            --card-hover-shadow: rgba(210, 105, 30, 0.3); /* 巧克力色阴影 */
-            --link-color: #D2691E; /* 链接颜色 */
-            --timer-bg: rgba(255, 250, 235, 0.9); /* 计时器背景 - 象牙白 */
-            --timer-border: #A0522D; /* 赭色 */
-            --timer-digit-bg: linear-gradient(45deg, #fff8dc, #faf0e6); /* 玉米丝/亚麻色 */
-            --timer-digit-color: #8B4513; /* 鞍褐色数字 */
-            --timer-shadow: rgba(160, 82, 45, 0.3); /* 赭色阴影 */
-            --timer-controls-bg: rgba(210, 105, 30, 0.8); /* Timer controls background */
-            --timer-controls-hover-bg: #8B4513; /* Timer controls hover */
-            --reminder-bg: linear-gradient(45deg, #ffcc80, #ffb74d); /* 橙色提醒 */
+            --bg-gradient-start: #fdf6e3;
+            --bg-gradient-mid1: #f5eabc;
+            --bg-gradient-mid2: #e0d8b0;
+            --bg-gradient-end: #c7bea2;
+            --text-color: #555;
+            --heading-color: #8B4513;
+            --accent-color: #D2691E;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(139, 69, 19, 0.2);
+            --card-hover-shadow: rgba(210, 105, 30, 0.3);
+            --link-color: #D2691E;
+            --timer-bg: rgba(255, 250, 235, 0.9);
+            --timer-border: #A0522D;
+            --timer-digit-bg: linear-gradient(45deg, #fff8dc, #faf0e6);
+            --timer-digit-color: #8B4513;
+            --timer-shadow: rgba(160, 82, 45, 0.3);
+            --timer-controls-bg: rgba(210, 105, 30, 0.8);
+            --timer-controls-hover-bg: #8B4513;
+            --reminder-bg: linear-gradient(45deg, #ffcc80, #ffb74d);
             --reminder-shadow: rgba(255, 152, 0, 0.4);
-            --search-bg: rgba(255, 250, 235, 0.85); /* 搜索栏背景 */
-            --search-border: #A0522D; /* 搜索栏边框 */
-            --search-shadow: rgba(160, 82, 45, 0.2); /* 搜索栏阴影 */
-            --search-input-bg: #fff; /* 搜索输入框背景 */
-            --search-toggle-btn-width: 40px; /* 切换按钮大致宽度 */
-            --nav-link-active-bg: rgba(139, 69, 19, 0.1); /* Active nav link background */
+            --search-bg: rgba(255, 250, 235, 0.85);
+            --search-border: #A0522D;
+            --search-shadow: rgba(160, 82, 45, 0.2);
+            --search-input-bg: #fff;
+            --nav-link-active-bg: rgba(139, 69, 19, 0.1);
+            --dark-mode: 0;
         }
 
-        /* Basic Dark Mode Suggestion (using prefers-color-scheme) */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-gradient-start: #2d2a23;
-                --bg-gradient-mid1: #3a362e;
-                --bg-gradient-mid2: #4a453a;
-                --bg-gradient-end: #5a544a;
-                --text-color: #c5c0b4;
-                --heading-color: #e6a76e; /* Lighter brown for contrast */
-                --accent-color: #ffaf60; /* Brighter accent */
-                --card-bg: rgba(40, 37, 30, 0.7);
-                --card-border: rgba(230, 167, 110, 0.3);
-                --card-hover-shadow: rgba(255, 175, 96, 0.4);
-                --link-color: #ffaf60;
-                --timer-bg: rgba(50, 46, 38, 0.9);
-                --timer-border: #c88a54;
-                --timer-digit-bg: linear-gradient(45deg, #4f4a3f, #5c564a);
-                --timer-digit-color: #e6a76e;
-                --timer-controls-bg: rgba(255, 175, 96, 0.8);
-                --timer-controls-hover-bg: #e6a76e;
-                --search-bg: rgba(50, 46, 38, 0.9);
-                --search-border: #c88a54;
-                --search-shadow: rgba(200, 138, 84, 0.3);
-                --search-input-bg: #3a362e;
-                --nav-link-active-bg: rgba(230, 167, 110, 0.2);
-                /* Adjust social icon filter for dark mode if needed */
-                .social-links img {
-                    filter: brightness(0.8) sepia(20%) saturate(100%);
-                }
-                 .social-links a:hover img {
-                     filter: none;
-                 }
-            }
-             /* Ensure timer status icon is visible in dark mode */
-             #advanced-timer .timer-status i {
-                 color: var(--accent-color);
-             }
+        .dark-theme {
+            --bg-gradient-start: #2d2a23;
+            --bg-gradient-mid1: #3a362e;
+            --bg-gradient-mid2: #4a453a;
+            --bg-gradient-end: #5a544a;
+            --text-color: #c5c0b4;
+            --heading-color: #e6a76e;
+            --accent-color: #ffaf60;
+            --card-bg: rgba(40, 37, 30, 0.7);
+            --card-border: rgba(230, 167, 110, 0.3);
+            --card-hover-shadow: rgba(255, 175, 96, 0.4);
+            --link-color: #ffaf60;
+            --timer-bg: rgba(50, 46, 38, 0.9);
+            --timer-border: #c88a54;
+            --timer-digit-bg: linear-gradient(45deg, #4f4a3f, #5c564a);
+            --timer-digit-color: #e6a76e;
+            --timer-controls-bg: rgba(255, 175, 96, 0.8);
+            --timer-controls-hover-bg: #e6a76e;
+            --search-bg: rgba(50, 46, 38, 0.9);
+            --search-border: #c88a54;
+            --search-shadow: rgba(200, 138, 84, 0.3);
+            --search-input-bg: #3a362e;
+            --nav-link-active-bg: rgba(230, 167, 110, 0.2);
+            --reminder-bg: linear-gradient(45deg, #ff8c00, #ff6b00);
         }
 
-        /* 暖色护眼背景 */
         body {
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid1) 25%, var(--bg-gradient-mid2) 50%, var(--bg-gradient-end) 100%);
             background-attachment: fixed;
@@ -125,10 +72,10 @@
             margin: 0;
             padding: 0;
             line-height: 1.7;
-            scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
+            scroll-behavior: smooth;
+            transition: background 0.5s ease, color 0.3s ease;
         }
 
-        /* 容器 */
         .container {
             max-width: 1100px;
             background: rgba(255, 255, 255, 0.1);
@@ -137,51 +84,60 @@
             padding: 20px;
             margin: 20px auto;
             border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
         }
 
-        /* 页头 */
         header .container {
             text-align: center;
             padding-top: 40px;
             padding-bottom: 30px;
-            position: relative; /* Needed for absolute positioning of timer */
+            position: relative;
         }
+        
         .site-title {
             font-size: 2.8rem;
             color: var(--heading-color);
             margin-bottom: 10px;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            transition: color 0.3s ease;
         }
+        
         .site-subtitle {
             font-size: 1rem;
             color: var(--text-color);
             margin-bottom: 5px;
+            transition: color 0.3s ease;
         }
-        header img.profile-pic { /* More specific selector */
+        
+        header img.profile-pic {
             border: 5px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 50%; /* Ensure it stays round */
-            display: block; /* Helps with centering and margins */
-            margin: 0 auto 20px auto; /* Center horizontally and add bottom margin */
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            transition: all 0.3s ease;
         }
 
-        /* 左侧搜索栏样式 */
         #search-sidebar {
             position: fixed;
-            top: 120px; /* 调整垂直位置 */
+            top: 120px;
             left: 20px;
             background: var(--search-bg);
             border: 1px solid var(--search-border);
             border-radius: 10px;
-            padding: 8px; /* 调整内边距 */
+            padding: 8px;
             box-shadow: 0 2px 15px var(--search-shadow);
             z-index: 998;
             display: flex;
             align-items: center;
             backdrop-filter: blur(5px);
-            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background 0.4s, border-color 0.4s; /* Added background/border transition */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background 0.4s, border-color 0.4s;
         }
+        
         #search-sidebar input[type="search"] {
             border: 1px solid var(--search-border);
             padding: 6px 10px;
@@ -190,89 +146,87 @@
             background-color: var(--search-input-bg);
             color: var(--text-color);
             outline: none;
-            transition: border-color 0.3s, opacity 0.2s ease-out; /* Added opacity transition */
-            flex-grow: 1; /* 占据可用空间 */
-            min-width: 100px; /* 保证最小宽度 */
-            margin-right: -1px; /* 合并边框 */
-            opacity: 1; /* Explicitly state initial opacity */
-            pointer-events: auto; /* Explicitly state interaction */
+            transition: border-color 0.3s, opacity 0.2s ease-out;
+            flex-grow: 1;
+            min-width: 100px;
+            margin-right: -1px;
+            opacity: 1;
+            pointer-events: auto;
         }
+        
         #search-sidebar input[type="search"]:focus {
             border-color: var(--accent-color);
-            z-index: 1; /* 确保focus时边框在最上层 */
+            z-index: 1;
         }
-        #search-sidebar button#site-search-button { /* 更具体的选择器 */
+        
+        #search-sidebar button#site-search-button {
             background-color: var(--accent-color);
             color: white;
             border: 1px solid var(--accent-color);
             border-left: none;
             padding: 6px 12px;
-            border-radius: 0 5px 5px 0; /* 只有右侧圆角 */
+            border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.2s ease-out; /* Added opacity transition */
-            flex-shrink: 0; /* 防止按钮被压缩 */
+            transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.2s ease-out;
+            flex-shrink: 0;
             opacity: 1;
             pointer-events: auto;
         }
+        
         #search-sidebar button#site-search-button:hover {
             background-color: var(--heading-color);
             border-color: var(--heading-color);
         }
+        
         #search-sidebar button#site-search-button i {
              vertical-align: middle;
         }
-        /* 切换按钮样式 */
+        
         .toggle-button {
             background: none;
             border: none;
             color: var(--accent-color);
             cursor: pointer;
-            font-size: 1.1rem; /* 稍微调大图标 */
-            padding: 0 10px; /* 按钮点击区域 */
-            margin-left: 5px; /* 与搜索按钮间隔 */
-            transition: color 0.3s ease, transform 0.3s ease; /* 添加图标旋转过渡 */
+            font-size: 1.1rem;
+            padding: 0 10px;
+            margin-left: 5px;
+            transition: color 0.3s ease, transform 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 34px; /* 大致与输入框和按钮同高 */
-            flex-shrink: 0; /* 防止按钮被压缩 */
+            height: 34px;
+            flex-shrink: 0;
         }
+        
         .toggle-button:hover {
             color: var(--heading-color);
         }
+        
         .toggle-button i {
-            transition: transform 0.4s ease-in-out; /* 图标旋转动画 */
+            transition: transform 0.4s ease-in-out;
         }
-        /* 搜索栏隐藏状态 */
+        
         #search-sidebar.search-sidebar-hidden {
-            /* Calculate based on its content + padding + toggle button width */
-            /* transform: translateX(calc(-100% + var(--search-toggle-btn-width) + 8px + 5px)); */ /* Approximated, adjust as needed */
-            /* Simpler approach: move it almost fully off-screen */
-             transform: translateX(calc(-100% + 50px)); /* Keep ~50px visible (adjust) */
-            box-shadow: none; /* 隐藏时可以移除阴影 */
-            background: transparent; /* 隐藏时背景透明 */
+             transform: translateX(calc(-100% + 50px));
+            box-shadow: none;
+            background: transparent;
             border-color: transparent;
-            backdrop-filter: none; /* Remove blur when hidden */
+            backdrop-filter: none;
         }
+        
         #search-sidebar.search-sidebar-hidden input[type="search"],
         #search-sidebar.search-sidebar-hidden button#site-search-button {
-            opacity: 0; /* 隐藏内部元素 */
-            pointer-events: none; /* 阻止交互 */
+            opacity: 0;
+            pointer-events: none;
         }
-        #search-sidebar.search-sidebar-hidden .toggle-button {
-             /* Optional: add a subtle background/border when hidden for visibility */
-             /* background: rgba(255, 250, 235, 0.7); */
-             /* border: 1px solid rgba(160, 82, 45, 0.5); */
-             border-radius: 0 5px 5px 0;
-        }
+        
         #search-sidebar.search-sidebar-hidden .toggle-button i {
-            transform: rotate(180deg); /* 箭头反向 */
+            transform: rotate(180deg);
         }
 
-        /* 暖色计时器样式 */
         #advanced-timer {
-            position: fixed; /* Changed from absolute to fixed */
+            position: fixed;
             top: 20px;
             right: 20px;
             background: var(--timer-bg);
@@ -283,18 +237,22 @@
             font-family: 'Courier New', monospace;
             z-index: 1000;
             backdrop-filter: blur(8px);
-            text-align: center; /* Center timer content */
+            text-align: center;
+            transition: all 0.3s ease;
         }
+        
         .timer-display {
             display: flex;
             justify-content: center;
             align-items: baseline;
             margin-bottom: 10px;
         }
+        
         .digit-section {
             text-align: center;
-            min-width: 45px; /* Ensure consistent width */
+            min-width: 45px;
         }
+        
         .digit {
             display: inline-block;
             background: var(--timer-digit-bg);
@@ -304,51 +262,67 @@
             font-size: 1.5rem;
             font-weight: bold;
             box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
+        
         .digit-label {
             font-size: 0.7rem;
             color: var(--text-color);
             margin-top: 3px;
             text-transform: uppercase;
+            transition: color 0.3s ease;
         }
+        
         .separator {
             font-size: 1.5rem;
             color: var(--timer-digit-color);
             margin: 0 5px;
-            align-self: center; /* Align separators vertically */
-            padding-bottom: 18px; /* Align with digits roughly */
+            align-self: center;
+            padding-bottom: 18px;
+            transition: color 0.3s ease;
         }
+        
         .timer-status {
             font-size: 0.8rem;
             color: var(--text-color);
             margin-top: 10px;
+            transition: color 0.3s ease;
         }
+        
         .timer-status i {
             margin-right: 5px;
             color: var(--accent-color);
+            transition: color 0.3s ease;
         }
+        
         .timer-controls {
             margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
         }
+        
         .timer-controls button {
             background-color: var(--timer-controls-bg);
             color: white;
             border: none;
             border-radius: 5px;
             padding: 5px 10px;
-            margin: 0 5px;
             cursor: pointer;
             font-size: 0.8rem;
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
         }
+        
         .timer-controls button:hover {
             background-color: var(--timer-controls-hover-bg);
         }
+        
         .timer-controls button i {
             margin-right: 3px;
         }
 
-        /* 护眼提醒 */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
@@ -364,17 +338,15 @@
             box-shadow: 0 0 40px var(--reminder-shadow);
             z-index: 2000;
             animation: pulse 1.2s infinite;
-            display: none; /* Initially hidden */
+            display: none;
+            transition: all 0.3s ease;
         }
-         #eye-exercise-reminder .fa-eye {
-             margin-right: 10px;
-         }
+        
         @keyframes pulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
 
-        /* 导航栏 */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 10px 0;
@@ -382,51 +354,48 @@
             margin-bottom: 30px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            position: sticky; /* Make nav sticky */
-            top: 0; /* Stick to the top */
-            z-index: 997; /* Below timer and search */
+            position: sticky;
+            top: 0;
+            z-index: 997;
             backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
+        
         nav a {
             color: var(--link-color);
             text-decoration: none;
             margin: 0 15px;
-            padding: 5px 10px; /* Add padding for better click area and active state */
-            border-radius: 4px; /* Rounded corners for active state */
+            padding: 5px 10px;
+            border-radius: 4px;
             font-size: 1rem;
             font-weight: bold;
             transition: color 0.3s ease, background-color 0.3s ease;
         }
-        nav a:hover, nav a.active { /* Style for hover and active link */
+        
+        nav a:hover, nav a.active {
             color: var(--heading-color);
-            background-color: var(--nav-link-active-bg); /* Subtle background for active/hover */
-            text-decoration: none; /* Remove underline on hover if background is used */
+            background-color: var(--nav-link-active-bg);
+            text-decoration: none;
         }
-        /* For external page links, active state would need server-side logic or more complex JS */
 
-
-        /* 内容区域优化 */
         main.container {
             background: rgba(255, 255, 255, 0.15);
-            /* Add scroll padding top to account for sticky nav */
-             scroll-padding-top: 70px; /* Adjust based on nav height */
+            scroll-padding-top: 70px;
+            transition: all 0.3s ease;
         }
+        
         .section-title {
             color: var(--heading-color);
             text-align: center;
             margin-bottom: 30px;
             font-size: 1.8rem;
-            /* border-bottom: 2px solid var(--accent-color); */ /* Replaced by ::after */
-            display: inline-block; /* Changed back for centering issue */
-            padding-bottom: 5px;
-            /* Centering H2 section titles */
+            padding-bottom: 15px;
             display: block;
-            border-bottom: none; /* Remove original underline */
             position: relative;
-            padding-bottom: 15px; /* Add space for the decorative line */
+            transition: color 0.3s ease;
         }
-        /* Removed duplicate h2.section-title */
-        h2.section-title::after { /* Decorative line */
+        
+        h2.section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -436,7 +405,9 @@
             height: 3px;
             background-color: var(--accent-color);
             border-radius: 2px;
+            transition: background-color 0.3s ease;
         }
+        
         .article-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -447,199 +418,194 @@
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
+        
         .article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px var(--card-hover-shadow);
         }
+        
         .article-title {
-            color: var(--accent-color); /* Changed title color */
+            color: var(--accent-color);
             margin-top: 0;
             margin-bottom: 10px;
             font-size: 1.4rem;
+            transition: color 0.3s ease;
         }
+        
         .article-excerpt {
             color: var(--text-color);
             margin-bottom: 15px;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
+        
         .article-meta {
             font-size: 0.8rem;
-            color: #777; /* Slightly darker meta text */
+            color: #777;
+            transition: color 0.3s ease;
         }
+        
         .article-meta span {
             margin-right: 15px;
         }
+        
         .read-more {
             color: var(--link-color);
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
+        
         .read-more:hover {
             color: var(--heading-color);
             text-decoration: underline;
         }
-        .view-all-link { /* Common style for "view all" links */
-             display: inline-block; /* Changed from block to inline-block for centering */
-             /* text-align: center; No longer needed on inline-block */
-             margin-top: 20px;
-             font-size: 1.1rem;
-             padding: 8px 18px;
-             border: 1px solid var(--accent-color);
-             color: var(--accent-color);
-             border-radius: 5px;
-             text-decoration: none;
-             transition: background-color 0.3s, color 0.3s;
+        
+        .view-all-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            padding: 8px 18px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
         }
-         .view-all-link-container { /* Added container for centering */
-             text-align: center;
-         }
-         .view-all-link:hover {
-             background-color: var(--accent-color);
-             color: white;
-             text-decoration: none;
-         }
+        
+        .view-all-link-container {
+            text-align: center;
+        }
+        
+        .view-all-link:hover {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+        }
 
-        /* 特色图标/可视化模型区域 */
         .visual-model {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            gap: 20px; /* Add gap between items */
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px 0;
             margin: 10px 0 30px 0;
             border-top: 1px solid var(--card-border);
             border-bottom: 1px solid var(--card-border);
+            transition: border-color 0.3s ease;
         }
+        
         .model-item {
             text-align: center;
             color: var(--heading-color);
-            flex: 1; /* Allow items to grow */
-            min-width: 120px; /* Minimum width before wrapping */
+            flex: 1;
+            min-width: 120px;
+            transition: color 0.3s ease;
         }
+        
         .model-item i {
             font-size: 2.5rem;
             margin-bottom: 10px;
             display: block;
             color: var(--accent-color);
+            transition: color 0.3s ease;
         }
+        
         .model-item span {
             font-size: 0.9rem;
             font-weight: bold;
         }
 
-        /* 搞钱专栏精简 */
         #make-money-preview .article-excerpt {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            min-height: calc(1.7 * 0.95rem * 2); /* Calculate min height based on line-height * font-size * lines */
+            min-height: calc(1.7 * 0.95rem * 2);
         }
-        #make-money-preview .article-meta span[style*="color"] { /* Style tags more robustly */
-             font-weight: bold;
-             padding: 2px 6px; /* Slightly more padding */
-             border-radius: 3px;
-             color: white !important; /* Ensure white text */
-             margin-left: 5px;
-             font-size: 0.75rem; /* Smaller tag text */
-             vertical-align: middle; /* Align tags better */
-         }
-        /* Define tag colors using classes for better maintainability */
+        
         .tag-hot { background-color: #fbc02d; }
         .tag-premium { background-color: #43a047; }
         .tag-recommended { background-color: #fb8c00; }
         .tag-passive { background-color: #00acc1; }
-        /* Add more specific tags if needed */
-        /* #make-money-preview .article-meta span[style*="#9c27b0"] { background-color: #8e24aa; } */
-        /* #make-money-preview .article-meta span[style*="#f44336"] { background-color: #e53935; } */
 
-        #make-money-preview .view-all-link {
-             padding: 12px 25px;
-             border-width: 2px;
-             /* background: linear-gradient(45deg, rgba(210, 105, 30, 0.1), rgba(139, 69, 19, 0.1)); */ /* Use solid border */
-             border-color: var(--accent-color);
-        }
-         #make-money-preview .view-all-link:hover {
-             background: var(--accent-color);
-             color: white;
-         }
-
-        /* 关于我精简 */
-        #about { /* Target the section directly */
-            scroll-margin-top: 70px; /* Offset for sticky nav when linking */
-        }
         #about .about-content {
             max-width: 750px;
             margin: 0 auto;
             text-align: left;
             line-height: 1.8;
         }
+        
         #about .about-intro {
              background: linear-gradient(135deg, rgba(210, 105, 30, 0.05), rgba(139, 69, 19, 0.1));
              padding: 25px;
              border-radius: 10px;
              margin-bottom: 25px;
              border: 1px solid var(--card-border);
+             transition: all 0.3s ease;
          }
+        
         #about .about-intro h3,
         #about .about-philosophy h3,
         #about .contact-info h3 {
              color: var(--heading-color);
              margin-bottom: 15px;
-             font-size: 1.3rem; /* Slightly larger sub-heading */
+             font-size: 1.3rem;
+             transition: color 0.3s ease;
          }
+        
         #about .about-intro p {
             margin-bottom: 10px;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
-         #about .about-intro p:last-child {
-             margin-bottom: 0;
-         }
+        
         #about .about-philosophy ul {
              list-style: none;
              padding: 0;
          }
+        
         #about .about-philosophy li {
              margin-bottom: 12px;
-             padding-left: 35px; /* Increased padding for icon */
+             padding-left: 35px;
              position: relative;
              font-size: 0.95rem;
+             transition: color 0.3s ease;
          }
-        #about .about-philosophy li .philosophy-icon { /* Use a class for icons */
+        
+        #about .about-philosophy li .philosophy-icon {
              position: absolute;
              left: 0;
-             top: 0; /* Align icon better */
+             top: 0;
              color: var(--accent-color);
-             font-size: 1.3em; /* Slightly larger icon */
-             width: 25px; /* Ensure space for icon */
+             font-size: 1.3em;
+             width: 25px;
              text-align: center;
+             transition: color 0.3s ease;
          }
+        
         #about .contact-info {
              background: rgba(255, 255, 255, 0.2);
              padding: 20px;
              border-radius: 10px;
              font-size: 0.95rem;
              border: 1px solid var(--card-border);
+             transition: all 0.3s ease;
          }
+        
         #about .contact-info p {
              margin-bottom: 8px;
+             transition: color 0.3s ease;
          }
-         #about .contact-info p strong { /* Make labels bolder */
+        
+        #about .contact-info p strong {
              color: var(--heading-color);
              margin-right: 5px;
-         }
-        #about .contact-info p:last-child {
-             margin-bottom: 0;
-             margin-top: 15px;
-             font-style: italic;
-             color: #777; /* Slightly darker italic text */
-             font-size: 0.9rem;
+             transition: color 0.3s ease;
          }
 
-        /* 页脚 */
         footer {
             margin-top: 40px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -648,36 +614,34 @@
             font-size: 0.85rem;
             color: var(--text-color);
             border-top: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
         }
-        footer .container {
-             padding: 10px 20px;
-             background: none;
-             border: none;
-             backdrop-filter: none;
-         }
+        
         .social-links a {
             margin: 0 10px;
             display: inline-block;
             transition: transform 0.3s ease;
         }
-         .social-links img {
+        
+        .social-links img {
             width: 22px;
             height: 22px;
-            filter: grayscale(50%) sepia(30%) brightness(90%); /* Keep original filter */
+            filter: grayscale(50%) sepia(30%) brightness(90%);
             vertical-align: middle;
-            transition: filter 0.3s ease; /* Add filter transition */
+            transition: filter 0.3s ease;
         }
+        
         .social-links a:hover {
-            transform: scale(1.15); /* Slightly larger hover effect */
+            transform: scale(1.15);
         }
+        
         .social-links a:hover img {
-            filter: none; /* Remove filter on hover */
+            filter: none;
         }
 
-        /* 返回顶部按钮 */
         #scrollToTopBtn {
-            display: none; /* Initially hidden */
-            opacity: 0; /* Start fully transparent */
+            display: none;
+            opacity: 0;
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -691,198 +655,262 @@
             border-radius: 50%;
             font-size: 18px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, opacity 0.4s ease-out, transform 0.3s ease; /* Added opacity and transform */
+            transition: background-color 0.3s, opacity 0.4s ease-out, transform 0.3s ease;
         }
+        
         #scrollToTopBtn:hover {
             background-color: var(--heading-color);
-            transform: scale(1.05); /* Slight scale on hover */
+            transform: scale(1.05);
         }
 
-        /* 响应式设计调整 */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--timer-bg);
+            border: 2px solid var(--timer-border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent-color);
+            width: 0;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0 0 8px 8px;
+            margin-top: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        
+        .search-results .result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .search-results .result-item:hover {
+            background: rgba(210, 105, 30, 0.1);
+        }
+        
+        .search-results .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-results .result-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 3px;
+        }
+        
+        .search-results .result-category {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
                 padding: 15px;
-                border-radius: 10px; /* Slightly smaller radius */
+                border-radius: 10px;
             }
-            .site-title { font-size: 2.2rem; } /* Adjusted size */
+            
+            .site-title { font-size: 2.2rem; }
             .site-subtitle { font-size: 0.9rem; }
             header img.profile-pic { width: 100px; height: 100px; }
-
-             /* Sticky Nav adjustments */
-             nav {
-                 padding: 8px 0;
-             }
-             nav a { margin: 0 8px; font-size: 0.9rem; padding: 4px 8px; }
-             main.container { scroll-padding-top: 60px; } /* Adjust for smaller nav */
-             #about { scroll-margin-top: 60px; }
-
+            
+            nav {
+                padding: 8px 0;
+            }
+            
+            nav a { margin: 0 8px; font-size: 0.9rem; padding: 4px 8px; }
+            main.container { scroll-padding-top: 60px; }
+            #about { scroll-margin-top: 60px; }
+            
             .article-card { padding: 15px; border-radius: 10px; }
             .article-title { font-size: 1.2rem; }
             .article-excerpt { font-size: 0.9rem; }
-
-            /* 调整计时器和搜索栏 */
+            
             #advanced-timer {
                 padding: 10px;
                 right: 10px;
                 top: 10px;
                 border-radius: 10px;
             }
+            
             .digit { font-size: 1.2rem; padding: 6px 8px; }
             .digit-section { min-width: 38px; }
             .separator { font-size: 1.2rem; padding-bottom: 15px;}
             .timer-controls button { font-size: 0.75rem; padding: 4px 8px; }
-
-             #search-sidebar {
-                top: 80px; /* Lowered slightly */
-                left: 10px; /* 调整左边距 */
-                padding: 6px; /* 减少内边距 */
-                --search-toggle-btn-width: 35px; /* 调整小屏幕切换按钮宽度 */
+            
+            #search-sidebar {
+                top: 80px;
+                left: 10px;
+                padding: 6px;
                 border-radius: 8px;
              }
+             
              #search-sidebar input[type="search"] {
                  padding: 5px 8px;
-                 font-size: 0.85rem; /* Slightly larger */
-                 min-width: 70px; /* Adjusted min width */
+                 font-size: 0.85rem;
+                 min-width: 70px;
              }
+             
             #search-sidebar button#site-search-button {
                 padding: 5px 10px;
                  font-size: 0.85rem;
             }
+            
             .toggle-button {
                 font-size: 1rem;
                 padding: 0 8px;
-                height: 31px; /* Adjusted height */
+                height: 31px;
             }
+             
              #search-sidebar.search-sidebar-hidden {
-                  transform: translateX(calc(-100% + 45px)); /* Adjusted hidden transform */
+                  transform: translateX(calc(-100% + 45px));
              }
-
+             
             #eye-exercise-reminder { font-size: 1.1rem; padding: 15px 25px; border-radius: 10px; }
-            .visual-model { flex-direction: row; gap: 15px; /* Keep row but allow wrap */ }
+            .visual-model { gap: 15px; }
             .model-item i { font-size: 2rem; }
             .model-item span { font-size: 0.8rem; }
-
             #scrollToTopBtn { bottom: 20px; right: 20px; padding: 8px 12px; font-size: 16px; }
         }
 
          @media (max-width: 480px) {
-             body { line-height: 1.6; } /* Adjust line height */
+             body { line-height: 1.6; }
              .site-title { font-size: 1.9rem; }
              .site-subtitle { font-size: 0.8rem; }
              header img.profile-pic { width: 80px; height: 80px; }
-
-             /* Further adjust nav and scroll padding */
-             nav { position: static; /* Remove sticky nav on very small screens? Or keep and adjust */ }
-             main.container { scroll-padding-top: 0; /* Reset if nav not sticky */ }
-             #about { scroll-margin-top: 0; } /* Reset if nav not sticky */
+             
+             nav { position: static; }
+             main.container { scroll-padding-top: 0; }
+             #about { scroll-margin-top: 0; }
              nav a { font-size: 0.8rem; margin: 0 5px; }
-
-              #search-sidebar {
-                 top: 10px; /* Position below header */
-                 left: auto;
-                 right: 10px; /* Move to right? Or keep left? Keep left for consistency */
+             
+             #search-sidebar {
+                 top: 10px;
                  left: 10px;
-                 width: calc(100% - 20px); /* Make it wider */
-                 justify-content: space-between; /* Space out elements */
+                 width: calc(100% - 20px);
+                 justify-content: space-between;
                  padding: 5px;
-                 --search-toggle-btn-width: 30px;
-                 /* Remove fixed positioning? */
-                 /* position: absolute; */
              }
-              #search-sidebar input[type="search"] {
-                 min-width: 50px; /* Allow more shrink */
-                 flex-grow: 1; /* Take available space */
+             
+             #search-sidebar input[type="search"] {
+                 min-width: 50px;
+                 flex-grow: 1;
              }
+             
              #search-sidebar button#site-search-button {
                  padding: 5px 8px;
              }
+             
              .toggle-button {
                  font-size: 0.9rem;
                  padding: 0 6px;
                  height: 28px;
                  margin-left: 3px;
              }
-             /* Hide/show logic might need rework if position is not fixed */
-              #search-sidebar.search-sidebar-hidden {
-                 /* Adjust if not fixed */
-                  transform: translateX(calc(-100% + 40px));
-             }
-
+             
              #advanced-timer {
-                position: static; /* Make timer static */
+                position: static;
                 margin: 15px auto;
-                width: fit-content; /* Size to content */
-                box-shadow: 0 4px 10px var(--timer-shadow); /* Adjust shadow */
+                width: fit-content;
+                box-shadow: 0 4px 10px var(--timer-shadow);
              }
+             
              .digit { font-size: 1rem; padding: 5px 6px; }
              .separator { font-size: 1rem; padding-bottom: 12px;}
              .digit-section { min-width: 30px; }
-
+             
             .section-title { font-size: 1.5rem; padding-bottom: 10px; }
             h2.section-title::after { width: 60px; height: 2px; }
             .article-title { font-size: 1.1rem; }
             .article-excerpt { font-size: 0.85rem; }
             .article-meta { font-size: 0.7rem; }
              .view-all-link { font-size: 0.9rem; padding: 6px 12px; }
-
+             
             .visual-model { padding: 15px 0; }
             .model-item { min-width: 90px; }
              .model-item i { font-size: 1.8rem; }
-
-            #about .about-content { padding: 0 10px; } /* Add padding */
+             
+            #about .about-content { padding: 0 10px; }
              #about .about-intro, #about .contact-info { padding: 15px; }
              #about .about-intro h3, #about .about-philosophy h3, #about .contact-info h3 { font-size: 1.1rem; }
              #about .about-philosophy li { padding-left: 30px; font-size: 0.9rem; }
              #about .about-philosophy li .philosophy-icon { font-size: 1.1em; width: 20px; }
-
+             
             footer { font-size: 0.75rem; }
             .social-links img { width: 18px; height: 18px; }
             #scrollToTopBtn { bottom: 15px; right: 15px; padding: 6px 10px; font-size: 14px; }
+            
+            .theme-toggle {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
          }
-
     </style>
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "AIFLOW",
-      "url": "YOUR_WEBSITE_URL", // <!-- 替换为你的网站实际URL -->
-      "description": "赋能个体进化，探索学习、自我优化与成长的未来.",
-      "publisher": {
-        "@type": "Person", // Or Organization
-        "name": "AIFLOW创建者" // Your name or organization name
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "YOUR_SEARCH_URL?q={search_term_string}", // <!-- 替换为你的实际搜索页面URL -->
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
 </head>
 <body>
+    <!-- 页面加载进度条 -->
+    <div class="progress-bar"></div>
+    
+    <!-- 主题切换按钮 -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+    
     <!-- 左侧搜索栏 -->
     <div id="search-sidebar">
         <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站">
         <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
+        <div class="search-results" id="searchResults"></div>
         <button id="toggle-search-sidebar" class="toggle-button" aria-label="隐藏搜索栏">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <!-- 注意：搜索功能仍需后端或JS库支持 -->
     </div>
 
     <header>
         <div class="container">
-            <!-- Optimized Image -->
             <img src="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true"
                  class="profile-pic"
                  width="130" height="130"
                  alt="AIFLOW 创始人头像"
-                 loading="lazy"> <!-- Added width, height, lazy loading -->
+                 loading="lazy">
             <h1 class="site-title">AIFLOW</h1>
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
@@ -908,19 +936,20 @@
                 <div class="timer-status">
                     <i class="fas fa-clock"></i> <span id="timer-status-text">专注计时中</span>
                 </div>
-                <!-- Timer Controls -->
                 <div class="timer-controls">
                      <button id="timer-pause-resume" aria-label="暂停计时器">
                          <i class="fas fa-pause"></i> 暂停
                      </button>
-                     <!-- Optional: Add reset button -->
-                     <!-- <button id="timer-reset" aria-label="重置计时器">
+                     <button id="timer-reset" aria-label="重置计时器">
                          <i class="fas fa-undo"></i> 重置
-                     </button> -->
+                     </button>
+                     <button id="timer-mode" aria-label="切换计时模式">
+                         <i class="fas fa-cog"></i> 模式
+                     </button>
                 </div>
             </div>
 
-            <!-- 护眼提醒 (Initially hidden via CSS) -->
+            <!-- 护眼提醒 -->
             <div id="eye-exercise-reminder">
                 <i class="fas fa-eye"></i> 休息一下，看看远方！
             </div>
@@ -949,20 +978,17 @@
 
     <!-- Sticky Navigation -->
     <nav>
-        <!-- Added section IDs to hrefs for internal linking -->
-        <a href="#home" class="nav-link">首页</a> <!-- Use #home or link to index.html -->
-        <a href="articles.html" class="nav-link">封建脉络百战</a> <!-- External Link -->
-        <a href="thoughts.html" class="nav-link">PrimePulse</a> <!-- External Link -->
-        <a href="self-study.html" class="nav-link">如何自学</a> <!-- External Link -->
-        <a href="make-money.html" class="nav-link">搞钱专栏</a> <!-- External Link -->
-        <a href="#sports" class="nav-link">运动</a> <!-- Internal Link -->
-        <a href="#about" class="nav-link">关于我</a> <!-- Internal Link -->
+        <a href="#home" class="nav-link">首页</a>
+        <a href="articles.html" class="nav-link">封建脉络百战</a>
+        <a href="thoughts.html" class="nav-link">PrimePulse</a>
+        <a href="self-study.html" class="nav-link">如何自学</a>
+        <a href="make-money.html" class="nav-link">搞钱专栏</a>
+        <a href="#sports" class="nav-link">运动</a>
+        <a href="#about" class="nav-link">关于我</a>
     </nav>
 
     <main class="container">
-        <!-- Use 'home' or a main featured section ID -->
-        <section id="home" style="scroll-margin-top: 70px;"> <!-- Offset for sticky nav -->
-            <!-- Maybe move '封建脉络百战' here as the main feature -->
+        <section id="home" style="scroll-margin-top: 70px;">
             <h2 class="section-title">封建脉络百战</h2>
             <div class="articles">
                 <div class="article-card">
@@ -973,12 +999,11 @@
                             <span><i class="far fa-calendar-alt"></i> 发布于: 2025-06-</span>
                             <span><i class="fas fa-folder-open"></i> 分类: 历史洞察</span>
                         </div>
-                        <a href="articles.html#chu-han" class="read-more">阅读全文 →</a> <!-- More specific link -->
+                        <a href="articles.html#chu-han" class="read-more">阅读全文 →</a>
                     </div>
                 </div>
-                <!-- Add more featured articles if desired -->
             </div>
-            <div class="view-all-link-container"> <!-- Centering container -->
+            <div class="view-all-link-container">
                 <a href="articles.html" class="view-all-link">
                     <i class="fas fa-book-reader"></i> 查看所有历史文章 →
                 </a>
@@ -996,10 +1021,9 @@
                             <span><i class="far fa-calendar-alt"></i> 发布于: 2025-06-</span>
                             <span><i class="fas fa-lightbulb"></i> 分类: 思考</span>
                         </div>
-                        <a href="thoughts.html#attention" class="read-more">阅读完整思考 →</a> <!-- More specific link -->
+                        <a href="thoughts.html#attention" class="read-more">阅读完整思考 →</a>
                     </div>
                 </div>
-                <!-- Add more thoughts if desired -->
             </div>
             <div class="view-all-link-container">
                 <a href="thoughts.html" class="view-all-link">
@@ -1017,9 +1041,9 @@
                         <p class="article-excerpt">自学始于心态。拥抱长期主义，构建系统思维，持续优化迭代，坚信成长可能性。将世界视为你的知识库，无处不可学...</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt"></i> 发布于: 2025-07-</span>
-                             <span><i class="fas fa-mind-share"></i> 分类: 认知</span> <!-- Replaced icon -->
+                             <span><i class="fas fa-mind-share"></i> 分类: 认知</span>
                         </div>
-                        <a href="self-study.html#mindset" class="read-more">深入理解 →</a> <!-- More specific link -->
+                        <a href="self-study.html#mindset" class="read-more">深入理解 →</a>
                     </div>
                 </div>
                 <div class="article-card">
@@ -1028,9 +1052,9 @@
                         <p class="article-excerpt">光说不练假把式。掌握每日复盘（10分钟）、科学规划（15分钟）、费曼技巧、刻意练习等核心方法，知行合一...</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt"></i> 发布于: 2025-07-</span>
-                             <span><i class="fas fa-tasks"></i> 分类: 落地</span> <!-- Replaced icon -->
+                             <span><i class="fas fa-tasks"></i> 分类: 落地</span>
                         </div>
-                        <a href="self-study.html#methods" class="read-more">立即实践 →</a> <!-- More specific link -->
+                        <a href="self-study.html#methods" class="read-more">立即实践 →</a>
                     </div>
                 </div>
             </div>
@@ -1041,7 +1065,7 @@
             </div>
         </section>
 
-        <!-- 搞钱专栏精选（精简版） -->
+        <!-- 搞钱专栏精选 -->
         <section id="make-money-preview" style="margin-top: 50px; scroll-margin-top: 70px;">
             <h2 class="section-title">💰 搞钱专栏精选</h2>
             <div class="articles">
@@ -1052,7 +1076,7 @@
                         <div class="article-meta">
                             <span><i class="far fa-calendar-alt"></i> 2025-06-15</span>
                             <span><i class="fas fa-robot"></i> AI副业</span>
-                            <span class="tag-hot">🔥 热门</span> <!-- Use class for tag -->
+                            <span class="tag-hot">🔥 热门</span>
                         </div>
                         <a href="make-money.html#ai-side-hustle" class="read-more">立即学习 →</a>
                     </div>
@@ -1063,8 +1087,8 @@
                         <p class="article-excerpt">人人都是媒体的时代，如何脱颖而出？从定位、内容、运营到多平台（小红书/抖音/B站/公众号）变现，打造你的个人影响力品牌。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt"></i> 2025-06-20</span>
-                             <span><i class="fas fa-bullhorn"></i> 自媒体</span> <!-- Replaced icon -->
-                             <span class="tag-premium">💎 精品</span> <!-- Use class for tag -->
+                             <span><i class="fas fa-bullhorn"></i> 自媒体</span>
+                             <span class="tag-premium">💎 精品</span>
                         </div>
                         <a href="make-money.html#media-monetization" class="read-more">开始变现 →</a>
                     </div>
@@ -1075,8 +1099,8 @@
                         <p class="article-excerpt">你的专业技能就是宝藏！无论是教学、咨询、设计、编程还是写作，学习如何包装、定价、推广，将技能转化为实实在在的收入。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt"></i> 2025-06-25</span>
-                             <span><i class="fas fa-tools"></i> 技能变现</span> <!-- Replaced icon -->
-                             <span class="tag-recommended">⭐ 推荐</span> <!-- Use class for tag -->
+                             <span><i class="fas fa-tools"></i> 技能变现</span>
+                             <span class="tag-recommended">⭐ 推荐</span>
                         </div>
                         <a href="make-money.html#skill-monetization" class="read-more">挖掘潜力 →</a>
                     </div>
@@ -1087,8 +1111,8 @@
                         <p class="article-excerpt">告别“手停口停”！探索版权、联盟营销、知识付费、数字产品等多种被动收入模式，构建可持续的财富增长引擎。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt"></i> 2025-07-10</span>
-                             <span><i class="fas fa-chart-line"></i> 被动收入</span> <!-- Replaced icon -->
-                             <span class="tag-passive">💰 长期</span> <!-- Use class for tag -->
+                             <span><i class="fas fa-chart-line"></i> 被动收入</span>
+                             <span class="tag-passive">💰 长期</span>
                         </div>
                         <a href="make-money.html#passive-income-system" class="read-more">构建系统 →</a>
                     </div>
@@ -1125,12 +1149,11 @@
                         </div>
                     </div>
                 </div>
-                 <!-- Add more sports related content if desired -->
             </div>
         </section>
 
-        <!-- 关于我板块（精简版） -->
-        <section id="about" style="margin-top: 50px; scroll-margin-top: 70px;"> <!-- Added scroll-margin-top -->
+        <!-- 关于我板块 -->
+        <section id="about" style="margin-top: 50px; scroll-margin-top: 70px;">
             <h2 class="section-title">关于我</h2>
             <div class="about-content">
                 <div class="about-intro">
@@ -1159,9 +1182,6 @@
         </section>
     </main>
 
-    <!-- 音频标签 (Preload set to 'none' for performance) -->
-    <audio id="eyeExerciseMusic" src="https://sf1-cdn-tos.douyinstatic.com/obj/ies-music/16870000149760133.mp3" preload="none"></audio>
-
     <!-- 返回顶部按钮 -->
     <button id="scrollToTopBtn" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
 
@@ -1169,299 +1189,281 @@
         <div class="container">
             <p>&copy; 2025 AIFLOW. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for Growth.</p>
             <div class="social-links">
-                <!-- Replace # with actual profile links -->
                 <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter / X"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter/X 图标" loading="lazy" width="22" height="22"></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub 图标" loading="lazy" width="22" height="22"></a> <!-- Added GitHub example -->
+                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub 图标" loading="lazy" width="22" height="22"></a>
                 <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube 图标" loading="lazy" width="22" height="22"></a>
-                <!-- Removed Instagram example, add others as needed -->
             </div>
         </div>
     </footer>
 
     <script>
-        /* JavaScript Structure Suggestion:
-           In a real project, consider splitting this JS into modules:
-           - timer.js (Handles timer logic, pause/resume, storage)
-           - eye-reminder.js (Handles eye exercise reminder)
-           - scroll-effects.js (Handles scroll to top, sticky nav active state)
-           - search-sidebar.js (Handles sidebar toggle)
-           - search.js (Handles search input/button interaction - placeholder or actual logic)
-           - main.js (Imports and initializes modules)
-        */
-
         document.addEventListener('DOMContentLoaded', () => {
+            // 页面加载进度条
+            const progressBar = document.querySelector('.progress-bar');
+            window.addEventListener('load', () => {
+                progressBar.style.width = '100%';
+                setTimeout(() => progressBar.style.opacity = '0', 500);
+            });
 
-            // --- Timer Logic ---
+            // 暗黑模式切换
+            const themeToggle = document.getElementById('themeToggle');
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            
+            if (isDarkMode) {
+                document.body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                localStorage.setItem('darkMode', isDark);
+                themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+
+            // 计时器逻辑
             const hoursElem = document.getElementById('hours');
             const minutesElem = document.getElementById('minutes');
             const secondsElem = document.getElementById('seconds');
             const timerStatusText = document.getElementById('timer-status-text');
             const pauseResumeButton = document.getElementById('timer-pause-resume');
-            const pauseIcon = '<i class="fas fa-pause"></i> 暂停';
-            const resumeIcon = '<i class="fas fa-play"></i> 继续';
-
+            const resetButton = document.getElementById('timer-reset');
+            const modeButton = document.getElementById('timer-mode');
+            
             let totalSeconds = 0;
             let timerInterval = null;
             let isPaused = false;
-
-            // Load timer state from localStorage
-            function loadTimerState() {
+            let timerMode = 'focus'; // focus, break, or custom
+            
+            // 初始化计时器状态
+            function initTimer() {
                 const savedSeconds = localStorage.getItem('aiflowTimerSeconds');
                 const savedPaused = localStorage.getItem('aiflowTimerPaused');
-                if (savedSeconds) {
-                    totalSeconds = parseInt(savedSeconds, 10);
-                }
+                const savedMode = localStorage.getItem('timerMode');
+                
+                if (savedSeconds) totalSeconds = parseInt(savedSeconds, 10);
                 if (savedPaused === 'true') {
                     isPaused = true;
-                    pauseResumeButton.innerHTML = resumeIcon;
+                    pauseResumeButton.innerHTML = '<i class="fas fa-play"></i> 继续';
                     timerStatusText.textContent = "计时已暂停";
                 }
-                updateAdvancedTimerDisplay(); // Update display immediately
+                if (savedMode) timerMode = savedMode;
+                
+                updateTimerDisplay();
             }
-
-            // Save timer state to localStorage
-            function saveTimerState() {
-                localStorage.setItem('aiflowTimerSeconds', totalSeconds);
-                localStorage.setItem('aiflowTimerPaused', isPaused);
-            }
-
-            function updateAdvancedTimerDisplay() {
+            
+            function updateTimerDisplay() {
                 const hours = Math.floor(totalSeconds / 3600);
                 const minutes = Math.floor((totalSeconds % 3600) / 60);
                 const seconds = totalSeconds % 60;
+                
                 hoursElem.textContent = hours.toString().padStart(2, '0');
                 minutesElem.textContent = minutes.toString().padStart(2, '0');
                 secondsElem.textContent = seconds.toString().padStart(2, '0');
+                
+                // 根据模式更新状态文本
+                const modeText = {
+                    'focus': '专注计时中',
+                    'break': '休息计时中',
+                    'custom': '自定义计时中'
+                };
+                timerStatusText.textContent = modeText[timerMode] || "计时中";
             }
-
-            function startTimerInterval() {
-                if (timerInterval) clearInterval(timerInterval); // Clear existing interval if any
+            
+            function startTimer() {
+                if (timerInterval) clearInterval(timerInterval);
                 timerInterval = setInterval(() => {
                     if (!isPaused) {
                         totalSeconds++;
-                        updateAdvancedTimerDisplay();
-                        // Check for eye exercise reminder (e.g., every 25 minutes = 1500 seconds)
-                        if (totalSeconds > 0 && totalSeconds % 1500 === 0) {
+                        updateTimerDisplay();
+                        
+                        // 根据模式检查提醒
+                        const reminderInterval = {
+                            'focus': 1500, // 25分钟
+                            'break': 300,  // 5分钟
+                            'custom': 1800 // 30分钟
+                        }[timerMode] || 1500;
+                        
+                        if (totalSeconds > 0 && totalSeconds % reminderInterval === 0) {
                             showEyeExerciseReminder();
                         }
-                        saveTimerState(); // Save state periodically
+                        
+                        saveTimerState();
                     }
                 }, 1000);
             }
-
+            
             function togglePauseResume() {
                 isPaused = !isPaused;
                 if (isPaused) {
-                    pauseResumeButton.innerHTML = resumeIcon;
-                    pauseResumeButton.setAttribute('aria-label', '继续计时器');
+                    pauseResumeButton.innerHTML = '<i class="fas fa-play"></i> 继续';
                     timerStatusText.textContent = "计时已暂停";
-                    if(timerInterval) clearInterval(timerInterval); // Stop interval when paused
+                    clearInterval(timerInterval);
                 } else {
-                    pauseResumeButton.innerHTML = pauseIcon;
-                    pauseResumeButton.setAttribute('aria-label', '暂停计时器');
-                    timerStatusText.textContent = "专注计时中";
-                    startTimerInterval(); // Restart interval
+                    pauseResumeButton.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                    timerStatusText.textContent = timerMode === 'focus' ? "专注计时中" : "计时中";
+                    startTimer();
                 }
                 saveTimerState();
             }
-
-            // Initialize Timer
-            loadTimerState();
-            if (!isPaused) {
-                startTimerInterval(); // Start timer only if not paused initially
-            } else {
-                 updateAdvancedTimerDisplay(); // Ensure display is correct even if started paused
+            
+            function resetTimer() {
+                totalSeconds = 0;
+                isPaused = false;
+                pauseResumeButton.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                updateTimerDisplay();
+                startTimer();
+                saveTimerState();
             }
+            
+            function toggleTimerMode() {
+                const modes = ['focus', 'break', 'custom'];
+                const nextIndex = (modes.indexOf(timerMode) + 1) % modes.length;
+                timerMode = modes[nextIndex];
+                saveTimerState();
+                updateTimerDisplay();
+            }
+            
+            function saveTimerState() {
+                localStorage.setItem('aiflowTimerSeconds', totalSeconds);
+                localStorage.setItem('aiflowTimerPaused', isPaused);
+                localStorage.setItem('timerMode', timerMode);
+            }
+            
+            // 初始化计时器
+            initTimer();
+            if (!isPaused) startTimer();
+            
+            // 事件监听
             pauseResumeButton.addEventListener('click', togglePauseResume);
-
-            // Save state when leaving the page
-            window.addEventListener('beforeunload', saveTimerState);
-
-
-            // --- Eye Exercise Reminder Logic ---
+            resetButton.addEventListener('click', resetTimer);
+            modeButton.addEventListener('click', toggleTimerMode);
+            
+            // 护眼提醒
             const reminder = document.getElementById('eye-exercise-reminder');
-            const audio = document.getElementById('eyeExerciseMusic');
-            let reminderTimeout = null;
-
             function showEyeExerciseReminder() {
-                if (reminder.style.display === 'block') return; // Avoid overlapping reminders
-
+                if (reminder.style.display === 'block') return;
+                
                 reminder.style.display = 'block';
-                // Try playing audio, catch errors if blocked
-                audio.play().catch(e => console.warn('音频播放失败:', e));
-
-                // Clear previous timeout if any
-                if (reminderTimeout) clearTimeout(reminderTimeout);
-
-                reminderTimeout = setTimeout(() => {
+                setTimeout(() => {
                     reminder.style.display = 'none';
-                    audio.pause();
-                    audio.currentTime = 0; // Reset audio
-                }, 6000); // Show for 6 seconds
+                }, 6000);
             }
-
-
-            // --- Scroll to Top Button Logic ---
+            
+            // 返回顶部按钮
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            const scrollThreshold = 150; // Show button after scrolling down 150px
-
-            function handleScroll() {
-              if (window.scrollY > scrollThreshold) {
-                  if (scrollToTopBtn.style.display !== "block") {
-                      scrollToTopBtn.style.display = "block";
-                      // Force reflow to apply display: block before opacity transition
-                      void scrollToTopBtn.offsetWidth;
-                      scrollToTopBtn.style.opacity = "1";
-                  }
-              } else {
-                  if (scrollToTopBtn.style.opacity === "1") {
-                      scrollToTopBtn.style.opacity = "0";
-                      // Hide with delay after transition ends
-                      setTimeout(() => {
-                          if (window.scrollY <= scrollThreshold) {
-                              scrollToTopBtn.style.display = "none";
-                          }
-                      }, 400); // Match opacity transition duration
-                  }
-              }
-            }
-
-            window.addEventListener('scroll', handleScroll);
-            scrollToTopBtn.addEventListener('click', () => {
-              window.scrollTo({top: 0, behavior: 'smooth'});
-            });
-
-
-            // --- Search Placeholder Logic ---
-            const searchInput = document.getElementById('site-search-input');
-            const searchButton = document.getElementById('site-search-button');
-
-            function performSearch() {
-                 const searchTerm = searchInput.value.trim();
-                 if (searchTerm !== '') {
-                     // Placeholder: Show alert
-                     alert(`正在搜索: "${searchTerm}"\n(这是一个前端占位符，实际搜索需要后端或JS库支持)`);
-
-                     // Example: Redirect to a hypothetical search page
-                     // window.location.href = `/search.html?q=${encodeURIComponent(searchTerm)}`;
-
-                     // Example: Basic local search (requires data definition)
-                     // const results = searchLocalData(searchTerm);
-                     // displaySearchResults(results);
-                 } else {
-                     alert('请输入搜索关键词！');
-                 }
-             }
-
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    event.preventDefault(); // Prevent potential form submission
-                    performSearch();
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 150) {
+                    scrollToTopBtn.style.display = 'block';
+                    scrollToTopBtn.style.opacity = '1';
+                } else {
+                    scrollToTopBtn.style.opacity = '0';
+                    setTimeout(() => {
+                        if (window.scrollY <= 150) scrollToTopBtn.style.display = 'none';
+                    }, 400);
                 }
             });
-
-
-            // --- Search Sidebar Toggle Logic ---
-            const searchSidebar = document.getElementById('search-sidebar');
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+            
+            // 搜索功能
+            const searchInput = document.getElementById('site-search-input');
+            const searchResults = document.getElementById('searchResults');
+            const searchButton = document.getElementById('site-search-button');
+            
+            // 模拟搜索数据
+            const searchData = [
+                { title: "楚汉双雄", category: "历史洞察", link: "articles.html#chu-han" },
+                { title: "注意力 > 时间 > 金钱", category: "思考", link: "thoughts.html#attention" },
+                { title: "认知心态：万物皆为我所用", category: "自学方法", link: "self-study.html#mindset" },
+                { title: "AI副业赚钱指南", category: "搞钱专栏", link: "make-money.html#ai-side-hustle" },
+                { title: "被动收入系统", category: "搞钱专栏", link: "make-money.html#passive-income-system" }
+            ];
+            
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                searchResults.innerHTML = '';
+                
+                if (!query) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                const results = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.category.toLowerCase().includes(query)
+                );
+                
+                if (results.length > 0) {
+                    results.forEach(result => {
+                        const item = document.createElement('div');
+                        item.className = 'result-item';
+                        item.innerHTML = `
+                            <div class="result-title">${result.title}</div>
+                            <div class="result-category">${result.category}</div>
+                        `;
+                        item.addEventListener('click', () => {
+                            window.location.href = result.link;
+                        });
+                        searchResults.appendChild(item);
+                    });
+                    searchResults.style.display = 'block';
+                } else {
+                    const noResult = document.createElement('div');
+                    noResult.className = 'result-item';
+                    noResult.textContent = '没有找到相关内容';
+                    searchResults.appendChild(noResult);
+                    searchResults.style.display = 'block';
+                }
+            }
+            
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            
+            // 点击页面其他地方关闭搜索结果
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#search-sidebar')) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            
+            // 搜索栏切换
             const toggleSearchBtn = document.getElementById('toggle-search-sidebar');
-            const toggleSearchIcon = toggleSearchBtn.querySelector('i');
-
+            const searchSidebar = document.getElementById('search-sidebar');
+            
             toggleSearchBtn.addEventListener('click', () => {
                 const isHidden = searchSidebar.classList.toggle('search-sidebar-hidden');
-                if (isHidden) {
-                    toggleSearchIcon.classList.remove('fa-chevron-left');
-                    toggleSearchIcon.classList.add('fa-chevron-right');
-                    toggleSearchBtn.setAttribute('aria-label', '显示搜索栏');
-                    toggleSearchBtn.setAttribute('title', '显示搜索栏'); // Add title attribute
-                } else {
-                    toggleSearchIcon.classList.remove('fa-chevron-right');
-                    toggleSearchIcon.classList.add('fa-chevron-left');
-                    toggleSearchBtn.setAttribute('aria-label', '隐藏搜索栏');
-                    toggleSearchBtn.setAttribute('title', '隐藏搜索栏'); // Add title attribute
-                }
+                toggleSearchBtn.querySelector('i').className = isHidden ? 
+                    'fas fa-chevron-right' : 'fas fa-chevron-left';
             });
-
-
-            // --- Sticky Nav Active State (for internal anchor links) ---
-            const navLinks = document.querySelectorAll('nav a.nav-link[href^="#"]'); // Select only internal links
-            const sections = [];
-            navLinks.forEach(link => {
-                const sectionId = link.getAttribute('href');
-                const section = document.querySelector(sectionId);
-                if (section) {
-                    sections.push({ link: link, section: section });
-                }
-            });
-
-            function setActiveNavLink() {
-                let currentSectionId = null;
-                const scrollPosition = window.scrollY;
-                // Get nav height for offset calculation
-                const navHeight = document.querySelector('nav')?.offsetHeight || 60;
-                const offset = navHeight + 20; // Add a small buffer
-
-                sections.forEach(item => {
-                    const sectionTop = item.section.offsetTop - offset;
-                    const sectionBottom = sectionTop + item.section.offsetHeight;
-
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        currentSectionId = item.section.id;
+            
+            // 导航高亮
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+            
+            function highlightNav() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
                     }
                 });
-
-                // If near the top, activate 'home'
-                 if (scrollPosition < sections[0]?.section.offsetTop - offset) {
-                    currentSectionId = 'home';
-                 }
-                 // If scrolled to the very bottom, activate the last section link ('about' in this case)
-                  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) { // Near bottom threshold
-                       const lastSection = sections[sections.length - 1];
-                       if (lastSection) {
-                           currentSectionId = lastSection.section.id;
-                       }
-                  }
-
+                
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    // Handle both direct ID match and '#home' case
-                    if (link.getAttribute('href') === `#${currentSectionId}` || (currentSectionId === 'home' && link.getAttribute('href') === '#home')) {
+                    if (link.getAttribute('href').includes(current)) {
                         link.classList.add('active');
                     }
                 });
             }
-
-             // Set initial active link and update on scroll
-            setActiveNavLink();
-            window.addEventListener('scroll', setActiveNavLink);
-
-            // Also update active link on click for instant feedback
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                     // Briefly remove all active classes
-                     navLinks.forEach(l => l.classList.remove('active'));
-                     // Add active class to the clicked link
-                     link.classList.add('active');
-                     // Optional: small delay before setActiveNavLink runs on scroll again
-                     // setTimeout(setActiveNavLink, 50);
-                });
-            });
-
-
-             // --- PWA Service Worker Registration ---
-             if ('serviceWorker' in navigator) {
-               window.addEventListener('load', () => {
-                 navigator.serviceWorker.register('/sw.js') // Ensure sw.js is in the root directory
-                   .then(registration => {
-                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                   })
-                   .catch(error => {
-                     console.log('ServiceWorker registration failed: ', error);
-                   });
-               });
-             }
-
-        }); // End DOMContentLoaded
+            
+            window.addEventListener('scroll', highlightNav);
+            highlightNav();
+        });
     </script>
 </body>
 </html>
