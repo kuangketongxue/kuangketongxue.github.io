@@ -114,7 +114,6 @@
             object-fit: cover;
             transition: all 0.3s ease;
         }
-        /* Search Sidebar */
         #search-sidebar {
             position: fixed;
             top: 120px;
@@ -206,7 +205,6 @@
         #search-sidebar.search-sidebar-hidden .toggle-button i {
             transform: rotate(180deg);
         }
-        /* Search Results */
         .search-results {
             position: absolute;
             top: calc(100% + 5px); /* Position below the search input */
@@ -247,7 +245,6 @@
             color: var(--text-color); /* Use theme color */
             opacity: 0.8;
         }
-        /* Advanced Timer */
         #advanced-timer {
             position: fixed;
             top: 20px;
@@ -335,7 +332,6 @@
         .timer-controls button i {
             margin-right: 3px;
         }
-        /* Eye Exercise Reminder */
         #eye-exercise-reminder {
             position: fixed;
             top: 50%;
@@ -359,7 +355,6 @@
             0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 40px var(--reminder-shadow); }
             50% { transform: translate(-50%, -50%) scale(1.03); box-shadow: 0 0 55px var(--reminder-shadow); }
         }
-        /* Navigation */
         nav {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 10px 0;
@@ -388,11 +383,17 @@
             background-color: var(--nav-link-active-bg);
             text-decoration: none;
         }
-        /* Main Content */
         main.container {
             background: rgba(255, 255, 255, 0.15);
             scroll-padding-top: 70px; /* Adjust based on sticky nav height */
             transition: all 0.3s ease;
+        }
+        /* Apply scroll margin and top margin to sections */
+        main section[id] {
+            scroll-margin-top: 70px; /* Adjust if nav height changes */
+        }
+        main section[id] + section[id] {
+            margin-top: 50px; /* Space between sections */
         }
         .section-title {
             color: var(--heading-color);
@@ -417,7 +418,6 @@
             border-radius: 2px;
             transition: background-color 0.3s ease;
         }
-        /* Article Card */
         .article-card { /* Used within <article> tag */
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -439,6 +439,16 @@
             margin-bottom: 10px;
             font-size: 1.4rem;
             transition: color 0.3s ease;
+        }
+        /* Style for links inside article titles */
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .article-title a:hover {
+            color: var(--heading-color); /* Or keep accent color on hover if preferred */
+            text-decoration: underline;
         }
         .article-excerpt {
             color: var(--text-color);
@@ -496,7 +506,6 @@
             color: white;
             text-decoration: none;
         }
-        /* Visual Model / Core Concepts */
         .visual-model {
             display: flex;
             justify-content: space-around;
@@ -527,20 +536,14 @@
             font-size: 0.9rem;
             font-weight: bold;
         }
-        /* Make Money Preview Specifics */
         #make-money-preview .article-excerpt {
-            /* Apply text truncation using line-clamp */
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 2; /* Show 2 lines */
             -webkit-box-orient: vertical;
-             /* Calculate min-height based on line-height and font-size */
-             /* Example: line-height * font-size * number of lines */
-             /* Ensure fallback height */
             min-height: calc(1.7 * 0.95rem * 2); /* Approximate height */
         }
-        /* Tags */
         .tag { /* Base tag style */
             display: inline-block;
             padding: 2px 8px;
@@ -554,8 +557,6 @@
         .tag-premium { background-color: #43a047; }
         .tag-recommended { background-color: #fb8c00; }
         .tag-passive { background-color: #00acc1; }
-
-        /* About Section */
         #about .about-content {
             max-width: 750px;
             margin: 0 auto;
@@ -640,8 +641,6 @@
              color: var(--heading-color);
              text-decoration: underline;
          }
-
-        /* Footer */
         footer {
             margin-top: 40px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -661,6 +660,9 @@
         footer p {
             margin-bottom: 10px; /* Space below copyright */
         }
+        footer .fa-heart { /* Style for heart icon */
+            color: var(--accent-color);
+        }
         .social-links a {
             margin: 0 10px;
             display: inline-block;
@@ -679,7 +681,6 @@
         .social-links a:hover img {
             filter: none;
         }
-        /* Scroll to Top Button */
         #scrollToTopBtn {
             display: none;
             opacity: 0;
@@ -707,7 +708,6 @@
             background-color: var(--heading-color);
             transform: scale(1.05);
         }
-        /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             top: 20px;
@@ -732,7 +732,6 @@
             transform: rotate(15deg) scale(1.1);
             color: var(--heading-color); /* Hover color */
         }
-        /* Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0;
@@ -744,9 +743,7 @@
             transition: width 0.3s ease, opacity 0.5s 0.3s ease; /* Add opacity transition */
             opacity: 1; /* Start visible */
         }
-
         /* --- Responsive Styles --- */
-
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -756,13 +753,10 @@
             .site-title { font-size: 2.2rem; }
             .site-subtitle { font-size: 0.9rem; }
             header img.profile-pic { width: 100px; height: 100px; }
-            nav {
-                padding: 8px 0;
-                /* Sticky nav might need top adjusted if header changes height significantly */
-            }
+            nav { padding: 8px 0; }
             nav a { margin: 0 8px; font-size: 0.9rem; padding: 4px 8px; }
             main.container { scroll-padding-top: 60px; } /* Adjust for potentially shorter sticky nav */
-            #about { scroll-margin-top: 60px; }
+            main section[id] { scroll-margin-top: 60px; } /* Adjust scroll margin */
             .article-card { padding: 15px; border-radius: 10px; }
             .article-title { font-size: 1.2rem; }
             .article-excerpt { font-size: 0.9rem; }
@@ -811,7 +805,6 @@
             #scrollToTopBtn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 16px; }
              .theme-toggle { width: 45px; height: 45px; top: 15px; left: 15px; }
         }
-
          @media (max-width: 480px) {
              body { line-height: 1.6; }
              .container { padding: 10px; }
@@ -820,10 +813,9 @@
              header img.profile-pic { width: 80px; height: 80px; }
              nav { position: static; margin-bottom: 20px;} /* Unstick nav on smallest screens */
              main.container { scroll-padding-top: 0; }
-             #about { scroll-margin-top: 0; }
+             main section[id] { scroll-margin-top: 0; } /* Reset scroll margin */
              nav a { font-size: 0.8rem; margin: 0 5px; }
              #search-sidebar {
-                 /* Consider making search static or modal on very small screens */
                  position: static; /* Example: Make it static */
                  width: calc(100% - 20px); /* Full width in container */
                  margin: 15px auto; /* Center it */
@@ -839,9 +831,7 @@
              #search-sidebar button#site-search-button {
                  padding: 5px 8px;
              }
-             #search-sidebar .toggle-button { /* Hide toggle if static */
-                 display: none;
-             }
+             #search-sidebar .toggle-button { display: none; } /* Hide toggle if static */
               .search-results {
                  position: static; /* Results below static search */
                  margin-top: 5px;
@@ -878,7 +868,6 @@
             .social-links img { width: 18px; height: 18px; }
             #scrollToTopBtn { bottom: 15px; right: 15px; width: 35px; height: 35px; font-size: 14px; }
             .theme-toggle {
-                 /* Keep theme toggle accessible */
                  top: 10px;
                  left: 10px;
                  width: 40px;
@@ -888,27 +877,18 @@
     </style>
 </head>
 <body>
-    <!-- 页面加载进度条 -->
     <div class="progress-bar"></div>
-
-    <!-- 主题切换按钮 -->
     <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
         <i class="fas fa-moon"></i>
     </button>
-
-    <!-- 左侧搜索栏 (ARIA role added) -->
     <aside id="search-sidebar" role="search">
         <input type="search" id="site-search-input" placeholder="搜索全站..." aria-label="搜索全站" aria-controls="searchResults" aria-expanded="false">
         <button id="site-search-button" aria-label="搜索"><i class="fas fa-search"></i></button>
-        <!-- Search Results Container -->
-        <div class="search-results" id="searchResults" role="listbox">
-            <!-- Results will be populated by JS -->
-        </div>
+        <div class="search-results" id="searchResults" role="listbox"></div>
         <button id="toggle-search-sidebar" class="toggle-button" aria-label="隐藏/显示搜索栏" aria-expanded="true">
             <i class="fas fa-chevron-left"></i>
         </button>
     </aside>
-
     <header>
         <div class="container">
             <img src="https://github.com/kuangketongxue/my-images/blob/7a57988ff2b092bb4fc22f570f77683d61690b3d/%E5%A4%B4%E5%83%8F.jpg?raw=true"
@@ -919,10 +899,8 @@
             <h1 class="site-title">AIFLOW</h1>
             <p class="site-subtitle">赋能个体进化，探索学习、自我优化与成长的未来.</p>
             <p class="site-subtitle">WELCOME TO THE FUTURE OF LEARNING, SELF-OPTIMIZATION, AND GROWTH.</p>
-
-            <!-- 暖色科幻计时器 (ARIA live region added) -->
             <div id="advanced-timer" role="timer" aria-live="polite" aria-atomic="true">
-                <div class="timer-display" aria-hidden="true"> <!-- Hide visual display from screen readers, status is enough -->
+                <div class="timer-display" aria-hidden="true">
                     <div class="digit-section">
                         <div class="digit" id="hours">00</div>
                         <div class="digit-label">小时</div>
@@ -953,15 +931,11 @@
                      </button>
                 </div>
             </div>
-
-            <!-- 护眼提醒 (Role added) -->
             <div id="eye-exercise-reminder" role="alert" aria-live="assertive">
                 <i class="fas fa-eye" aria-hidden="true"></i> 休息一下，看看远方！
             </div>
         </div>
     </header>
-
-    <!-- 可视化模型/核心理念区 -->
     <div class="container visual-model">
         <div class="model-item">
             <i class="fas fa-brain" aria-hidden="true"></i>
@@ -980,8 +954,6 @@
             <span>身心健康</span>
         </div>
     </div>
-
-    <!-- Sticky Navigation -->
     <nav aria-label="主导航">
         <a href="#home" class="nav-link">首页</a>
         <a href="articles.html" class="nav-link">封建脉络百战</a>
@@ -991,16 +963,15 @@
         <a href="#sports" class="nav-link">运动</a>
         <a href="#about" class="nav-link">关于我</a>
     </nav>
-
     <main class="container">
-        <section id="home" role="region" aria-labelledby="home-title" style="scroll-margin-top: 70px;">
+        <section id="home" role="region" aria-labelledby="home-title">
             <h2 class="section-title" id="home-title">封建脉络百战</h2>
             <div class="articles">
-                <!-- Replaced div.article-card with article element -->
                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="articles.html#chu-han" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">楚汉双雄</a></h3>
-                        <p class="article-excerpt">探索从长平之战的硝烟到决战垓下的史诗对决，分析关键人物与战役，揭示权力更迭的深层逻辑与历史智慧...</p>
+                        <h3 class="article-title"><a href="articles.html#chu-han">楚汉双雄</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">楚汉争霸史诗：从长平到垓下，解析关键人物、战役与权力更迭的逻辑。</p>
                         <div class="article-meta">
                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-06-</span>
                             <span><i class="fas fa-folder-open" aria-hidden="true"></i> 分类: 历史洞察</span>
@@ -1015,14 +986,14 @@
                 </a>
             </div>
         </section>
-
-        <section id="latest-thoughts" role="region" aria-labelledby="thoughts-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+        <section id="latest-thoughts" role="region" aria-labelledby="thoughts-title">
             <h2 class="section-title" id="thoughts-title">最新PrimePulse精选</h2>
             <div class="articles">
                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="thoughts.html#attention" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">"注意力 > 时间 > 金钱"</a></h3>
-                        <p class="article-excerpt">在这个信息爆炸的时代，注意力是最稀缺的资源。警惕三大敌人：1. 凑热闹：盲目追随无关热点。 2. 随大流：被焦虑驱动，缺乏独立判断。 3. 瞎操心：过度关注他人，内耗自身。守护注意力，就是守护你的未来...</p>
+                        <h3 class="article-title"><a href="thoughts.html#attention">"注意力 > 时间 > 金钱"</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">信息时代，注意力是核心资源。警惕无效信息干扰、盲目跟风焦虑和过度内耗。守护注意力即守护未来。</p>
                         <div class="article-meta">
                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-06-</span>
                             <span><i class="fas fa-lightbulb" aria-hidden="true"></i> 分类: 思考</span>
@@ -1037,14 +1008,14 @@
                 </a>
             </div>
         </section>
-
-        <section id="self-study-preview" role="region" aria-labelledby="selfstudy-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+        <section id="self-study-preview" role="region" aria-labelledby="selfstudy-title">
             <h2 class="section-title" id="selfstudy-title">如何自学</h2>
             <div class="articles">
                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="self-study.html#mindset" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">认知心态：万物皆为我所用</a></h3>
-                        <p class="article-excerpt">自学始于心态。拥抱长期主义，构建系统思维，持续优化迭代，坚信成长可能性。将世界视为你的知识库，无处不可学...</p>
+                        <h3 class="article-title"><a href="self-study.html#mindset">认知心态：万物皆为我所用</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">自学关键在心态：拥抱长期主义，构建系统思维，持续迭代，坚信成长，视世界为课堂。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-07-</span>
                              <span><i class="fas fa-mind-share" aria-hidden="true"></i> 分类: 认知</span>
@@ -1054,8 +1025,9 @@
                 </article>
                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="self-study.html#methods" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">落地方法：高效实践</a></h3>
-                        <p class="article-excerpt">光说不练假把式。掌握每日复盘（10分钟）、科学规划（15分钟）、费曼技巧、刻意练习等核心方法，知行合一...</p>
+                        <h3 class="article-title"><a href="self-study.html#methods">落地方法：高效实践</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">高效自学需实践：掌握每日复盘、科学规划、费曼技巧、刻意练习等核心方法，知行合一。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 发布于: 2025-07-</span>
                              <span><i class="fas fa-tasks" aria-hidden="true"></i> 分类: 落地</span>
@@ -1070,15 +1042,14 @@
                 </a>
             </div>
         </section>
-
-        <!-- 搞钱专栏精选 -->
-        <section id="make-money-preview" role="region" aria-labelledby="makemoney-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+        <section id="make-money-preview" role="region" aria-labelledby="makemoney-title">
             <h2 class="section-title" id="makemoney-title">💰 搞钱专栏精选</h2>
             <div class="articles">
                  <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="make-money.html#ai-side-hustle" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">AI副业赚钱指南</a></h3>
-                        <p class="article-excerpt">拥抱AI浪潮！学习如何利用 ChatGPT、Midjourney 等工具，在内容创作、设计、咨询等领域开拓副业，实现智能化创收。</p>
+                        <h3 class="article-title"><a href="make-money.html#ai-side-hustle">AI副业赚钱指南</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">利用AI工具(如ChatGPT, Midjourney)开拓内容创作、设计等副业，实现智能创收。</p>
                         <div class="article-meta">
                             <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-15</span>
                             <span><i class="fas fa-robot" aria-hidden="true"></i> AI副业</span>
@@ -1089,8 +1060,9 @@
                 </article>
                  <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="make-money.html#media-monetization" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">自媒体变现全攻略</a></h3>
-                        <p class="article-excerpt">人人都是媒体的时代，如何脱颖而出？从定位、内容、运营到多平台（小红书/抖音/B站/公众号）变现，打造你的个人影响力品牌。</p>
+                        <h3 class="article-title"><a href="make-money.html#media-monetization">自媒体变现全攻略</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">学习自媒体定位、内容、运营及多平台(小红书/抖音等)变现策略，打造个人品牌。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-20</span>
                              <span><i class="fas fa-bullhorn" aria-hidden="true"></i> 自媒体</span>
@@ -1101,8 +1073,9 @@
                 </article>
                 <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="make-money.html#skill-monetization" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">技能变现宝典</a></h3>
-                        <p class="article-excerpt">你的专业技能就是宝藏！无论是教学、咨询、设计、编程还是写作，学习如何包装、定价、推广，将技能转化为实实在在的收入。</p>
+                        <h3 class="article-title"><a href="make-money.html#skill-monetization">技能变现宝典</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">将教学、设计、编程等专业技能包装、定价、推广，转化为实际收入。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-06-25</span>
                              <span><i class="fas fa-tools" aria-hidden="true"></i> 技能变现</span>
@@ -1113,8 +1086,9 @@
                 </article>
                  <article class="article-card">
                     <div class="article-content">
-                        <h3 class="article-title"><a href="make-money.html#passive-income-system" class="read-more" style="color: inherit; text-decoration: none; margin: 0;">被动收入系统</a></h3>
-                        <p class="article-excerpt">告别“手停口停”！探索版权、联盟营销、知识付费、数字产品等多种被动收入模式，构建可持续的财富增长引擎。</p>
+                        <h3 class="article-title"><a href="make-money.html#passive-income-system">被动收入系统</a></h3>
+                         <!-- Optimized Excerpt -->
+                        <p class="article-excerpt">探索版权、联盟营销、知识付费等被动收入模式，构建可持续的财富增长引擎。</p>
                         <div class="article-meta">
                              <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2025-07-10</span>
                              <span><i class="fas fa-chart-line" aria-hidden="true"></i> 被动收入</span>
@@ -1130,16 +1104,14 @@
                 </a>
             </div>
         </section>
-
-        <!-- 运动板块 -->
-        <section id="sports" role="region" aria-labelledby="sports-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+        <section id="sports" role="region" aria-labelledby="sports-title">
             <h2 class="section-title" id="sports-title">运动健康</h2>
             <div class="articles">
-                <!-- Using article for thematic content blocks -->
                 <article class="article-card">
                     <div class="article-content">
                         <h3 class="article-title">我的运动哲学：身心合一</h3>
-                        <p class="article-excerpt">身体是承载一切的殿堂。规律运动不仅强健体魄，更能磨练意志，激发思维活力。每日投入时间运动，是对未来的最佳投资。</p>
+                         <!-- Slightly Optimized Excerpt -->
+                        <p class="article-excerpt">身体是基石。规律运动强健体魄、磨练意志、激发思维。每日运动是最佳投资。</p>
                         <div class="article-meta">
                             <span><i class="fas fa-dumbbell" aria-hidden="true"></i> 类型: 综合训练</span>
                             <span><i class="far fa-clock" aria-hidden="true"></i> 频率: 每日坚持</span>
@@ -1149,7 +1121,8 @@
                  <article class="article-card">
                     <div class="article-content">
                         <h3 class="article-title">运动与学习的协同效应</h3>
-                        <p class="article-excerpt">大脑并非孤立存在。科学研究表明，规律的有氧运动和力量训练能促进神经发生，改善血液循环，显著提升记忆力、专注力及学习效率。</p>
+                         <!-- Slightly Optimized Excerpt -->
+                        <p class="article-excerpt">运动健脑。规律运动（有氧/力量）促进神经发生、改善循环，提升记忆、专注和学习效率。</p>
                         <div class="article-meta">
                             <span><i class="fas fa-brain" aria-hidden="true"></i> 科学依据: 神经科学</span>
                             <span><i class="fas fa-chart-bar" aria-hidden="true"></i> 实践效果: 效率提升</span>
@@ -1158,43 +1131,41 @@
                 </article>
             </div>
         </section>
-
-        <!-- 关于我板块 -->
-        <section id="about" role="region" aria-labelledby="about-title" style="margin-top: 50px; scroll-margin-top: 70px;">
+        <section id="about" role="region" aria-labelledby="about-title">
             <h2 class="section-title" id="about-title">关于我</h2>
             <div class="about-content">
                 <div class="about-intro">
                     <h3><i class="fas fa-user-circle" aria-hidden="true"></i> 个人简介</h3>
-                    <p>你好，我是AIFLOW创建者，一个穿梭于代码、历史与健身房之间的终身学习者。热衷于探索 AI 如何赋能个人成长，痴迷于从历史长河中汲取智慧，坚信科学方法与持续行动的力量。</p>
-                    <p>这个网站是我记录思考、分享所得、链接同好的空间。希望能与你一起，在学习、优化、成长的道路上并肩前行。</p>
+                     <!-- Optimized Intro -->
+                    <p>我是AIFLOW创建者，终身学习者，穿梭于代码、历史与健身。热衷探索AI赋能成长，汲取历史智慧，笃信科学方法与行动。</p>
+                    <p>本站记录思考、分享所得、链接同好。期待与你同行，在学习、优化、成长路上并肩。</p>
                 </div>
                 <div class="about-philosophy">
                     <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 我的理念</h3>
                     <ul>
-                        <li><span class="philosophy-icon" aria-hidden="true">📚</span><strong>终身学习：</strong> 世界是无尽的课堂，保持好奇，永远在路上。</li>
-                        <li><span class="philosophy-icon" aria-hidden="true">🔧</span><strong>系统优化：</strong> 拒绝低效重复，用科学方法打磨学习、工作与生活流。</li>
-                        <li><span class="philosophy-icon" aria-hidden="true">🚀</span><strong>AI赋能：</strong> 拥抱智能时代，让AI成为提升自我、创造价值的强大工具。</li>
-                        <li><span class="philosophy-icon" aria-hidden="true">💪</span><strong>身心统一：</strong> 健康的体魄是思维的基石，平衡发展，缺一不可。</li>
+                         <!-- Optimized Philosophy Items -->
+                        <li><span class="philosophy-icon" aria-hidden="true">📚</span><strong>终身学习：</strong>世界是课堂，保持好奇，永远在路上。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">🔧</span><strong>系统优化：</strong>用科学方法打磨学习、工作与生活。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">🚀</span><strong>AI赋能：</strong>让AI成为提升自我、创造价值的工具。</li>
+                        <li><span class="philosophy-icon" aria-hidden="true">💪</span><strong>身心统一：</strong>健康体魄是思维基石，平衡发展。</li>
                     </ul>
                 </div>
                 <div class="contact-info">
                     <h3><i class="fas fa-envelope" aria-hidden="true"></i> 联系方式</h3>
                     <p><strong>邮箱：</strong> <a href="mailto:19927675096@163.com">19927675096@163.com</a></p>
-                    <p><strong>微信：</strong> bin1026317qrpm0 (添加请注明"AIFLOW读者")</p>
-                    <p>欢迎就学习方法、AI应用、个人成长、历史思考或任何感兴趣的话题进行交流。期待听到你的声音！</p>
+                    <p><strong>微信：</strong> bin1026317qrpm0 (请注明"AIFLOW读者")</p>
+                     <!-- Optimized Contact Closing -->
+                    <p>欢迎交流学习方法、AI应用、个人成长、历史思考等话题。</p>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- 返回顶部按钮 -->
     <button id="scrollToTopBtn" title="返回顶部" aria-label="返回顶部">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
-
     <footer>
         <div class="container">
-            <p>&copy; 2025 AIFLOW. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent-color);" aria-label="爱心"></i> for Growth.</p>
+            <p>&copy; 2025 AIFLOW. All rights reserved. Designed with <i class="fas fa-heart" aria-label="爱心"></i> for Growth.</p>
             <div class="social-links" aria-label="社交媒体链接">
                 <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter / X" aria-label="在 Twitter / X 上关注我们"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter/X 图标" loading="lazy" width="22" height="22"></a>
                 <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="在 GitHub 上查看我们的项目"><img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub 图标" loading="lazy" width="22" height="22"></a>
@@ -1202,8 +1173,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Placed script at the end, added defer attribute -->
     <script defer>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Selectors ---
@@ -1235,35 +1204,31 @@
             let scrollTimeout = null;
 
             // --- Functions ---
-
-            // Progress Bar
             const handlePageLoad = () => {
                 progressBar.style.width = '100%';
-                // Use transitionend event for better timing
                 progressBar.addEventListener('transitionend', () => {
-                     // Start fade out slightly after completion
                      setTimeout(() => {
                          progressBar.style.opacity = '0';
                      }, 100);
-                }, { once: true }); // Ensure listener runs only once
+                }, { once: true });
             };
 
-            // Dark Mode
             const applyTheme = (isDark) => {
                  document.body.classList.toggle('dark-theme', isDark);
                  themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
                  themeToggle.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
                  localStorage.setItem('darkMode', isDark);
             };
+
             const toggleTheme = () => {
                  applyTheme(!document.body.classList.contains('dark-theme'));
             };
+
             const loadTheme = () => {
                  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
                  applyTheme(savedDarkMode);
             };
 
-            // Timer
             const updateTimerDisplay = () => {
                 const hours = Math.floor(totalSeconds / 3600);
                 const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -1271,7 +1236,6 @@
                 hoursElem.textContent = hours.toString().padStart(2, '0');
                 minutesElem.textContent = minutes.toString().padStart(2, '0');
                 secondsElem.textContent = seconds.toString().padStart(2, '0');
-
                 const modeText = {
                     'focus': '专注计时中',
                     'break': '休息计时中',
@@ -1281,139 +1245,179 @@
                 if (isPaused) {
                     status = "计时已暂停";
                 }
-                // Update ARIA live region text
-                timerStatusText.textContent = `${status}: ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+                // Update accessible timer status text (can be hidden visually if needed)
+                 timerStatusText.textContent = `${status}: ${hours}小时 ${minutes}分钟 ${seconds}秒`;
             };
+
             const showEyeExerciseReminder = () => {
-                if (reminder.style.display === 'block' || document.hidden) return; // Don't show if already visible or tab inactive
+                if (reminder.style.display === 'block' || document.hidden) return; // Don't show if already visible or tab is hidden
                 reminder.style.display = 'block';
-                // Clear previous timeout if exists
-                if (eyeReminderTimeout) clearTimeout(eyeReminderTimeout);
+                if (eyeReminderTimeout) clearTimeout(eyeReminderTimeout); // Clear previous timeout
                 eyeReminderTimeout = setTimeout(() => {
                     reminder.style.display = 'none';
-                }, 6000);
+                }, 6000); // Hide after 6 seconds
             };
+
             const startTimer = () => {
-                if (timerInterval) clearInterval(timerInterval);
+                if (timerInterval) clearInterval(timerInterval); // Clear existing interval
                 timerInterval = setInterval(() => {
-                    if (!isPaused && !document.hidden) { // Only increment if not paused and tab is active
+                    if (!isPaused && !document.hidden) { // Only increment if not paused and tab is visible
                         totalSeconds++;
                         updateTimerDisplay();
-
+                        // Check for eye exercise reminder based on mode
                         const reminderInterval = {
-                            'focus': 1500, // 25 min (25 * 60)
-                            'break': 300,  // 5 min (5 * 60)
-                            'custom': 1800 // 30 min (30 * 60)
-                        }[timerMode] || 1500;
+                            'focus': 1500, // 25 min (1500 seconds)
+                            'break': 300,  // 5 min (300 seconds)
+                            'custom': 1800 // 30 min (1800 seconds) - Or adjust as needed
+                        }[timerMode] || 1500; // Default to focus interval if mode unknown
 
                         if (totalSeconds > 0 && totalSeconds % reminderInterval === 0) {
                             showEyeExerciseReminder();
                         }
-                        saveTimerState();
+                        saveTimerState(); // Save state periodically
                     }
-                }, 1000);
+                }, 1000); // Update every second
             };
+
             const togglePauseResume = () => {
                 isPaused = !isPaused;
                 if (isPaused) {
                     pauseResumeButton.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i> 继续';
                     pauseResumeButton.setAttribute('aria-label', '继续计时器');
-                    clearInterval(timerInterval);
+                    clearInterval(timerInterval); // Stop the interval
                 } else {
                     pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
                     pauseResumeButton.setAttribute('aria-label', '暂停计时器');
-                    startTimer(); // Resume timer
+                    startTimer(); // Restart the interval
                 }
-                updateTimerDisplay(); // Update status text immediately
-                saveTimerState();
+                updateTimerDisplay(); // Update display immediately
+                saveTimerState(); // Save the new pause state
             };
+
             const resetTimer = () => {
                 totalSeconds = 0;
-                isPaused = false;
-                pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
+                isPaused = false; // Ensure timer is not paused after reset
+                pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停'; // Reset button text
                 pauseResumeButton.setAttribute('aria-label', '暂停计时器');
-                updateTimerDisplay();
-                if (timerInterval) clearInterval(timerInterval); // Clear existing before starting new
-                startTimer();
-                saveTimerState();
+                updateTimerDisplay(); // Update display to 00:00:00
+                if (timerInterval) clearInterval(timerInterval); // Clear existing interval
+                startTimer(); // Start the timer from 0
+                saveTimerState(); // Save the reset state
             };
-            const toggleTimerMode = () => {
+
+             const toggleTimerMode = () => {
                 const modes = ['focus', 'break', 'custom'];
-                const nextIndex = (modes.indexOf(timerMode) + 1) % modes.length;
+                const currentIndex = modes.indexOf(timerMode);
+                const nextIndex = (currentIndex + 1) % modes.length;
                 timerMode = modes[nextIndex];
-                updateTimerDisplay(); // Update status text for new mode
-                saveTimerState();
-                // Optionally reset timer on mode change? Depends on desired behavior.
-                // resetTimer();
-            };
-            const saveTimerState = () => {
-                localStorage.setItem('aiflowTimerSeconds', totalSeconds);
-                localStorage.setItem('aiflowTimerPaused', isPaused);
-                localStorage.setItem('timerMode', timerMode);
-            };
-            const initTimer = () => {
-                const savedSeconds = localStorage.getItem('aiflowTimerSeconds');
-                const savedPaused = localStorage.getItem('aiflowTimerPaused');
-                const savedMode = localStorage.getItem('timerMode');
-
-                if (savedSeconds) totalSeconds = parseInt(savedSeconds, 10);
-                if (savedMode) timerMode = savedMode; // Load mode first
-                if (savedPaused === 'true') {
-                    isPaused = true;
-                    pauseResumeButton.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i> 继续';
-                    pauseResumeButton.setAttribute('aria-label', '继续计时器');
-                } else {
-                    isPaused = false; // Ensure isPaused is false if not saved as true
-                    pauseResumeButton.innerHTML = '<i class="fas fa-pause" aria-hidden="true"></i> 暂停';
-                    pauseResumeButton.setAttribute('aria-label', '暂停计时器');
-                }
-
-                updateTimerDisplay(); // Initial display update
-                if (!isPaused) {
-                    startTimer(); // Start timer if not paused
-                }
+                // Optionally reset timer when mode changes, or keep it running
+                // resetTimer(); // Uncomment to reset timer on mode change
+                updateTimerDisplay(); // Update status text
+                saveTimerState(); // Save the new mode
+                // You might want to provide visual feedback about the mode change
+                // e.g., briefly highlight the timer or change an icon
             };
 
-            // Scroll to Top
+             const saveTimerState = () => {
+                 try {
+                    localStorage.setItem('aiflowTimerSeconds', totalSeconds);
+                    localStorage.setItem('aiflowTimerPaused', isPaused);
+                    localStorage.setItem('timerMode', timerMode);
+                 } catch (e) {
+                     console.error("Failed to save timer state to localStorage:", e);
+                 }
+             };
+
+             const initTimer = () => {
+                 try {
+                    const savedSeconds = localStorage.getItem('aiflowTimerSeconds');
+                    const savedPaused = localStorage.getItem('aiflowTimerPaused');
+                    const savedMode = localStorage.getItem('timerMode');
+
+                    if (savedSeconds) {
+                        totalSeconds = parseInt(savedSeconds, 10);
+                        if (isNaN(totalSeconds)) totalSeconds = 0; // Handle potential NaN
+                    }
+                     if (savedMode && ['focus', 'break', 'custom'].includes(savedMode)) {
+                         timerMode = savedMode;
+                     }
+
+                    if (savedPaused === 'true') {
+                        isPaused = true;
+                        pauseResumeButton.innerHTML = '<i class="fas fa-play" aria-hidden="true"></i> 继续';
+                        pauseResumeButton.setAttribute('aria-label', '继续计时器');
+                    } else {
+                        isPaused = false;
+                        // Button text is already correct default
+                    }
+
+                    updateTimerDisplay(); // Update display with loaded values
+
+                    if (!isPaused) {
+                        startTimer(); // Start timer only if it wasn't paused
+                    }
+                 } catch (e) {
+                     console.error("Failed to initialize timer from localStorage:", e);
+                     // Fallback to default state if loading fails
+                     totalSeconds = 0;
+                     isPaused = false;
+                     timerMode = 'focus';
+                     updateTimerDisplay();
+                     startTimer();
+                 }
+             };
+
+
             const handleScroll = () => {
-                 // Clear existing timeout
+                // Debounce scroll events for performance
                 if (scrollTimeout) clearTimeout(scrollTimeout);
-
-                // Set timeout to check scroll position after a short delay
                 scrollTimeout = setTimeout(() => {
-                    if (window.scrollY > 150) {
-                        if (scrollToTopBtn.style.display !== 'flex') { // Check current display style
-                           scrollToTopBtn.style.display = 'flex'; // Use flex for centering
-                           // Force reflow to ensure transition starts
+                    const scrollY = window.scrollY;
+                    if (scrollY > 150) {
+                        // Show button with fade-in effect
+                        if (scrollToTopBtn.style.display !== 'flex') {
+                           scrollToTopBtn.style.display = 'flex';
+                           // Force reflow to apply transition correctly
                            void scrollToTopBtn.offsetWidth;
                            scrollToTopBtn.style.opacity = '1';
                         }
                     } else {
-                        if (scrollToTopBtn.style.opacity === '1') { // Check current opacity
+                        // Hide button with fade-out effect
+                        if (scrollToTopBtn.style.opacity === '1') {
                             scrollToTopBtn.style.opacity = '0';
-                            // Hide after transition ends
+                            // Wait for transition to finish before setting display: none
                             scrollToTopBtn.addEventListener('transitionend', () => {
-                                if (window.scrollY <= 150) { // Double check position before hiding
+                                // Check again in case user scrolled back up quickly
+                                if (window.scrollY <= 150) {
                                     scrollToTopBtn.style.display = 'none';
                                 }
                             }, { once: true });
                         }
                     }
-                }, 100); // Adjust delay as needed (e.g., 100ms)
+                     // Highlight navigation based on scroll position
+                     highlightNav();
+                }, 100); // Adjust debounce timeout as needed (e.g., 100-250ms)
             };
+
             const scrollToTop = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
-            // Search
-            const searchData = [ // Keep using mock data as requested
-                { title: "楚汉双雄", category: "历史洞察", link: "articles.html#chu-han" },
-                { title: "注意力 > 时间 > 金钱", category: "思考", link: "thoughts.html#attention" },
-                { title: "认知心态：万物皆为我所用", category: "自学方法", link: "self-study.html#mindset" },
-                { title: "AI副业赚钱指南", category: "搞钱专栏", link: "make-money.html#ai-side-hustle" },
-                { title: "被动收入系统", category: "搞钱专栏", link: "make-money.html#passive-income-system" }
-                // Add more searchable items if needed
-            ];
+            // Simplified Search Data (Replace with actual data source/fetching logic)
+             const searchData = [
+                 { title: "楚汉双雄", category: "历史洞察", link: "articles.html#chu-han" },
+                 { title: "注意力 > 时间 > 金钱", category: "思考", link: "thoughts.html#attention" },
+                 { title: "认知心态：万物皆为我所用", category: "自学方法", link: "self-study.html#mindset" },
+                 { title: "落地方法：高效实践", category: "自学方法", link: "self-study.html#methods"},
+                 { title: "AI副业赚钱指南", category: "搞钱专栏", link: "make-money.html#ai-side-hustle" },
+                 { title: "自媒体变现全攻略", category: "搞钱专栏", link: "make-money.html#media-monetization" },
+                 { title: "技能变现宝典", category: "搞钱专栏", link: "make-money.html#skill-monetization" },
+                 { title: "被动收入系统", category: "搞钱专栏", link: "make-money.html#passive-income-system" },
+                 { title: "运动哲学：身心合一", category: "运动健康", link: "#sports" }, // Link to section ID
+                 { title: "关于我", category: "网站信息", link: "#about" } // Link to section ID
+                 // Add more items as needed, potentially fetched dynamically
+             ];
+
             const performSearch = () => {
                 const query = searchInput.value.trim().toLowerCase();
                 searchResults.innerHTML = ''; // Clear previous results
@@ -1421,33 +1425,40 @@
                 if (!query) {
                     searchResults.style.display = 'none';
                     searchInput.setAttribute('aria-expanded', 'false');
-                    return;
+                    return; // Don't search if query is empty
                 }
 
                 const results = searchData.filter(item =>
                     item.title.toLowerCase().includes(query) ||
                     item.category.toLowerCase().includes(query)
+                    // Add more fields to search if necessary (e.g., item.contentPreview.toLowerCase().includes(query))
                 );
 
                 if (results.length > 0) {
                     results.forEach(result => {
                         const item = document.createElement('div');
                         item.className = 'result-item';
-                        item.setAttribute('role', 'option'); // ARIA role for listbox item
+                        item.setAttribute('role', 'option');
+                        item.tabIndex = -1; // Make it focusable for keyboard navigation if needed later
                         item.innerHTML = `
                             <div class="result-title">${result.title}</div>
                             <div class="result-category">${result.category}</div>
                         `;
+                        // Navigate on click
                         item.addEventListener('click', () => {
                             window.location.href = result.link;
-                            searchResults.style.display = 'none'; // Hide results after click
+                            searchResults.style.display = 'none';
                             searchInput.setAttribute('aria-expanded', 'false');
+                            searchInput.value = ''; // Clear search input after selection
                         });
-                         item.addEventListener('keydown', (e) => { // Basic keyboard nav
+                         // Navigate on Enter/Space key press
+                         item.addEventListener('keydown', (e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault(); // Prevent default space scroll
                                 window.location.href = result.link;
                                 searchResults.style.display = 'none';
                                 searchInput.setAttribute('aria-expanded', 'false');
+                                searchInput.value = ''; // Clear search input
                             }
                         });
                         searchResults.appendChild(item);
@@ -1456,59 +1467,80 @@
                     const noResult = document.createElement('div');
                     noResult.className = 'result-item';
                     noResult.textContent = '没有找到相关内容';
-                    noResult.setAttribute('aria-disabled', 'true'); // Indicate non-interactive
+                    noResult.setAttribute('aria-disabled', 'true'); // Indicate no action
                     searchResults.appendChild(noResult);
                 }
-                searchResults.style.display = 'block';
-                searchInput.setAttribute('aria-expanded', 'true');
+
+                searchResults.style.display = 'block'; // Show results container
+                searchInput.setAttribute('aria-expanded', 'true'); // Indicate results are shown
             };
+
+             // Hide search results when clicking outside the search sidebar
              const hideSearchResults = (e) => {
-                 // Check if the click is outside the search sidebar entirely
                  if (!searchSidebar.contains(e.target)) {
                      searchResults.style.display = 'none';
                      searchInput.setAttribute('aria-expanded', 'false');
                  }
              };
 
-            // Search Sidebar Toggle
+
             const toggleSearchSidebar = () => {
                  const isHidden = searchSidebar.classList.toggle('search-sidebar-hidden');
                  const icon = toggleSearchBtn.querySelector('i');
-                 icon.className = isHidden ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
-                 toggleSearchBtn.setAttribute('aria-expanded', !isHidden);
-                 // Hide search results when sidebar collapses
+                 icon.className = isHidden ? 'fas fa-chevron-right' : 'fas fa-chevron-left'; // Toggle icon
+                 toggleSearchBtn.setAttribute('aria-expanded', !isHidden); // Toggle aria attribute
+                 // Hide results when sidebar is hidden
                  if (isHidden) {
                      searchResults.style.display = 'none';
                      searchInput.setAttribute('aria-expanded', 'false');
                  }
             };
 
-            // Navigation Highlighting
+
             const highlightNav = () => {
                 let currentSectionId = '';
                 const scrollPosition = window.scrollY;
+                // Adjust offset based on sticky nav height + some buffer
+                const navHeight = document.querySelector('nav')?.offsetHeight || 70;
+                const offset = navHeight + 20;
 
-                sections.forEach(section => {
-                    // Consider nav height + some offset
-                    const sectionTop = section.offsetTop - (document.querySelector('nav')?.offsetHeight || 70) - 20;
-                    if (scrollPosition >= sectionTop) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
+                 // Find the current section in view
+                 sections.forEach(section => {
+                     const sectionTop = section.offsetTop - offset;
+                     const sectionBottom = sectionTop + section.offsetHeight;
 
-                 // Fallback to 'home' if near top or no section detected
-                if (!currentSectionId && scrollPosition < 200) {
-                    currentSectionId = 'home';
+                     // Check if the top of the viewport is within the section
+                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                         currentSectionId = section.getAttribute('id');
+                     }
+                 });
+
+                 // If near the top or no section is actively in view, default to home (or first nav item)
+                 if (!currentSectionId && scrollPosition < sections[0]?.offsetTop - offset) {
+                    currentSectionId = sections[0]?.getAttribute('id') || 'home'; // Fallback to 'home' if first section has no ID
                  }
+                 // Special case for reaching the absolute bottom of the page - highlight the last section
+                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) { // Small buffer
+                      currentSectionId = sections[sections.length - 1]?.getAttribute('id') || currentSectionId;
+                  }
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    // Match href containing the section ID anchor
-                    if (link.getAttribute('href').includes(`#${currentSectionId}`)) {
-                        link.classList.add('active');
-                    }
-                });
+
+                // Remove 'active' class from all links first
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Add 'active' class to the link corresponding to the current section
+                const activeLink = document.querySelector(`nav a[href$="#${currentSectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                } else {
+                     // Fallback: If no direct match (e.g., #home), try matching the first link if scroll is near top
+                     if (currentSectionId === 'home' || scrollPosition < 200) {
+                         const homeLink = document.querySelector('nav a[href="#home"]');
+                         if(homeLink) homeLink.classList.add('active');
+                     }
+                }
             };
+
 
             // --- Event Listeners ---
             window.addEventListener('load', handlePageLoad);
@@ -1516,22 +1548,35 @@
             pauseResumeButton.addEventListener('click', togglePauseResume);
             resetButton.addEventListener('click', resetTimer);
             modeButton.addEventListener('click', toggleTimerMode);
-            window.addEventListener('scroll', handleScroll);
-            window.addEventListener('scroll', highlightNav); // Also highlight on scroll
+            window.addEventListener('scroll', handleScroll); // Combined scroll handler for button and nav
             scrollToTopBtn.addEventListener('click', scrollToTop);
-            searchInput.addEventListener('input', performSearch);
-            searchButton.addEventListener('click', performSearch); // Allow button click search
-            searchInput.addEventListener('focus', performSearch); // Show results on focus if query exists
-            document.addEventListener('click', hideSearchResults);
+
+            // Search Listeners
+            searchInput.addEventListener('input', performSearch); // Search as user types
+            searchButton.addEventListener('click', performSearch); // Also allow clicking button
+             searchInput.addEventListener('focus', () => { // Show results on focus if input has value
+                 if (searchInput.value.trim()) {
+                     performSearch();
+                 }
+             });
+             searchInput.addEventListener('keydown', (e) => { // Handle Enter key in input
+                 if (e.key === 'Enter') {
+                     performSearch(); // Perform search on Enter
+                     // Optionally navigate to the first result if desired
+                     // const firstResult = searchResults.querySelector('.result-item:not([aria-disabled="true"])');
+                     // if (firstResult) firstResult.click();
+                 }
+             });
+            document.addEventListener('click', hideSearchResults); // Hide results on outside click
             toggleSearchBtn.addEventListener('click', toggleSearchSidebar);
+
 
             // --- Initializations ---
             loadTheme();
-            initTimer();
-            handleScroll(); // Initial check for scroll button
-            highlightNav(); // Initial nav highlight
-            // Ensure sidebar starts with correct ARIA state based on class
-            toggleSearchBtn.setAttribute('aria-expanded', !searchSidebar.classList.contains('search-sidebar-hidden'));
+            initTimer(); // Initialize timer state from localStorage
+            handleScroll(); // Initial check for scroll-to-top button visibility and nav highlight
+             // Set initial aria-expanded state for the search toggle button
+             toggleSearchBtn.setAttribute('aria-expanded', !searchSidebar.classList.contains('search-sidebar-hidden'));
 
         });
     </script>
